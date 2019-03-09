@@ -6,14 +6,14 @@ import numpy as np
 # Image library for image manipulation
 # import Image
 # Utils file
-
+from tensorflow.examples.tutorials.mnist import input_data
 # 定义RBM
 class RBM(object):
     def __init__(self, input_size, output_size):
         # 定义超参数
         self._input_size = input_size  # 输入大小
         self._output_size = output_size  # 输出大小
-        self.epochs = 10  # 迭代次数
+        self.epochs = 20  # 迭代次数
         self.learning_rate = 0.1  # 学习率
         self.batchsize = 10  # 抽样数
 
@@ -56,7 +56,7 @@ class RBM(object):
         positive_grad = tf.matmul(tf.transpose(v0), h0)  # 取决于观测值，正阶段增加训练数据的可能性
         negative_grad = tf.matmul(tf.transpose(v1), h1)  # 只取决于模型，负阶段减少由模型生成的样本的概率
 
-        # (positive_grad - negative_grad) / tf.to_float(tf.shape(v0)[0])为对比散度
+        # (positive_grad - negative_grad) / tf.cast(tf.shape(v0)[0], np.float64)为对比散度
         update_w = _w + self.learning_rate * (positive_grad - negative_grad) / tf.cast(tf.shape(v0)[0], np.float64)
         update_vb = _vb + self.learning_rate * tf.reduce_mean(v0 - v1, 0)
         update_hb = _hb + self.learning_rate * tf.reduce_mean(h0 - h1, 0)
@@ -104,7 +104,7 @@ class NN(object):
         self.b_list = []
         self._learning_rate = 0.1
         self._momentum = 0.9
-        self._epoches = 100
+        self._epoches = 20
         self._batchsize = 10
         input_size = X.shape[1]  # 特征数
 
@@ -169,7 +169,11 @@ if __name__ == '__main__':
     mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
     trX, trY, teX, teY = mnist.train.images, mnist.train.labels, mnist.test.images,\
         mnist.test.labels
-    RBM_hidden_sizes = [1200, 600, 300, 10]  # create 4 layers of RBM with size 785-500-200-50
+    trX=trX.astype(np.float64)
+    trY=trY.astype(np.float64)
+    teX=teX.astype(np.float64)
+    teY=teY.astype(np.float64)
+    RBM_hidden_sizes = [500, 200, 50]  # create 4 layers of RBM with size 785-500-200-50
     # Since we are training, set input as training data
     inpX = trX
     # Create list to hold our RBMs
