@@ -5,7 +5,7 @@ import pandas as pd
 from scipy.io import loadmat
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
-
+from DBN import NN, RBM
 print("Reading data...")
 data_A_normal = loadmat("../Data/Normal Baseline Data/Normal_0")
 data_B_normal = loadmat("../Data/Normal Baseline Data/Normal_1")
@@ -135,10 +135,10 @@ data_A = np.hstack([np.hstack([np.hstack([np.hstack([np.hstack([np.hstack([np.hs
 data_B = np.hstack([np.hstack([np.hstack([np.hstack([np.hstack([np.hstack([np.hstack([np.hstack([np.hstack([data_B_normal_DE,data_B_IR007_DE]),data_B_B007_DE]),data_B_OR007_DE]),data_B_IR014_DE]),data_B_B014_DE]),data_B_OR014_DE]),data_B_IR021_DE]),data_B_B021_DE]),data_B_OR021_DE])
 data_C = np.hstack([np.hstack([np.hstack([np.hstack([np.hstack([np.hstack([np.hstack([np.hstack([np.hstack([data_C_normal_DE,data_C_IR007_DE]),data_C_B007_DE]),data_C_OR007_DE]),data_C_IR014_DE]),data_C_B014_DE]),data_C_OR014_DE]),data_C_IR021_DE]),data_C_B021_DE]),data_C_OR021_DE])
 data_D = np.hstack([np.hstack([np.hstack([np.hstack([np.hstack([np.hstack([np.hstack([np.hstack([np.hstack([data_D_normal_DE,data_D_IR007_DE]),data_D_B007_DE]),data_D_OR007_DE]),data_D_IR014_DE]),data_D_B014_DE]),data_D_OR014_DE]),data_D_IR021_DE]),data_D_B021_DE]),data_D_OR021_DE])
-data_A_minmax = min_max_scaler.fit_transform(data_A)
-data_B_minmax = min_max_scaler.fit_transform(data_B)
-data_C_minmax = min_max_scaler.fit_transform(data_C)
-data_D_minmax = min_max_scaler.fit_transform(data_D)
+data_A_minmax = np.transpose(min_max_scaler.fit_transform(data_A))
+data_B_minmax = np.transpose(min_max_scaler.fit_transform(data_B))
+data_C_minmax = np.transpose(min_max_scaler.fit_transform(data_C))
+data_D_minmax = np.transpose(min_max_scaler.fit_transform(data_D))
 eval_A = np.zeros((500,10))
 eval_D = np.zeros((1500,10))
 for i in range(500):
@@ -147,3 +147,24 @@ eval_B = eval_A
 eval_C = eval_A
 for i in range(1500):
     eval_D[i][(int)(i/150)] = 1
+
+X_A_train,X_A_test, y_A_train, y_A_test =train_test_split(data_A_minmax,eval_A,test_size=0.4, random_state=0)
+
+RBM_hidden_sizes = [1200, 600, 300, 10]
+inpX = X_A_train
+rbm_list = []
+input_size = inpX.shape[1]
+for i, size in enumerate(RBM_hidden_sizes):
+    print('RBM: ', i, ' ', input_size, '->', size)
+    rbm_list.append(RBM(input_size, size))
+    input_size = size
+
+for rbm in rbm_list:
+    print('New RBM:')
+    rbm.train(inpX)
+    inpX = rbm.rbm_outpt(inpX)
+
+nNet = NN(RBM_hidden_sizes, X_A_train, y_A_train)
+nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
+nNet.train()
+

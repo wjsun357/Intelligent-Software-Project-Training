@@ -9,6 +9,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
+'''
 t=[]
 x1=[]
 x2=[]
@@ -65,3 +66,4 @@ z_minmax = min_max_scaler.fit_transform(samplez)
 x_train, x_test = train_test_split(x_minmax, test_size=0.4)
 y_train, y_test = train_test_split(y_minmax, test_size=0.4)
 z_train, z_test = train_test_split(z_minmax, test_size=0.4)
+'''
