@@ -19,8 +19,9 @@ function [H] = PE(X,m,tau)
           end
         end
     end
-    sz = sum(z);
-    zpsz = z/sz;
+    %sz = sum(z);
+    %zpsz = z/sz;
+    zpsz = z/f;
     H = 0;
     for i = 1:length(zpsz)
       if zpsz(i) ~= 0
