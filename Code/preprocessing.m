@@ -6,7 +6,8 @@ data = data.X097_DE_time;
 %小波包分解
 
 N = 5;
-num = 8192;
+num = 50*1024;
+method = 'db10';
 %{
 [tt] = wpdec(data(1:num,:)',N,'db10');
 plot(tt);
@@ -39,8 +40,8 @@ ALPHA = 2;
 %http://blog.sina.com.cn/s/blog_6c41e2f30101b0se.html
 %https://blog.csdn.net/zhaoyuxia517/article/details/78013139
 %https://blog.csdn.net/u010060391/article/details/42709317
-[C,L] = wavedec(data(1:num,:)',N,'db10');
-cA5 = appcoef(C,L,'db10',5);
+[C,L] = wavedec(data(1:num,:)',N,method);
+cA5 = appcoef(C,L,method,5);
 cD5 = detcoef(C,L,5);
 cD4 = detcoef(C,L,4);
 cD3 = detcoef(C,L,3);
@@ -57,12 +58,22 @@ THR3 = wbmpen(C,L,SIGMA3,ALPHA);
 THR4 = wbmpen(C,L,SIGMA4,ALPHA);
 THR5 = wbmpen(C,L,SIGMA5,ALPHA);
 %C=[cA5,cD5,cD4,cD3,cD2,cD1];
-THTR = [THR1,THR2,THR3,THR4,THR5];
+THR = [THR1,THR2,THR3,THR4,THR5];
 %[thr,nkeep]=wdcbm(C,L,3);
-[XC,CXC,LXC,PERF0,PERFL2]=wdencmp('lvd',C,L,'db10',N,THTR,'s');
+[XC,CXC,LXC,PERF0,PERFL2] = wdencmp('lvd',C,L,method,N,THR,'s');
 figure(1);
 subplot(211);
 plot(XC);
 subplot(212);
-plot(data(1:num,:)');
+plot(data(1:num,:));
 %A0=waverec(C,L,'db10');
+%GRNN
+Size = num/2;
+for i = 1:Size
+    result(i) = GRNN(XC(:,num/2+i),XC(:,1:num/2)',num/2,0.1);
+end
+figure(2);
+subplot(211);
+plot(result);
+subplot(212);
+plot(data(num/2+1:num/2+Size,:));
