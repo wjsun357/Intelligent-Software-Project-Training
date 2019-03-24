@@ -1,12 +1,13 @@
 clear all
 clc
 %读取数据
-data = load('../Data/Normal Baseline Data/Normal_0.mat','X097_DE_time');
-data = data.X097_DE_time;
+name = '../Data/12k Drive End Bearing Fault Data/OR021@6_2.mat';
+data = load(name,'X236_DE_time');
+data = data.X236_DE_time;
 %小波包分解
 
 N = 5;
-num = 50*1024;
+num = 50*2048;
 method = 'db10';
 %{
 [tt] = wpdec(data(1:num,:)',N,'db10');
@@ -66,8 +67,11 @@ subplot(211);
 plot(XC);
 subplot(212);
 plot(data(1:num,:));
+XC = XC';
+save OR021@6_2.mat XC;
 %A0=waverec(C,L,'db10');
 %GRNN
+%{
 Size = num/2;
 for i = 1:Size
     result(i) = GRNN(XC(:,num/2+i),XC(:,1:num/2)',num/2,0.1);
@@ -77,3 +81,4 @@ subplot(211);
 plot(result);
 subplot(212);
 plot(data(num/2+1:num/2+Size,:));
+%}
