@@ -13,9 +13,9 @@ class RBM(object):
         # 定义超参数
         self._input_size = input_size  # 输入大小
         self._output_size = output_size  # 输出大小
-        self.epochs = 20  # 迭代次数
-        self.learning_rate = 0.1  # 学习率
-        self.batchsize = 10  # 抽样数
+        self.epochs = 5  # 迭代次数
+        self.learning_rate = 1.0  # 学习率
+        self.batchsize = 100  # 抽样数
 
         # 初始权重和偏差
         self.w = np.zeros([input_size, output_size], np.float64)  # 权重
@@ -102,10 +102,10 @@ class NN(object):
         self._Y = Y
         self.w_list = []
         self.b_list = []
-        self._learning_rate = 0.1
-        self._momentum = 0.9
-        self._epoches = 20
-        self._batchsize = 10
+        self._learning_rate = 1.0
+        self._momentum = 0
+        self._epoches = 10
+        self._batchsize = 100
         input_size = X.shape[1]  # 特征数
 
         # 循环初始化
@@ -164,7 +164,7 @@ class NN(object):
 
 
 if __name__ == '__main__':
-    '''
+    
     # Loading in the mnist data
     mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
     trX, trY, teX, teY = mnist.train.images, mnist.train.labels, mnist.test.images,\
@@ -198,4 +198,4 @@ if __name__ == '__main__':
     nNet = NN(RBM_hidden_sizes, trX, trY)
     nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
     nNet.train()
-    '''
+    
