@@ -5,6 +5,7 @@ import pandas as pd
 from scipy.io import loadmat
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
+import seaborn as sns
 from DBN import NN, RBM
 print("Reading data...")
 data_A_normal = loadmat("../Data/My Data/Normal_0")
@@ -153,6 +154,7 @@ for i in range(500):
     t_C[14,i] = max(abs(data_C[:,i]))/(sum(abs(data_C[:,i]))/2048)
     t_C[15,i] = max(abs(data_C[:,i]))/pow(sum(pow(abs(data_C[:,i]),0.5))/2048,2)
     t_C[16,i] = pow(sum(pow(data_C[:,i],2))/2048,0.5)/(sum(abs(data_C[:,i]))/2048)
+
 for i in range(1500):
     mean = sum(data_D[:,i])/2048
     t_D[0,i] = max(abs(data_D[:,i]))-min(abs(data_D[:,i]))
@@ -172,8 +174,27 @@ for i in range(1500):
     t_D[14,i] = max(abs(data_D[:,i]))/(sum(abs(data_D[:,i]))/2048)
     t_D[15,i] = max(abs(data_D[:,i]))/pow(sum(pow(abs(data_D[:,i]),0.5))/2048,2)
     t_D[16,i] = pow(sum(pow(data_D[:,i],2))/2048,0.5)/(sum(abs(data_D[:,i]))/2048)
-
-
+print("Extraction finished.")
+import warnings
+warnings.filterwarnings("ignore")
+n_feature = 17
+plt.figure(1)
+for k in range(n_feature):
+    for i in range(10):
+        plt.subplot(n_feature,1,k+1)
+        sns.distplot(t_A[k,(50*i):(50*(i+1))], rug=True, hist=False)
+plt.figure(2)
+for k in range(n_feature):
+    for i in range(10):
+        plt.subplot(n_feature,1,k+1)
+        sns.distplot(t_B[k,(50*i):(50*(i+1))], rug=True, hist=False)
+plt.figure(3)
+for k in range(n_feature):
+    for i in range(10):
+        plt.subplot(n_feature,1,k+1)
+        sns.distplot(t_C[k,(50*i):(50*(i+1))], rug=True, hist=False)
+plt.show()
+'''
 
 data_A_minmax = np.transpose(min_max_scaler.fit_transform(t_A))
 data_B_minmax = np.transpose(min_max_scaler.fit_transform(t_B))
@@ -208,3 +229,4 @@ for rbm in rbm_list:
 nNet = NN(RBM_hidden_sizes, X_A_train, y_A_train)
 nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
 nNet.train()
+'''
