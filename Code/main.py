@@ -228,14 +228,14 @@ eval_C = np.load('./data/eval_C.npy')
 data_D_minmax = np.load('./data/data_D_minmax.npy')
 eval_D = np.load('./data/eval_D.npy')
 
-X_A_train,X_A_test, y_A_train, y_A_test =train_test_split(data_A_minmax,eval_A,test_size=0.4, random_state=0)
+X_A_train, X_A_test, y_A_train, y_A_test = train_test_split(data_A_minmax, eval_A, test_size = 0.4, random_state = 0)
 RBM_hidden_sizes = [15, 13, 10]
 inpX = X_A_train
 rbm_list = []
 input_size = inpX.shape[1]
 for i, size in enumerate(RBM_hidden_sizes):
     print('RBM: ', i, ' ', input_size, '->', size)
-    rbm_list.append(RBM(input_size, size, 100, 0.1, 10))
+    rbm_list.append(RBM(input_size, size, 50, 0.05, 3))
     input_size = size
 
 for rbm in rbm_list:
@@ -243,6 +243,6 @@ for rbm in rbm_list:
     rbm.train(inpX)
     inpX = rbm.rbm_outpt(inpX)
 
-nNet = NN(RBM_hidden_sizes, X_A_train, y_A_train, 1, 0.9, 100, 10)
+nNet = NN(RBM_hidden_sizes, X_A_train, y_A_train, 1, 0.5, 500, 3)
 nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
-nNet.train()
+nNet.train(X_A_test,y_A_test)

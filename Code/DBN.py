@@ -3,6 +3,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import math
 import tensorflow as tf
 import numpy as np
+import matplotlib.pyplot as plt
 # Image library for image manipulation
 # import Image
 # Utils file
@@ -129,7 +130,7 @@ class NN(object):
             self.w_list[i] = rbm_list[i].w
             self.b_list[i] = rbm_list[i].hb
 
-    def train(self):
+    def train(self, test_X, test_Y):
         _a = [None] * (len(self._sizes) + 2)
         _w = [None] * (len(self._sizes) + 1)
         _b = [None] * (len(self._sizes) + 1)
@@ -152,6 +153,8 @@ class NN(object):
         # 循环
         with tf.Session() as sess:
             sess.run(tf.global_variables_initializer())
+            tr = []
+            te = []
             for i in range(self._epoches):
                 for start, end in zip(range(0, len(self._X), self._batchsize), range(self._batchsize, len(self._X), self._batchsize)):
                     # Run the training operation on the input data
@@ -161,10 +164,39 @@ class NN(object):
                     self.w_list[j] = sess.run(_w[j])
                     self.b_list[j] = sess.run(_b[j])
                 print("Accuracy rating for epoch " + str(i) + ": " + str(np.mean(np.argmax(self._Y, axis=1) == sess.run(predict_op, feed_dict={_a[0]: self._X, y: self._Y}))))
+                print("Accuracy rating for testing dataset: " + str(np.mean(np.argmax(test_Y, axis=1) == sess.run(predict_op, feed_dict={_a[0]: test_X, y: test_Y}))))
+                tr.append(np.mean(np.argmax(self._Y, axis=1) == sess.run(predict_op, feed_dict={_a[0]: self._X, y: self._Y})))
+                te.append(np.mean(np.argmax(test_Y, axis=1) == sess.run(predict_op, feed_dict={_a[0]: test_X, y: test_Y})))
+            label = ['Training Dataset', 'Testing Dataset']
+            plt.plot(range(self._epoches),tr)
+            plt.plot(range(self._epoches),te)
+            plt.legend(label)
+            plt.xlabel('Epoch')
+            plt.ylabel('Accuracy Rate')
+            plt.show()
+    '''
+    def predict(self, test_X, test_Y):
+        _a = [None] * (len(self._sizes) + 2)
+        _w = [None] * (len(self._sizes) + 1)
+        _b = [None] * (len(self._sizes) + 1)
+        _a[0] = tf.placeholder(tf.float64, [None, test_X.shape[1]])
+        y = tf.placeholder(tf.float64, [None, test_Y.shape[1]])
 
+        for i in range(len(self._sizes) + 1):
+            _w[i] = tf.Variable(self.w_list[i])
+            _b[i] = tf.Variable(self.b_list[i])
+        for i in range(1, len(self._sizes) + 2):
+            _a[i] = tf.nn.sigmoid(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
+
+        predict_op = tf.argmax(_a[-1], 1)
+
+        with tf.Session() as sess:
+            sess.run(tf.global_variables_initializer())
+            print("Accuracy rating for testing dataset: " + str(np.mean(np.argmax(test_Y, axis=1) == sess.run(predict_op, feed_dict={_a[0]: test_X, y: test_Y}))))
+    '''
 
 if __name__ == '__main__':
-    
+    '''
     # Loading in the mnist data
     mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
     trX, trY, teX, teY = mnist.train.images, mnist.train.labels, mnist.test.images,\
@@ -174,11 +206,13 @@ if __name__ == '__main__':
     teX=teX.astype(np.float64)
     teY=teY.astype(np.float64)
     '''
+    '''
     for i in range(10):
         for j in range(len(trX[i])):
             if trX[i][j]>=0.99999:
                 print(i,'  ',j)
     print(trY.shape)
+    '''
     '''
     RBM_hidden_sizes = [500, 200, 50]  # create 4 layers of RBM with size 785-500-200-50
     # Since we are training, set input as training data
@@ -205,3 +239,4 @@ if __name__ == '__main__':
     nNet = NN(RBM_hidden_sizes, trX, trY, 1.0, 0, 10, 100)
     nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
     nNet.train()
+    '''
