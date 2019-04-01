@@ -7,6 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 import seaborn as sns
 from DBN import NN, RBM
+'''
 print("Reading data...")
 data_A_normal = loadmat("../Data/My Data/Normal_0")
 data_B_normal = loadmat("../Data/My Data/Normal_1")
@@ -193,13 +194,12 @@ for k in range(n_feature):
     for i in range(10):
         plt.subplot(n_feature,1,k+1)
         sns.distplot(t_C[k,(50*i):(50*(i+1))], rug=True, hist=False)
-plt.show()
-'''
+#plt.show()
 
-data_A_minmax = np.transpose(min_max_scaler.fit_transform(t_A))
-data_B_minmax = np.transpose(min_max_scaler.fit_transform(t_B))
-data_C_minmax = np.transpose(min_max_scaler.fit_transform(t_C))
-data_D_minmax = np.transpose(min_max_scaler.fit_transform(t_D))
+data_A_minmax = min_max_scaler.fit_transform(np.transpose(t_A))
+data_B_minmax = min_max_scaler.fit_transform(np.transpose(t_B))
+data_C_minmax = min_max_scaler.fit_transform(np.transpose(t_C))
+data_D_minmax = min_max_scaler.fit_transform(np.transpose(t_D))
 
 eval_A = np.zeros((500,10))
 eval_D = np.zeros((1500,10))
@@ -210,15 +210,32 @@ eval_C = eval_A
 for i in range(1500):
     eval_D[i][(int)(i/150)] = 1
 
+np.save('./data/data_A_minmax.npy',data_A_minmax)
+np.save('./data/eval_A.npy',eval_A)
+np.save('./data/data_B_minmax.npy',data_B_minmax)
+np.save('./data/eval_B.npy',eval_B)
+np.save('./data/data_C_minmax.npy',data_C_minmax)
+np.save('./data/eval_C.npy',eval_C)
+np.save('./data/data_D_minmax.npy',data_D_minmax)
+np.save('./data/eval_D.npy',eval_D)
+'''
+data_A_minmax = np.load('./data/data_A_minmax.npy')
+eval_A = np.load('./data/eval_A.npy')
+data_B_minmax = np.load('./data/data_B_minmax.npy')
+eval_B = np.load('./data/eval_B.npy')
+data_C_minmax = np.load('./data/data_C_minmax.npy')
+eval_C = np.load('./data/eval_C.npy')
+data_D_minmax = np.load('./data/data_D_minmax.npy')
+eval_D = np.load('./data/eval_D.npy')
 
-X_A_train,X_A_test, y_A_train, y_A_test =train_test_split(data_D_minmax,eval_D,test_size=0.4, random_state=0)
+X_A_train,X_A_test, y_A_train, y_A_test =train_test_split(data_A_minmax,eval_A,test_size=0.4, random_state=0)
 RBM_hidden_sizes = [15, 13, 10]
 inpX = X_A_train
 rbm_list = []
 input_size = inpX.shape[1]
 for i, size in enumerate(RBM_hidden_sizes):
     print('RBM: ', i, ' ', input_size, '->', size)
-    rbm_list.append(RBM(input_size, size))
+    rbm_list.append(RBM(input_size, size, 100, 0.1, 10))
     input_size = size
 
 for rbm in rbm_list:
@@ -226,7 +243,6 @@ for rbm in rbm_list:
     rbm.train(inpX)
     inpX = rbm.rbm_outpt(inpX)
 
-nNet = NN(RBM_hidden_sizes, X_A_train, y_A_train)
+nNet = NN(RBM_hidden_sizes, X_A_train, y_A_train, 1, 0.9, 100, 10)
 nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
 nNet.train()
-'''

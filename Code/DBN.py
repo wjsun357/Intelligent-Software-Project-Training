@@ -9,13 +9,13 @@ import numpy as np
 from tensorflow.examples.tutorials.mnist import input_data
 # 定义RBM
 class RBM(object):
-    def __init__(self, input_size, output_size):
+    def __init__(self, input_size, output_size, epoches, learning_rate, batchsize):
         # 定义超参数
         self._input_size = input_size  # 输入大小
         self._output_size = output_size  # 输出大小
-        self.epochs = 5  # 迭代次数
-        self.learning_rate = 1.0  # 学习率
-        self.batchsize = 100  # 抽样数
+        self._epoches = epoches  # 迭代次数
+        self._learning_rate = learning_rate  # 学习率
+        self._batchsize = batchsize  # 抽样数
 
         # 初始权重和偏差
         self.w = np.zeros([input_size, output_size], np.float64)  # 权重
@@ -57,9 +57,9 @@ class RBM(object):
         negative_grad = tf.matmul(tf.transpose(v1), h1)  # 只取决于模型，负阶段减少由模型生成的样本的概率
 
         # (positive_grad - negative_grad) / tf.cast(tf.shape(v0)[0], np.float64)为对比散度
-        update_w = _w + self.learning_rate * (positive_grad - negative_grad) / tf.cast(tf.shape(v0)[0], np.float64)
-        update_vb = _vb + self.learning_rate * tf.reduce_mean(v0 - v1, 0)
-        update_hb = _hb + self.learning_rate * tf.reduce_mean(h0 - h1, 0)
+        update_w = _w + self._learning_rate * (positive_grad - negative_grad) / tf.cast(tf.shape(v0)[0], np.float64)
+        update_vb = _vb + self._learning_rate * tf.reduce_mean(v0 - v1, 0)
+        update_hb = _hb + self._learning_rate * tf.reduce_mean(h0 - h1, 0)
 
         # 错误率
         err = tf.reduce_mean(tf.square(v0 - v1))
@@ -67,8 +67,8 @@ class RBM(object):
         # 循环
         with tf.Session() as sess:
             sess.run(tf.global_variables_initializer())
-            for epoch in range(self.epochs):
-                for start, end in zip(range(0, len(X), self.batchsize), range(self.batchsize, len(X), self.batchsize)):
+            for epoch in range(self._epoches):
+                for start, end in zip(range(0, len(X), self._batchsize), range(self._batchsize, len(X), self._batchsize)):
                 # [0,2048,100] [100,2048,100]
                 # [0,100] [100,200] [200,300]...    
                     batch = X[start:end]
@@ -95,17 +95,17 @@ class RBM(object):
             return sess.run(out)
 
 class NN(object):
-    def __init__(self, sizes, X, Y):
+    def __init__(self, sizes, X, Y, learning_rate, momentum, epoches, batchsize):
         # 超参数
         self._sizes = sizes
         self._X = X
         self._Y = Y
         self.w_list = []
         self.b_list = []
-        self._learning_rate = 1.0
-        self._momentum = 0
-        self._epoches = 10
-        self._batchsize = 100
+        self._learning_rate = learning_rate
+        self._momentum = momentum
+        self._epoches = epoches
+        self._batchsize = batchsize
         input_size = X.shape[1]  # 特征数
 
         # 循环初始化
@@ -173,6 +173,13 @@ if __name__ == '__main__':
     trY=trY.astype(np.float64)
     teX=teX.astype(np.float64)
     teY=teY.astype(np.float64)
+    '''
+    for i in range(10):
+        for j in range(len(trX[i])):
+            if trX[i][j]>=0.99999:
+                print(i,'  ',j)
+    print(trY.shape)
+    '''
     RBM_hidden_sizes = [500, 200, 50]  # create 4 layers of RBM with size 785-500-200-50
     # Since we are training, set input as training data
     inpX = trX
@@ -184,7 +191,7 @@ if __name__ == '__main__':
     # For each RBM we want to generate
     for i, size in enumerate(RBM_hidden_sizes):
         print('RBM: ', i, ' ', input_size, '->', size)
-        rbm_list.append(RBM(input_size, size))
+        rbm_list.append(RBM(input_size, size, 5, 1.0, 100))
         input_size = size
 
     # For each RBM in our list
@@ -195,7 +202,6 @@ if __name__ == '__main__':
         # Return the output layer
         inpX = rbm.rbm_outpt(inpX)
 
-    nNet = NN(RBM_hidden_sizes, trX, trY)
+    nNet = NN(RBM_hidden_sizes, trX, trY, 1.0, 0, 10, 100)
     nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
     nNet.train()
-    
