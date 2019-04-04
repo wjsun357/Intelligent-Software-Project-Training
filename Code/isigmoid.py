@@ -4,18 +4,24 @@ import math
 from tensorflow.python.framework import ops
 
 def my_sigmoid_def(x, a = 7, alpha = 0.01):
+    '''
     if x >= a:
         return alpha*(x-a)+1/(1+math.exp(-a))
     elif x <= -a:
         return alpha*(x+a)+1/(1+math.exp(-a))
     else:
         return 1/(1+math.exp(-x))
+    '''
+    return 1/(1+math.exp(-x))
     
 def my_sigmoid_grad_def(x, a = 7, alpha = 0.01):
+    '''
     if abs(x) >= a:
         return alpha
     else:
         return math.exp(-x)/pow(1+math.exp(-x),2)
+    '''
+    return math.exp(-x)/pow(1+math.exp(-x),2)
 
 my_sigmoid_np = np.vectorize(my_sigmoid_def)
 my_sigmoid_grad_np = np.vectorize(my_sigmoid_grad_def)

@@ -243,6 +243,6 @@ for rbm in rbm_list:
     rbm.train(inpX)
     inpX = rbm.rbm_outpt(inpX)
 
-nNet = NN(RBM_hidden_sizes, X_A_train, y_A_train, 1, 0.5, 500, 3)
+nNet = NN(RBM_hidden_sizes, X_A_train, y_A_train, 1, 0.5, 1000, 3)
 nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
 nNet.train(X_A_test,y_A_test)
