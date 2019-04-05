@@ -5,11 +5,12 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 import isigmoid
-
 # Image library for image manipulation
 # import Image
 # Utils file
 from tensorflow.examples.tutorials.mnist import input_data
+
+
 # 定义RBM
 class RBM(object):
     def __init__(self, input_size, output_size, epoches, learning_rate, batchsize):
@@ -100,6 +101,7 @@ class RBM(object):
             sess.run(tf.global_variables_initializer())
             return sess.run(out)
 
+
 class NN(object):
     def __init__(self, sizes, X, Y, learning_rate, momentum, epoches, batchsize):
         # 超参数
@@ -172,8 +174,8 @@ class NN(object):
                 tr.append(np.mean(np.argmax(self._Y, axis=1) == sess.run(predict_op, feed_dict={_a[0]: self._X, y: self._Y})))
                 te.append(np.mean(np.argmax(test_Y, axis=1) == sess.run(predict_op, feed_dict={_a[0]: test_X, y: test_Y})))
             label = ['Training Dataset', 'Testing Dataset']
-            plt.plot(range(self._epoches),tr)
-            plt.plot(range(self._epoches),te)
+            plt.plot(range(self._epoches), tr)
+            plt.plot(range(self._epoches), te)
             plt.legend(label)
             plt.xlabel('Epoch')
             plt.ylabel('Accuracy Rate')
@@ -199,25 +201,16 @@ class NN(object):
             print("Accuracy rating for testing dataset: " + str(np.mean(np.argmax(test_Y, axis=1) == sess.run(predict_op, feed_dict={_a[0]: test_X, y: test_Y}))))
     '''
 
+
 if __name__ == '__main__':
-    '''
     # Loading in the mnist data
     mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
     trX, trY, teX, teY = mnist.train.images, mnist.train.labels, mnist.test.images,\
         mnist.test.labels
-    trX=trX.astype(np.float64)
-    trY=trY.astype(np.float64)
-    teX=teX.astype(np.float64)
-    teY=teY.astype(np.float64)
-    '''
-    '''
-    for i in range(10):
-        for j in range(len(trX[i])):
-            if trX[i][j]>=0.99999:
-                print(i,'  ',j)
-    print(trY.shape)
-    '''
-    '''
+    trX = trX.astype(np.float64)
+    trY = trY.astype(np.float64)
+    teX = teX.astype(np.float64)
+    teY = teY.astype(np.float64)
     RBM_hidden_sizes = [500, 200, 50]  # create 4 layers of RBM with size 785-500-200-50
     # Since we are training, set input as training data
     inpX = trX
@@ -242,5 +235,4 @@ if __name__ == '__main__':
 
     nNet = NN(RBM_hidden_sizes, trX, trY, 1.0, 0, 10, 100)
     nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
-    nNet.train()
-    '''
+    nNet.train(teX, teY)
