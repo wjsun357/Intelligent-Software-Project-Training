@@ -26,17 +26,20 @@ class RBM(object):
         self.hb = np.zeros([output_size], np.float64)  # 隐藏层偏差，输出
         self.vb = np.zeros([input_size], np.float64)  # 可视层偏差，输入
 
+    # 隐含层条件概率
     def prob_h_given_v(self, visible, w, hb):
         # Sigmoid
-        #return tf.nn.sigmoid(tf.matmul(visible, w) + hb)
+        # return tf.nn.sigmoid(tf.matmul(visible, w) + hb)
         return isigmoid.my_sigmoid_tf(tf.matmul(visible, w) + hb)  # matmul，矩阵乘法
 
+    # 可视层条件概率
     def prob_v_given_h(self, hidden, w, vb):
-        #return tf.nn.sigmoid(tf.matmul(hidden, tf.transpose(w)) + vb)
+        # return tf.nn.sigmoid(tf.matmul(hidden, tf.transpose(w)) + vb)
         return isigmoid.my_sigmoid_tf(tf.matmul(hidden, tf.transpose(w)) + vb)
 
     # 样本概率
     def sample_prob(self, probs):
+        # 要么是0，要么是1
         return tf.nn.relu(tf.sign(probs - tf.cast(tf.random_uniform(tf.shape(probs)), np.float64)))
 
     def train(self, X):  # X为总特征数
@@ -55,8 +58,8 @@ class RBM(object):
         v0 = tf.placeholder(tf.float64, [None, self._input_size])
 
         # 初始样本概率
-        h0 = self.sample_prob(self.prob_h_given_v(v0, _w, _hb))
-        v1 = self.sample_prob(self.prob_v_given_h(h0, _w, _vb))
+        h0 = self.sample_prob(self.prob_h_given_v(v0, _w, _hb))  # 0或1
+        v1 = self.sample_prob(self.prob_v_given_h(h0, _w, _vb))  # 0或1
         h1 = self.prob_h_given_v(v1, _w, _hb)
 
         positive_grad = tf.matmul(tf.transpose(v0), h0)  # 取决于观测值，正阶段增加训练数据的可能性
@@ -75,9 +78,9 @@ class RBM(object):
             sess.run(tf.global_variables_initializer())
             for epoch in range(self._epoches):
                 for start, end in zip(range(0, len(X), self._batchsize), range(self._batchsize, len(X), self._batchsize)):
-                # [0,2048,100] [100,2048,100]
-                # [0,100] [100,200] [200,300]...    
+                    # [0,2048,100] [100,2048,100]，zip后得到[(0,100),(100,200),(200,300),...]
                     batch = X[start:end]
+                    # 则batch为X[0:100],[100:200],...
                     # 更新
                     cur_w = sess.run(update_w, feed_dict={v0: batch, _w: prv_w, _hb: prv_hb, _vb: prv_vb})
                     cur_hb = sess.run(update_hb, feed_dict={v0: batch, _w: prv_w, _hb: prv_hb, _vb: prv_vb})
@@ -95,7 +98,7 @@ class RBM(object):
         input_X = tf.constant(X)
         _w = tf.constant(self.w)
         _hb = tf.constant(self.hb)
-        #out = tf.nn.sigmoid(tf.matmul(input_X, _w) + _hb)
+        # out = tf.nn.sigmoid(tf.matmul(input_X, _w) + _hb)
         out = isigmoid.my_sigmoid_tf(tf.matmul(input_X, _w) + _hb)
         with tf.Session() as sess:
             sess.run(tf.global_variables_initializer())
@@ -148,14 +151,14 @@ class NN(object):
             _w[i] = tf.Variable(self.w_list[i])
             _b[i] = tf.Variable(self.b_list[i])
         for i in range(1, len(self._sizes) + 2):
-            #_a[i] = tf.nn.sigmoid(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
+            # a[i] = tf.nn.sigmoid(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
             _a[i] = isigmoid.my_sigmoid_tf(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
         cost = tf.reduce_mean(tf.square(_a[-1] - y))
 
         train_op = tf.train.MomentumOptimizer(self._learning_rate, self._momentum).minimize(cost)
 
         # Prediction operation
-        predict_op = tf.argmax(_a[-1], 1)
+        predict_op = tf.argmax(_a[-1], 1)  # 求得_a的最后一行的最大值的索引
         # 循环
         with tf.Session() as sess:
             sess.run(tf.global_variables_initializer())
