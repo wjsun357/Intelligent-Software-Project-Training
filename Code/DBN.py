@@ -176,6 +176,7 @@ class NN(object):
                 print("Accuracy rating for testing dataset: " + str(np.mean(np.argmax(test_Y, axis=1) == sess.run(predict_op, feed_dict={_a[0]: test_X, y: test_Y}))))
                 tr.append(np.mean(np.argmax(self._Y, axis=1) == sess.run(predict_op, feed_dict={_a[0]: self._X, y: self._Y})))
                 te.append(np.mean(np.argmax(test_Y, axis=1) == sess.run(predict_op, feed_dict={_a[0]: test_X, y: test_Y})))
+                # print(sess.run(_a[-1], feed_dict={_a[0]: self._X, y: self._Y}))
             label = ['Training Dataset', 'Testing Dataset']
             plt.plot(range(self._epoches), tr)
             plt.plot(range(self._epoches), te)
