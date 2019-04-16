@@ -153,11 +153,15 @@ class NN(object):
         for i in range(1, len(self._sizes) + 2):
             # a[i] = tf.nn.sigmoid(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
             _a[i] = isigmoid.my_sigmoid_tf(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
+
+        # _a[-1] = tf.nn.softmax(_a[-1])
+        # cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=_a[-1], labels=y))
         cost = tf.reduce_mean(tf.square(_a[-1] - y))
 
         train_op = tf.train.MomentumOptimizer(self._learning_rate, self._momentum).minimize(cost)
 
         # Prediction operation
+        # predict_op = tf.argmax(tf.nn.softmax(_a[-1]), 1)
         predict_op = tf.argmax(_a[-1], 1)  # 求得_a的最后一行的最大值的索引
         # 循环
         with tf.Session() as sess:
