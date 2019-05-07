@@ -6,7 +6,8 @@ from scipy.io import loadmat
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 import seaborn as sns
-from DBN import NN, RBM
+#from DBN import NN, RBM
+from SSDBN import NN, SSRBM
 '''
 print("Reading data...")
 data_A_normal = loadmat("../Data/My Data/Normal_0")
@@ -233,6 +234,7 @@ RBM_hidden_sizes = [15, 13, 10]
 inpX = X_A_train
 rbm_list = []
 input_size = inpX.shape[1]
+'''
 for i, size in enumerate(RBM_hidden_sizes):
     print('RBM: ', i, ' ', input_size, '->', size)
     rbm_list.append(RBM(input_size, size, 50, 0.05, 3))
@@ -246,3 +248,32 @@ for rbm in rbm_list:
 nNet = NN(RBM_hidden_sizes, X_A_train, y_A_train, 1, 0.5, 1000, 3)
 nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
 nNet.train(X_A_test, y_A_test)
+'''
+#'''
+for i, size in enumerate(RBM_hidden_sizes):
+    print('SSRBM: ', i, ' ', input_size, '->', size)
+    rbm_list.append(SSRBM(input_size, size, 50, 0.05, 3, 0.1))
+    input_size = size
+
+S = np.zeros([X_A_train.shape[0], X_A_train.shape[0]])
+for i in range(X_A_train.shape[0]):
+    for j in range(X_A_train.shape[0]):
+        if y_A_train[i].all() == y_A_train[j].all():
+            S[i, j] = 0
+        else:
+            S[i, j] = np.matmul(X_A_train[i], np.transpose(X_A_train[j])) / (np.power(np.sum(np.power(X_A_train[i], 2)), 0.5) * np.power(np.sum(np.power(X_A_train[j], 2)), 0.5))
+
+for rbm in rbm_list:
+    print('New SSRBM:')
+    rbm.train(inpX, S)
+    U, sigma, VT = np.linalg.svd(S)
+    Sigma = np.zeros([inpX.shape[1], inpX.shape[1]])
+    for i in range(inpX.shape[1]):
+        Sigma[i, i] = sigma[i]
+    X_ = np.matmul(U[0:inpX.shape[0], 0:inpX.shape[1]], Sigma)
+    inpX = rbm.rbm_outpt(inpX, X_)
+
+nNet = NN(RBM_hidden_sizes, X_A_train, y_A_train, 1, 0.5, 1000, 3)
+nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
+nNet.train(X_A_test, y_A_test)
+#'''

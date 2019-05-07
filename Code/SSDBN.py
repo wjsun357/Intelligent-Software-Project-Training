@@ -5,71 +5,91 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 import isigmoid
+from sklearn.model_selection import train_test_split
 # Image library for image manipulation
 # import Image
 # Utils file
 from tensorflow.examples.tutorials.mnist import input_data
 
 
-# 定义RBM
-class RBM(object):
-    def __init__(self, input_size, output_size, epoches, learning_rate, batchsize):
+# 定义SSRBM
+class SSRBM(object):
+    def __init__(self, input_size, output_size, epoches, learning_rate, batchsize, proportion):
         # 定义超参数
         self._input_size = input_size  # 输入大小
         self._output_size = output_size  # 输出大小
         self._epoches = epoches  # 迭代次数
         self._learning_rate = learning_rate  # 学习率
         self._batchsize = batchsize  # 抽样数
+        self._proportion = proportion  # 比例
 
         # 初始权重和偏差
         self.w = np.zeros([input_size, output_size], np.float64)  # 权重
         self.hb = np.zeros([output_size], np.float64)  # 隐藏层偏差，输出
         self.vb = np.zeros([input_size], np.float64)  # 可视层偏差，输入
+        self.ub = np.zeros([input_size], np.float64)
+        self.p = np.zeros([input_size, output_size], np.float64)
 
     # 隐含层条件概率
-    def prob_h_given_v(self, visible, w, hb):
+    def prob_h_given_vu(self, visible, u, p, w, hb):
         # Sigmoid
-        # return tf.nn.sigmoid(tf.matmul(visible, w) + hb)
-        return isigmoid.my_sigmoid_tf(tf.matmul(visible, w) + hb)  # matmul，矩阵乘法
+        return tf.nn.sigmoid(tf.matmul(visible, w) + self._proportion * tf.matmul(u, p) + hb)
+        # return isigmoid.my_sigmoid_tf(tf.matmul(visible, w) + hb)  # matmul，矩阵乘法
 
     # 可视层条件概率
     def prob_v_given_h(self, hidden, w, vb):
-        # return tf.nn.sigmoid(tf.matmul(hidden, tf.transpose(w)) + vb)
-        return isigmoid.my_sigmoid_tf(tf.matmul(hidden, tf.transpose(w)) + vb)
+        return tf.nn.sigmoid(tf.matmul(hidden, tf.transpose(w)) + vb)
+        # return isigmoid.my_sigmoid_tf(tf.matmul(hidden, tf.transpose(w)) + vb)
 
     # 样本概率
     def sample_prob(self, probs):
         # 要么是0，要么是1
         return tf.nn.relu(tf.sign(probs - tf.cast(tf.random_uniform(tf.shape(probs)), np.float64)))
 
-    def train(self, X):  # X为总特征数
+    def prob_u_given_h(self, hidden, p, ub):
+        return tf.nn.sigmoid(self._proportion * (tf.matmul(hidden, tf.transpose(p)) + ub))
+
+    
+
+    def train(self, X, S):  # X为总特征数
         # 创建placeholder
         _w = tf.placeholder(tf.float64, [self._input_size, self._output_size])
         _hb = tf.placeholder(tf.float64, [self._output_size])
         _vb = tf.placeholder(tf.float64, [self._input_size])
+        _ub = tf.placeholder(tf.float64, [self._input_size])
+        _p = tf.placeholder(tf.float64, [self._input_size, self._output_size])
 
         prv_w = np.zeros([self._input_size, self._output_size], np.float64)
         prv_hb = np.zeros([self._output_size], np.float64)
         prv_vb = np.zeros([self._input_size], np.float64)
+        prv_ub = np.zeros([self._input_size], np.float64)
+        prv_p = np.zeros([self._input_size, self._output_size], np.float64)
 
         cur_w = np.zeros([self._input_size, self._output_size], np.float64)
         cur_hb = np.zeros([self._output_size], np.float64)
         cur_vb = np.zeros([self._input_size], np.float64)
+        cur_ub = np.zeros([self._input_size], np.float64)
+        cur_p = np.zeros([self._input_size, self._output_size], np.float64)
         v0 = tf.placeholder(tf.float64, [None, self._input_size])
+        u0 = tf.placeholder(tf.float64, [None, self._input_size])
 
         # 初始样本概率
-        h0 = self.sample_prob(self.prob_h_given_v(v0, _w, _hb))  # 0或1
+        h0 = self.sample_prob(self.prob_h_given_vu(v0, u0, _p, _w, _hb))  # 0或1
         v1 = self.sample_prob(self.prob_v_given_h(h0, _w, _vb))  # 0或1
-        h1 = self.prob_h_given_v(v1, _w, _hb)
+        u1 = self.sample_prob(self.prob_u_given_h(h0, _p, _ub))
+        h1 = self.prob_h_given_vu(v1, u1, _p, _w, _hb)
 
         positive_grad = tf.matmul(tf.transpose(v0), h0)  # 取决于观测值，正阶段增加训练数据的可能性
         negative_grad = tf.matmul(tf.transpose(v1), h1)  # 只取决于模型，负阶段减少由模型生成的样本的概率
+        positive_grad_u = tf.matmul(tf.transpose(u0), h0)
+        negative_grad_u = tf.matmul(tf.transpose(u1), h1)
 
         # (positive_grad - negative_grad) / tf.cast(tf.shape(v0)[0], np.float64)为对比散度
         update_w = _w + self._learning_rate * (positive_grad - negative_grad) / tf.cast(tf.shape(v0)[0], np.float64)
         update_vb = _vb + self._learning_rate * tf.reduce_mean(v0 - v1, 0)
         update_hb = _hb + self._learning_rate * tf.reduce_mean(h0 - h1, 0)
-
+        update_ub = _ub + self._learning_rate * tf.reduce_mean(self._proportion * (u0 - u1), 0)
+        update_p = _w + self._learning_rate * self._proportion * (positive_grad_u - negative_grad_u) / tf.cast(tf.shape(u0)[0], np.float64)
         # 错误率
         err = tf.reduce_mean(tf.square(v0 - v1))
 
@@ -79,27 +99,45 @@ class RBM(object):
             for epoch in range(self._epoches):
                 for start, end in zip(range(0, len(X), self._batchsize), range(self._batchsize, len(X), self._batchsize)):
                     # [0,2048,100] [100,2048,100]，zip后得到[(0,100),(100,200),(200,300),...]
-                    batch = X[start:end]
+                    batch1 = X[start:end]
+                    U, sigma, VT = np.linalg.svd(S)
+                    Sigma = np.zeros([batch1.shape[1], batch1.shape[1]])
+                    for i in range(batch1.shape[1]):
+                        Sigma[i, i] = sigma[i]
+                    batch2 = np.matmul(U[0:batch1.shape[0], 0:batch1.shape[1]], Sigma)
                     # 则batch为X[0:100],[100:200],...
                     # 更新
-                    cur_w = sess.run(update_w, feed_dict={v0: batch, _w: prv_w, _hb: prv_hb, _vb: prv_vb})
-                    cur_hb = sess.run(update_hb, feed_dict={v0: batch, _w: prv_w, _hb: prv_hb, _vb: prv_vb})
-                    cur_vb = sess.run(update_vb, feed_dict={v0: batch, _w: prv_w, _hb: prv_hb, _vb: prv_vb})
+                    cur_w = sess.run(update_w, feed_dict={v0: batch1, u0: batch2, _w: prv_w, _hb: prv_hb, _vb: prv_vb, _ub: prv_ub, _p: prv_p})
+                    cur_hb = sess.run(update_hb, feed_dict={v0: batch1, u0: batch2, _w: prv_w, _hb: prv_hb, _vb: prv_vb, _ub: prv_ub, _p: prv_p})
+                    cur_vb = sess.run(update_vb, feed_dict={v0: batch1, u0: batch2, _w: prv_w, _hb: prv_hb, _vb: prv_vb, _ub: prv_ub, _p: prv_p})
+                    cur_ub = sess.run(update_ub, feed_dict={v0: batch1, u0: batch2, _w: prv_w, _hb: prv_hb, _vb: prv_vb, _ub: prv_ub, _p: prv_p})
+                    cur_p = sess.run(update_p, feed_dict={v0: batch1, u0: batch2, _w: prv_w, _hb: prv_hb, _vb: prv_vb, _ub: prv_ub, _p: prv_p})
                     prv_w = cur_w
                     prv_hb = cur_hb
                     prv_vb = cur_vb
-                error = sess.run(err, feed_dict={v0: X, _w: cur_w, _vb: cur_vb, _hb: cur_hb})
+                    prv_ub = cur_ub
+                    prv_p = cur_p
+                U, sigma, VT = np.linalg.svd(S)
+                Sigma = np.zeros([X.shape[1], X.shape[1]])
+                for i in range(X.shape[1]):
+                    Sigma[i, i] = sigma[i]
+                X_ = np.matmul(U[0:X.shape[0], 0:X.shape[1]], Sigma)
+                error = sess.run(err, feed_dict={v0: X, u0: X_, _w: cur_w, _vb: cur_vb, _hb: cur_hb, _ub: cur_ub, _p: cur_p})
                 print('Epoch: %d' % epoch, 'reconstruction error: %f' % error)
             self.w = prv_w
             self.hb = prv_hb
             self.vb = prv_vb
+            self.ub = prv_ub
+            self.p = prv_p
 
-    def rbm_outpt(self, X):
-        input_X = tf.constant(X)
+    def rbm_outpt(self, X1, X2):
+        input_X1 = tf.constant(X1)
+        input_X2 = tf.constant(X2)
         _w = tf.constant(self.w)
         _hb = tf.constant(self.hb)
-        # out = tf.nn.sigmoid(tf.matmul(input_X, _w) + _hb)
-        out = isigmoid.my_sigmoid_tf(tf.matmul(input_X, _w) + _hb)
+        _p = tf.constant(self.p)
+        out = tf.nn.sigmoid(tf.matmul(input_X1, _w) + self._proportion * tf.matmul(input_X2, _p) + _hb)
+        # out = isigmoid.my_sigmoid_tf(tf.matmul(input_X, _w) + _hb)
         with tf.Session() as sess:
             sess.run(tf.global_variables_initializer())
             return sess.run(out)
@@ -199,18 +237,20 @@ if __name__ == '__main__':
     trY = trY.astype(np.float64)
     teX = teX.astype(np.float64)
     teY = teY.astype(np.float64)
-    RBM_hidden_sizes = [500, 200, 50]  # create 4 layers of RBM with size 785-500-200-50
+    RBM_hidden_sizes = [500, 200, 50]  # create 4 layers of SSRBM with size 785-500-200-50
     # Since we are training, set input as training data
+    trX, X_A_test, trY, y_A_test = train_test_split(trX, trY, test_size=0.9, random_state=0)
+    teX, X_A_test, teY, y_A_test = train_test_split(teX, teY, test_size=0.9, random_state=0)
     inpX = trX
     # Create list to hold our RBMs
     rbm_list = []
     # Size of inputs is the number of inputs in the training set
     input_size = inpX.shape[1]
 
-    # For each RBM we want to generate
+    # For each SSRBM we want to generate
     for i, size in enumerate(RBM_hidden_sizes):
-        print('RBM: ', i, ' ', input_size, '->', size)
-        rbm_list.append(RBM(input_size, size, 5, 1.0, 100))
+        print('SSRBM: ', i, ' ', input_size, '->', size)
+        rbm_list.append(SSRBM(input_size, size, 10, 1.0, 10, 0.1))
         input_size = size
 
     # For each RBM in our list
@@ -218,9 +258,21 @@ if __name__ == '__main__':
         print('New RBM:')
         # Train a new one
         rbm.train(inpX)
+        S = np.zeros([inpX.shape[0], inpX.shape[0]])
+        for i in range(inpX.shape[0]):
+            for j in range(inpX.shape[0]):
+                if i == j:
+                    S[i, j] = 0
+                else:
+                    S[i, j] = np.matmul(inpX[i], np.transpose(inpX[j])) / (np.power(np.sum(np.power(inpX[i], 2)), 0.5) * np.power(np.sum(np.power(inpX[j], 2)), 0.5))
+        U, sigma, VT = np.linalg.svd(S)
+        Sigma = np.zeros(inpX.shape)
+        for i in range(sigma.size):
+            Sigma[i, i] = sigma[i]
+        X_ = np.matmul(U, Sigma)
         # Return the output layer
-        inpX = rbm.rbm_outpt(inpX)
+        inpX = rbm.rbm_outpt(inpX, X_)
 
-    nNet = NN(RBM_hidden_sizes, trX, trY, 1.0, 0, 10, 100)
+    nNet = NN(RBM_hidden_sizes, trX, trY, 1.0, 0.9, 50, 10)
     nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
     nNet.train(teX, teY)

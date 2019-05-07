@@ -5,6 +5,7 @@ import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 import isigmoid
+from sklearn.model_selection import train_test_split
 # Image library for image manipulation
 # import Image
 # Utils file
@@ -29,13 +30,13 @@ class RBM(object):
     # 隐含层条件概率
     def prob_h_given_v(self, visible, w, hb):
         # Sigmoid
-        # return tf.nn.sigmoid(tf.matmul(visible, w) + hb)
-        return isigmoid.my_sigmoid_tf(tf.matmul(visible, w) + hb)  # matmul，矩阵乘法
+        return tf.nn.sigmoid(tf.matmul(visible, w) + hb)
+        # return isigmoid.my_sigmoid_tf(tf.matmul(visible, w) + hb)  # matmul，矩阵乘法
 
     # 可视层条件概率
     def prob_v_given_h(self, hidden, w, vb):
-        # return tf.nn.sigmoid(tf.matmul(hidden, tf.transpose(w)) + vb)
-        return isigmoid.my_sigmoid_tf(tf.matmul(hidden, tf.transpose(w)) + vb)
+        return tf.nn.sigmoid(tf.matmul(hidden, tf.transpose(w)) + vb)
+        # return isigmoid.my_sigmoid_tf(tf.matmul(hidden, tf.transpose(w)) + vb)
 
     # 样本概率
     def sample_prob(self, probs):
@@ -98,8 +99,8 @@ class RBM(object):
         input_X = tf.constant(X)
         _w = tf.constant(self.w)
         _hb = tf.constant(self.hb)
-        # out = tf.nn.sigmoid(tf.matmul(input_X, _w) + _hb)
-        out = isigmoid.my_sigmoid_tf(tf.matmul(input_X, _w) + _hb)
+        out = tf.nn.sigmoid(tf.matmul(input_X, _w) + _hb)
+        # out = isigmoid.my_sigmoid_tf(tf.matmul(input_X, _w) + _hb)
         with tf.Session() as sess:
             sess.run(tf.global_variables_initializer())
             return sess.run(out)
@@ -213,14 +214,16 @@ class NN(object):
 if __name__ == '__main__':
     # Loading in the mnist data
     mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
-    trX, trY, teX, teY = mnist.train.images, mnist.train.labels, mnist.test.images,\
-        mnist.test.labels
+    trX, trY, teX, teY = mnist.train.images, mnist.train.labels, mnist.test.images, \
+                         mnist.test.labels
     trX = trX.astype(np.float64)
     trY = trY.astype(np.float64)
     teX = teX.astype(np.float64)
     teY = teY.astype(np.float64)
-    RBM_hidden_sizes = [500, 200, 50]  # create 4 layers of RBM with size 785-500-200-50
+    RBM_hidden_sizes = [500, 200, 50]  # create 4 layers of SSRBM with size 785-500-200-50
     # Since we are training, set input as training data
+    trX, X_A_test, trY, y_A_test = train_test_split(trX, trY, test_size=0.9, random_state=0)
+    teX, X_A_test, teY, y_A_test = train_test_split(teX, teY, test_size=0.9, random_state=0)
     inpX = trX
     # Create list to hold our RBMs
     rbm_list = []
@@ -230,7 +233,7 @@ if __name__ == '__main__':
     # For each RBM we want to generate
     for i, size in enumerate(RBM_hidden_sizes):
         print('RBM: ', i, ' ', input_size, '->', size)
-        rbm_list.append(RBM(input_size, size, 5, 1.0, 100))
+        rbm_list.append(RBM(input_size, size, 10, 1.0, 10))
         input_size = size
 
     # For each RBM in our list
@@ -241,6 +244,6 @@ if __name__ == '__main__':
         # Return the output layer
         inpX = rbm.rbm_outpt(inpX)
 
-    nNet = NN(RBM_hidden_sizes, trX, trY, 1.0, 0, 10, 100)
+    nNet = NN(RBM_hidden_sizes, trX, trY, 1.0, 0.9, 50, 10)
     nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
     nNet.train(teX, teY)
