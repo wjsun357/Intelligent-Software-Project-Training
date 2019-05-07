@@ -237,7 +237,7 @@ input_size = inpX.shape[1]
 '''
 for i, size in enumerate(RBM_hidden_sizes):
     print('RBM: ', i, ' ', input_size, '->', size)
-    rbm_list.append(RBM(input_size, size, 50, 0.05, 3))
+    rbm_list.append(RBM(input_size, size, 100, 0.01, 3))
     input_size = size
 
 for rbm in rbm_list:
@@ -252,7 +252,7 @@ nNet.train(X_A_test, y_A_test)
 #'''
 for i, size in enumerate(RBM_hidden_sizes):
     print('SSRBM: ', i, ' ', input_size, '->', size)
-    rbm_list.append(SSRBM(input_size, size, 50, 0.05, 3, 0.1))
+    rbm_list.append(SSRBM(input_size, size, 100, 0.001, 3, 0.5))
     input_size = size
 
 S = np.zeros([X_A_train.shape[0], X_A_train.shape[0]])
@@ -270,7 +270,7 @@ for rbm in rbm_list:
     Sigma = np.zeros([inpX.shape[1], inpX.shape[1]])
     for i in range(inpX.shape[1]):
         Sigma[i, i] = sigma[i]
-    X_ = np.matmul(U[0:inpX.shape[0], 0:inpX.shape[1]], Sigma)
+    X_ = np.transpose(np.matmul(Sigma, np.transpose(U[0:inpX.shape[0], 0:inpX.shape[1]])))
     inpX = rbm.rbm_outpt(inpX, X_)
 
 nNet = NN(RBM_hidden_sizes, X_A_train, y_A_train, 1, 0.5, 1000, 3)

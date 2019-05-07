@@ -23,7 +23,7 @@ class RBM(object):
         self._batchsize = batchsize  # 抽样数
 
         # 初始权重和偏差
-        self.w = np.zeros([input_size, output_size], np.float64)  # 权重
+        self.w = 0.1 * np.random.randn(input_size, output_size)  # 权重
         self.hb = np.zeros([output_size], np.float64)  # 隐藏层偏差，输出
         self.vb = np.zeros([input_size], np.float64)  # 可视层偏差，输入
 
@@ -49,7 +49,7 @@ class RBM(object):
         _hb = tf.placeholder(tf.float64, [self._output_size])
         _vb = tf.placeholder(tf.float64, [self._input_size])
 
-        prv_w = np.zeros([self._input_size, self._output_size], np.float64)
+        prv_w = 0.1 * np.random.randn(self._input_size, self._output_size)
         prv_hb = np.zeros([self._output_size], np.float64)
         prv_vb = np.zeros([self._input_size], np.float64)
 
@@ -71,7 +71,7 @@ class RBM(object):
         update_vb = _vb + self._learning_rate * tf.reduce_mean(v0 - v1, 0)
         update_hb = _hb + self._learning_rate * tf.reduce_mean(h0 - h1, 0)
 
-        # 错误率
+        # 错误值
         err = tf.reduce_mean(tf.square(v0 - v1))
 
         # 循环
@@ -220,9 +220,9 @@ if __name__ == '__main__':
     trY = trY.astype(np.float64)
     teX = teX.astype(np.float64)
     teY = teY.astype(np.float64)
-    RBM_hidden_sizes = [500, 200, 50]  # create 4 layers of SSRBM with size 785-500-200-50
+    RBM_hidden_sizes = [200, 200, 10]  # create 4 layers of SSRBM with size 785-500-200-50
     # Since we are training, set input as training data
-    trX, X_A_test, trY, y_A_test = train_test_split(trX, trY, test_size=0.9, random_state=0)
+    trX, X_A_test, trY, y_A_test = train_test_split(trX, trY, test_size=0.98, random_state=0)
     teX, X_A_test, teY, y_A_test = train_test_split(teX, teY, test_size=0.9, random_state=0)
     inpX = trX
     # Create list to hold our RBMs
@@ -233,7 +233,7 @@ if __name__ == '__main__':
     # For each RBM we want to generate
     for i, size in enumerate(RBM_hidden_sizes):
         print('RBM: ', i, ' ', input_size, '->', size)
-        rbm_list.append(RBM(input_size, size, 10, 1.0, 10))
+        rbm_list.append(RBM(input_size, size, 50, 1.0, 10))
         input_size = size
 
     # For each RBM in our list
@@ -244,6 +244,6 @@ if __name__ == '__main__':
         # Return the output layer
         inpX = rbm.rbm_outpt(inpX)
 
-    nNet = NN(RBM_hidden_sizes, trX, trY, 1.0, 0.9, 50, 10)
+    nNet = NN(RBM_hidden_sizes, trX, trY, 1.0, 0.9, 200, 10)
     nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
     nNet.train(teX, teY)

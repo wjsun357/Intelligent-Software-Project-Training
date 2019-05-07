@@ -24,11 +24,11 @@ class SSRBM(object):
         self._proportion = proportion  # 比例
 
         # 初始权重和偏差
-        self.w = np.zeros([input_size, output_size], np.float64)  # 权重
+        self.w = 0.1 * np.random.randn(input_size, output_size)  # 权重
         self.hb = np.zeros([output_size], np.float64)  # 隐藏层偏差，输出
         self.vb = np.zeros([input_size], np.float64)  # 可视层偏差，输入
         self.ub = np.zeros([input_size], np.float64)
-        self.p = np.zeros([input_size, output_size], np.float64)
+        self.p = 0.1 * np.random.randn(input_size, output_size)
 
     # 隐含层条件概率
     def prob_h_given_vu(self, visible, u, p, w, hb):
@@ -49,8 +49,6 @@ class SSRBM(object):
     def prob_u_given_h(self, hidden, p, ub):
         return tf.nn.sigmoid(self._proportion * (tf.matmul(hidden, tf.transpose(p)) + ub))
 
-    
-
     def train(self, X, S):  # X为总特征数
         # 创建placeholder
         _w = tf.placeholder(tf.float64, [self._input_size, self._output_size])
@@ -59,17 +57,18 @@ class SSRBM(object):
         _ub = tf.placeholder(tf.float64, [self._input_size])
         _p = tf.placeholder(tf.float64, [self._input_size, self._output_size])
 
-        prv_w = np.zeros([self._input_size, self._output_size], np.float64)
+        prv_w = 0.1 * np.random.randn(self._input_size, self._output_size)
         prv_hb = np.zeros([self._output_size], np.float64)
         prv_vb = np.zeros([self._input_size], np.float64)
         prv_ub = np.zeros([self._input_size], np.float64)
-        prv_p = np.zeros([self._input_size, self._output_size], np.float64)
+        prv_p = 0.1 * np.random.randn(self._input_size, self._output_size)
 
         cur_w = np.zeros([self._input_size, self._output_size], np.float64)
         cur_hb = np.zeros([self._output_size], np.float64)
         cur_vb = np.zeros([self._input_size], np.float64)
         cur_ub = np.zeros([self._input_size], np.float64)
         cur_p = np.zeros([self._input_size, self._output_size], np.float64)
+
         v0 = tf.placeholder(tf.float64, [None, self._input_size])
         u0 = tf.placeholder(tf.float64, [None, self._input_size])
 
@@ -90,8 +89,14 @@ class SSRBM(object):
         update_hb = _hb + self._learning_rate * tf.reduce_mean(h0 - h1, 0)
         update_ub = _ub + self._learning_rate * tf.reduce_mean(self._proportion * (u0 - u1), 0)
         update_p = _w + self._learning_rate * self._proportion * (positive_grad_u - negative_grad_u) / tf.cast(tf.shape(u0)[0], np.float64)
-        # 错误率
-        err = tf.reduce_mean(tf.square(v0 - v1))
+        # 错误值
+        err = tf.reduce_mean(tf.abs(v1 - u0))
+
+        U, sigma, VT = np.linalg.svd(S)
+        Sigma = np.zeros([X.shape[1], X.shape[1]])
+        for i in range(X.shape[1]):
+            Sigma[i, i] = sigma[i]
+        batch2 = np.transpose(np.matmul(Sigma, np.transpose(U[0:self._batchsize, 0:X.shape[1]])))
 
         # 循环
         with tf.Session() as sess:
@@ -100,11 +105,6 @@ class SSRBM(object):
                 for start, end in zip(range(0, len(X), self._batchsize), range(self._batchsize, len(X), self._batchsize)):
                     # [0,2048,100] [100,2048,100]，zip后得到[(0,100),(100,200),(200,300),...]
                     batch1 = X[start:end]
-                    U, sigma, VT = np.linalg.svd(S)
-                    Sigma = np.zeros([batch1.shape[1], batch1.shape[1]])
-                    for i in range(batch1.shape[1]):
-                        Sigma[i, i] = sigma[i]
-                    batch2 = np.matmul(U[0:batch1.shape[0], 0:batch1.shape[1]], Sigma)
                     # 则batch为X[0:100],[100:200],...
                     # 更新
                     cur_w = sess.run(update_w, feed_dict={v0: batch1, u0: batch2, _w: prv_w, _hb: prv_hb, _vb: prv_vb, _ub: prv_ub, _p: prv_p})
@@ -117,11 +117,7 @@ class SSRBM(object):
                     prv_vb = cur_vb
                     prv_ub = cur_ub
                     prv_p = cur_p
-                U, sigma, VT = np.linalg.svd(S)
-                Sigma = np.zeros([X.shape[1], X.shape[1]])
-                for i in range(X.shape[1]):
-                    Sigma[i, i] = sigma[i]
-                X_ = np.matmul(U[0:X.shape[0], 0:X.shape[1]], Sigma)
+                X_ = np.transpose(np.matmul(Sigma, np.transpose(U[0:X.shape[0], 0:X.shape[1]])))
                 error = sess.run(err, feed_dict={v0: X, u0: X_, _w: cur_w, _vb: cur_vb, _hb: cur_hb, _ub: cur_ub, _p: cur_p})
                 print('Epoch: %d' % epoch, 'reconstruction error: %f' % error)
             self.w = prv_w
@@ -237,9 +233,9 @@ if __name__ == '__main__':
     trY = trY.astype(np.float64)
     teX = teX.astype(np.float64)
     teY = teY.astype(np.float64)
-    RBM_hidden_sizes = [500, 200, 50]  # create 4 layers of SSRBM with size 785-500-200-50
+    RBM_hidden_sizes = [200, 200, 10]  # create 4 layers of SSRBM with size 785-500-200-50
     # Since we are training, set input as training data
-    trX, X_A_test, trY, y_A_test = train_test_split(trX, trY, test_size=0.9, random_state=0)
+    trX, X_A_test, trY, y_A_test = train_test_split(trX, trY, test_size=0.98, random_state=0)
     teX, X_A_test, teY, y_A_test = train_test_split(teX, teY, test_size=0.9, random_state=0)
     inpX = trX
     # Create list to hold our RBMs
@@ -250,29 +246,30 @@ if __name__ == '__main__':
     # For each SSRBM we want to generate
     for i, size in enumerate(RBM_hidden_sizes):
         print('SSRBM: ', i, ' ', input_size, '->', size)
-        rbm_list.append(SSRBM(input_size, size, 10, 1.0, 10, 0.1))
+        rbm_list.append(SSRBM(input_size, size, 50, 1.0, 10, 0.5))
         input_size = size
+
+    S = np.zeros([inpX.shape[0], inpX.shape[0]])
+    for i in range(inpX.shape[0]):
+        for j in range(inpX.shape[0]):
+            if trY[i].all() == trY[j].all():
+                S[i, j] = 0
+            else:
+                S[i, j] = np.matmul(inpX[i], np.transpose(inpX[j])) / (np.power(np.sum(np.power(inpX[i], 2)), 0.5) * np.power(np.sum(np.power(inpX[j], 2)), 0.5))
 
     # For each RBM in our list
     for rbm in rbm_list:
         print('New RBM:')
         # Train a new one
-        rbm.train(inpX)
-        S = np.zeros([inpX.shape[0], inpX.shape[0]])
-        for i in range(inpX.shape[0]):
-            for j in range(inpX.shape[0]):
-                if i == j:
-                    S[i, j] = 0
-                else:
-                    S[i, j] = np.matmul(inpX[i], np.transpose(inpX[j])) / (np.power(np.sum(np.power(inpX[i], 2)), 0.5) * np.power(np.sum(np.power(inpX[j], 2)), 0.5))
+        rbm.train(inpX, S)
         U, sigma, VT = np.linalg.svd(S)
-        Sigma = np.zeros(inpX.shape)
-        for i in range(sigma.size):
+        Sigma = np.zeros([inpX.shape[1], inpX.shape[1]])
+        for i in range(inpX.shape[1]):
             Sigma[i, i] = sigma[i]
-        X_ = np.matmul(U, Sigma)
+        X_ = np.transpose(np.matmul(Sigma, np.transpose(U[0:inpX.shape[0], 0:inpX.shape[1]])))
         # Return the output layer
         inpX = rbm.rbm_outpt(inpX, X_)
 
-    nNet = NN(RBM_hidden_sizes, trX, trY, 1.0, 0.9, 50, 10)
+    nNet = NN(RBM_hidden_sizes, trX, trY, 1.0, 0.9, 200, 10)
     nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
     nNet.train(teX, teY)
