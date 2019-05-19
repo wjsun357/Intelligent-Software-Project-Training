@@ -107,7 +107,7 @@ class RBM(object):
 
 
 class NN(object):
-    def __init__(self, sizes, X, Y, learning_rate, momentum, epoches, batchsize):
+    def __init__(self, sizes, X, Y, learning_rate, epoches, batchsize):
         # 超参数
         self._sizes = sizes
         self._X = X
@@ -115,7 +115,6 @@ class NN(object):
         self.w_list = []
         self.b_list = []
         self._learning_rate = learning_rate
-        self._momentum = momentum
         self._epoches = epoches
         self._batchsize = batchsize
         input_size = X.shape[1]  # 特征数
@@ -159,7 +158,9 @@ class NN(object):
         # cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=_a[-1], labels=y))
         cost = tf.reduce_mean(tf.square(_a[-1] - y))
 
-        train_op = tf.train.MomentumOptimizer(self._learning_rate, self._momentum).minimize(cost)
+        _momentum = tf.placeholder(tf.float64, shape=[])
+
+        train_op = tf.train.MomentumOptimizer(self._learning_rate, momentum=_momentum).minimize(cost)
 
         # Prediction operation
         # predict_op = tf.argmax(tf.nn.softmax(_a[-1]), 1)
@@ -172,7 +173,10 @@ class NN(object):
             for i in range(self._epoches):
                 for start, end in zip(range(0, len(self._X), self._batchsize), range(self._batchsize, len(self._X), self._batchsize)):
                     # Run the training operation on the input data
-                    sess.run(train_op, feed_dict={_a[0]: self._X[start:end], y: self._Y[start:end]})
+                    if(i>(int)(self._epoches/2)):
+                        sess.run(train_op, feed_dict={_a[0]: self._X[start:end], y: self._Y[start:end], _momentum: 0.5})
+                    else:
+                        sess.run(train_op, feed_dict={_a[0]: self._X[start:end], y: self._Y[start:end], _momentum: 0.9})
                 for j in range(len(self._sizes) + 1):
                     # Retrieve weights and biases
                     self.w_list[j] = sess.run(_w[j])
