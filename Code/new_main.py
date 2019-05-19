@@ -70,8 +70,8 @@ np.save('./new_data/eval_A.npy',eval_A)
 '''
 
 
-data_A_minmax = np.load('./data/data_A_minmax.npy')
-eval_A = np.load('./data/eval_A.npy')
+data_A_minmax = np.load('./new_data/data_A_minmax.npy')
+eval_A = np.load('./new_data/eval_A.npy')
 
 X_A_train, X_A_test, y_A_train, y_A_test = train_test_split(data_A_minmax, eval_A, test_size=0.4, random_state=0)
 RBM_hidden_sizes = [15, 13, 10]
@@ -89,7 +89,7 @@ for rbm in rbm_list:
     rbm.train(inpX)
     inpX = rbm.rbm_outpt(inpX)
 
-nNet = NN(RBM_hidden_sizes, X_A_train, y_A_train, 1, 500, 3)
+nNet = NN(RBM_hidden_sizes, X_A_train, y_A_train, 0.3, 500, 3)
 nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
 nNet.train(X_A_test, y_A_test)
 #'''
