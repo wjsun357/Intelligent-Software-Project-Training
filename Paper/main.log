@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.10.15)  31 MAY 2019 21:57
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.10.15)  31 MAY 2019 22:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -509,10 +509,10 @@ Package natbib Warning: Empty `thebibliography' environment on input line 3.
 
 )
 - LAST -
-Extra skip:340.0825pt
-Left:340.0825pt/0.0pt
+Extra skip:280.0825pt
+Left:280.0825pt/0.0pt
 Right:0.0pt/0.0pt
-Output:170.04124pt
+Output:140.04124pt
 
 Overfull \hbox (1.12001pt too wide) has occurred while \output is active
  []
@@ -523,13 +523,13 @@ Overfull \hbox (1.12001pt too wide) has occurred while \output is active
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 72.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 72.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 78.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 78.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 72.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 72.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 78.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 78.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A02D95553E30B97FF125B1AA17CF9044.
+(rerunfilecheck)             Checksum: D90F013EAC5DB6250121949B1EF96952.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -539,7 +539,7 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  10660 strings out of 494895
  144000 string characters out of 6176371
- 227122 words of memory out of 5000000
+ 227855 words of memory out of 5000000
  14420 multiletter control sequences out of 15000+600000
  46812 words of font info for 89 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
