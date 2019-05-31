@@ -186,6 +186,7 @@ class NN(object):
                 tr.append(np.mean(np.argmax(self._Y, axis=1) == sess.run(predict_op, feed_dict={_a[0]: self._X, y: self._Y})))
                 te.append(np.mean(np.argmax(test_Y, axis=1) == sess.run(predict_op, feed_dict={_a[0]: test_X, y: test_Y})))
                 # print(sess.run(_a[-1], feed_dict={_a[0]: self._X, y: self._Y}))
+            '''
             label = ['Training Dataset', 'Testing Dataset']
             plt.plot(range(self._epoches), tr)
             plt.plot(range(self._epoches), te)
@@ -193,6 +194,8 @@ class NN(object):
             plt.xlabel('Epoch')
             plt.ylabel('Accuracy Rate')
             plt.show()
+            '''
+        return tr[-1], te[-1]
     '''
     def predict(self, test_X, test_Y):
         _a = [None] * (len(self._sizes) + 2)
