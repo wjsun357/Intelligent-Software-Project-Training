@@ -100,6 +100,17 @@ t_A = np.zeros((n_feature, 500))
 t_B = np.zeros((n_feature, 500))
 t_C = np.zeros((n_feature, 500))
 t_D = np.zeros((n_feature, 1500))
+
+temp_A = data_A+abs(np.min(data_A))+1
+temp_B = data_B+abs(np.min(data_B))+1
+temp_C = data_C+abs(np.min(data_C))+1
+temp_D = data_D+abs(np.min(data_D))+1
+#'''
+temp_A = np.abs(data_A)+1
+temp_B = np.abs(data_B)+1
+temp_C = np.abs(data_C)+1
+temp_D = np.abs(data_D)+1
+#'''
 for i in range(500):
     mean = sum(data_A[:, i])/2048
     t_A[0, i] = max(abs(data_A[:, i]))-min(abs(data_A[:, i]))
@@ -119,7 +130,7 @@ for i in range(500):
     t_A[14, i] = max(abs(data_A[:, i]))/(sum(abs(data_A[:, i]))/2048)
     t_A[15, i] = max(abs(data_A[:, i]))/pow(sum(pow(abs(data_A[:, i]), 0.5))/2048, 2)
     t_A[16, i] = pow(sum(pow(data_A[:, i], 2))/2048, 0.5)/(sum(abs(data_A[:, i]))/2048)
-    t_A[17, i] = np.mean(np.multiply(data_A[:, i], np.log(np.abs(data_A[:, i]))))
+    t_A[17, i] = np.mean(np.multiply(temp_A[:, i], np.log(temp_A[:, i])))
 
     mean = sum(data_B[:, i])/2048
     t_B[0, i] = max(abs(data_B[:, i]))-min(abs(data_B[:, i]))
@@ -139,7 +150,7 @@ for i in range(500):
     t_B[14, i] = max(abs(data_B[:, i]))/(sum(abs(data_B[:, i]))/2048)
     t_B[15, i] = max(abs(data_B[:, i]))/pow(sum(pow(abs(data_B[:, i]),0.5))/2048, 2)
     t_B[16, i] = pow(sum(pow(data_B[:, i], 2))/2048, 0.5)/(sum(abs(data_B[:, i]))/2048)
-    t_B[17, i] = np.mean(np.multiply(data_B[:, i], np.log(np.abs(data_B[:, i]))))
+    t_B[17, i] = np.mean(np.multiply(temp_B[:, i], np.log(temp_B[:, i])))
 
     mean = sum(data_C[:, i])/2048
     t_C[0, i] = max(abs(data_C[:, i]))-min(abs(data_C[:, i]))
@@ -159,7 +170,7 @@ for i in range(500):
     t_C[14, i] = max(abs(data_C[:, i]))/(sum(abs(data_C[:, i]))/2048)
     t_C[15, i] = max(abs(data_C[:, i]))/pow(sum(pow(abs(data_C[:, i]), 0.5))/2048, 2)
     t_C[16, i] = pow(sum(pow(data_C[:, i], 2))/2048, 0.5)/(sum(abs(data_C[:, i]))/2048)
-    t_C[17, i] = np.mean(np.multiply(data_C[:, i], np.log(np.abs(data_C[:, i]))))
+    t_C[17, i] = np.mean(np.multiply(temp_C[:, i], np.log(temp_C[:, i])))
 
 for i in range(1500):
     mean = sum(data_D[:, i])/2048
@@ -180,7 +191,7 @@ for i in range(1500):
     t_D[14, i] = max(abs(data_D[:, i]))/(sum(abs(data_D[:, i]))/2048)
     t_D[15, i] = max(abs(data_D[:, i]))/pow(sum(pow(abs(data_D[:, i]), 0.5))/2048, 2)
     t_D[16, i] = pow(sum(pow(data_D[:, i], 2))/2048, 0.5)/(sum(abs(data_D[:, i]))/2048)
-    t_D[17, i] = np.mean(np.multiply(data_D[:, i], np.log(np.abs(data_D[:, i]))))
+    t_D[17, i] = np.mean(np.multiply(temp_D[:, i], np.log(temp_D[:, i])))
 print("Extraction finished.")
 '''
 import warnings
@@ -236,11 +247,11 @@ eval_D = np.load('./data/eval_D.npy')
 
 tra = []
 tea = []
-epoches = 10
+epoches = 1
 sum_tr = 0
 sum_te = 0
 for epoch in range(epoches):
-    X_A_train, X_A_test, y_A_train, y_A_test = train_test_split(data_A_minmax[:, 0:17], eval_A, test_size=0.4, random_state=0)
+    X_A_train, X_A_test, y_A_train, y_A_test = train_test_split(data_A_minmax[:, 0:18], eval_A, test_size=0.4, random_state=0)
     RBM_hidden_sizes = [15, 13, 10]
     inpX = X_A_train
     rbm_list = []
@@ -248,7 +259,8 @@ for epoch in range(epoches):
     #'''
     for i, size in enumerate(RBM_hidden_sizes):
         print('RBM: ', i, ' ', input_size, '->', size)
-        rbm_list.append(RBM(input_size, size, 100, 0.01, 3))
+        #rbm_list.append(RBM(input_size, size, 100, 0.01, 3))
+        rbm_list.append(RBM(input_size, size, 1, 0, 10))
         input_size = size
 
     for rbm in rbm_list:
@@ -258,11 +270,18 @@ for epoch in range(epoches):
 
     nNet = NN(RBM_hidden_sizes, X_A_train, y_A_train, 1, 1000, 3)
     nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
-    tr, te = nNet.train(X_A_test, y_A_test)
+    tr, te, result_tr, result_te = nNet.train(X_A_test, y_A_test)
+    np.save('./result/tr_normal.npy', result_tr)
+    np.save('./result/te_normal.npy', result_te)
+    # np.save('./result/tr_sigimoid.npy', result_tr)
+    # np.save('./result/te_sigimoid.npy', result_te)
+    #np.save('./result/tr_isigimoid.npy', result_tr)
+    #np.save('./result/te_isigimoid.npy', result_te)
     sum_tr = sum_tr + tr
     sum_te = sum_te + te
     tra.append(tr)
     tea.append(te)
+'''
 label = ['Training Dataset', 'Testing Dataset']
 plt.plot(range(epoches), tra)
 plt.plot(range(epoches), tea)
@@ -272,6 +291,7 @@ plt.ylabel('Accuracy Rate')
 plt.show()
 print('Training Dataset Average: ', sum_tr/epoches)
 print('Testing Dataset Average: ', sum_te/epoches)
+'''
     #'''
 '''
 for i, size in enumerate(RBM_hidden_sizes):

@@ -195,7 +195,7 @@ class NN(object):
             plt.ylabel('Accuracy Rate')
             plt.show()
             '''
-        return tr[-1], te[-1]
+        return max(tr), max(te), tr, te
     '''
     def predict(self, test_X, test_Y):
         _a = [None] * (len(self._sizes) + 2)
