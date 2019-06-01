@@ -56,10 +56,10 @@
 \reversemarginpar
 
 \renewcommand\normalsize{%
-   \@setfontsize\normalsize{8}{11}%
-   \abovedisplayskip 11\p@ \@plus2\p@ \@minus5\p@
+   \@setfontsize\normalsize{10}{13}%
+   \abovedisplayskip 13\p@ \@plus2\p@ \@minus5\p@
    \abovedisplayshortskip \z@ \@plus3\p@
-   \belowdisplayshortskip 6\p@ \@plus3\p@ \@minus3\p@
+   \belowdisplayshortskip 8\p@ \@plus3\p@ \@minus3\p@
    \belowdisplayskip \abovedisplayskip
    \let\@listi\@listI}
 \normalsize
@@ -259,12 +259,12 @@
   {%
   \def\@oddfoot{{
         \hbox to \textwidth{\helvetica
-        \fontsize{7}{9}\fontshape{n}\selectfont \space %
+        \fontsize{9}{11}\fontshape{n}\selectfont Modified by Wujie Sun%
           \hfill\small\helveticabold\thepage}%
         }}%
   \def\@evenfoot{{
         \hbox to \textwidth{\helvetica\thepage\hfill
-          \fontsize{7}{9}\fontshape{n}\selectfont }%
+          \fontsize{9}{11}\fontshape{n}\selectfont Modified by Wujie Sun}%
         }}%
   \let\@evenhead\relax
   \let\@oddhead\relax}

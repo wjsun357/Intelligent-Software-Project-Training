@@ -1,3 +1,51 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{Wang2015Detection}
+Yi~Wang, Guanghua Xu, Lin Liang, and Kuosheng Jiang.
+\newblock Detection of weak transient signals based on wavelet packet transform
+  and manifold learning for rolling element bearing fault diagnosis.
+\newblock {\em Mechanical Systems \& Signal Processing}, 54-55:259--276, 2015.
+
+\bibitem{Yongle2015Zero}
+L.~U. Yongle, Yingjun Pan, Chunhua Ren, Yu~Liu, and Hui Peng.
+\newblock Zero drift compensation of mems accelerometer based on wavelet
+  packers-neural network.
+\newblock {\em Piezoelectrics \& Acoustooptics}, 37(1):27--31, 2015.
+
+\bibitem{Hinton2012A}
+Geoffrey~E. Hinton.
+\newblock A practical guide to training restricted boltzmann machines.
+\newblock {\em Momentum}, 9(1):599--619, 2012.
+
+\bibitem{vapnik1999overview}
+Vladimir~N Vapnik.
+\newblock An overview of statistical learning theory.
+\newblock {\em IEEE transactions on neural networks}, 10(5):988--999, 1999.
+
+\bibitem{Kramer1990Diagnosis}
+M.~A. Kramer and J.~A. Leonard.
+\newblock Diagnosis using backpropagation neural networks—analysis and
+  criticism.
+\newblock {\em Computers \& Chemical Engineering}, 14(12):1323--1338, 1990.
+
+\bibitem{guangquan2016fault}
+ZHAO Guangquan, GE~Qiangqiang, LIU Xiaoyong, and Peng Xiyuan.
+\newblock Fault feature extraction and diagnosis method based on deep belief
+  network.
+\newblock {\em Chinese Journal of Scientific Instrument}, 39(7):1946--1953,
+  2016.
+
+\bibitem{jia2016deep}
+Feng Jia, Yaguo Lei, Jing Lin, Xin Zhou, and Na~Lu.
+\newblock Deep neural networks: A promising tool for fault characteristic
+  mining and intelligent diagnosis of rotating machinery with massive data.
+\newblock {\em Mechanical Systems and Signal Processing}, 72:303--315, 2016.
+
+\bibitem{YiThe}
+Qin Yi, Wang Xin, and Zou Jingqiang.
+\newblock The optimized deep belief networks with improved logistic sigmoid
+  units and their application in fault diagnosis for planetary gearboxes of
+  wind turbines.
+\newblock {\em IEEE Transactions on Industrial Electronics}.
 
 \end{thebibliography}

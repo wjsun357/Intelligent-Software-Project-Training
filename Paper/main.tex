@@ -23,8 +23,6 @@
 \newcommand{\comB}[1]{#1}
 \newcommand{\comM}[1]{#1}
 \newcommand{\comC}[1]{#1}
-
-
 \begin{document}
 \firstpage{1}
 
@@ -40,7 +38,7 @@
 
 \editor{Associate Editor: XXXXXXX}
 
-\abstract{%\textbf{Motivation:} 
+\abstract{
 It is important to judge whether the bearing is faulty and the possible fault location based on the acceleration of the bearing. However, the acceleration of the bearing is affected by noise, and it is difficult to rely on observation to find the law. This problem can be solved by using wavelet packet decomposition and deep belief network. In this paper, we use wavelet packet decomposition for noise reduction, and extract features from the noise-reduced data, and then use the deep belief network for training. The experimental results show its effectiveness.\\
 \textbf{Keywords:} Deep belief network, fault diagnosis, wavelet packet decomposition, feature extraction\\
 \textbf{Contact:} \href{wjsunscut@163.edu.cn}{wjsunscut@163.edu.cn}
@@ -48,30 +46,55 @@ It is important to judge whether the bearing is faulty and the possible fault lo
 
 \maketitle
 
-
 \section{Introduction}
+Mechanical bearing failures are common in daily life, and the economic and time loss they cause is very serious. Therefore, it is very important to find it early in the event of a failure. Accelerometer data collected from actual operating environment is an important indicator to determine whether the bearing is faulty. However, the acceleration of the bearing is affected by noise, and it is difficult to rely on observation to find the problem. Therefore, we need a method that can efficiently determine whether the bearing is faultly and its fault type by using the accelerometer data. 
 
+Since the accelerometer data is affected by noise, we need to perform noise reduction. Wavelet packet decomposition \cite{Wang2015Detection}\cite{Yongle2015Zero} is widely used for noise reduction and has achieved remarkable results.
+
+
+\textcolor{blue}{In recent years, deep learning, as an emerging method in the field of machine learning, has achieved brilliant results in the fields of image and speech recognition with its powerful capabilities. As one of the classical algorithms of deep learning, deep belief network \cite{Hinton2012A} successfully solves problems such as information retrieval, dimension reduction, fault classification and so on with its excellent feature extraction and training algorithms. The deep learning method has the following advantages compared with the traditional fault diagnosis methods: 1) Deep learning has powerful feature extraction ability, can automatically extract features from a large amount of data, and reduces the needs of the expert experience and signal processing technology. It reduces the uncertainty of feature extraction and fault diagnosis caused by human in traditional methods; 2) By establishing a deep model, it can well represent the complex mapping relationship between signal and health status, which is very suitable for big data background. The need for diagnostic analysis of diverse, nonlinear, and high-dimensional health monitoring data. Therefore, applying deep learning to the field of fault diagnosis has certain timeliness, practicability and versatility.}
+
+In addition, deep belief network have better scalability and mapping capabilities than other machine learning algorithms such as support vector machine \cite{vapnik1999overview} and backpropagation neural networks \cite{Kramer1990Diagnosis}.
+
+For the input data of the deep confidence network, some choose to use the time domain signal as the input \cite{guangquan2016fault}, and some choose to use the frequency domain signal as the input \cite{jia2016deep}. In this paper, we choose to extract features from the time domain and the frequency domain as the input to the deep belief network \cite{YiThe}.
+
+\section{Wavelet Packet Decomposition}
+test
+
+test
+
+test
+\section{Feature Extraction}
+test
+
+test
+
+test
 \section{Delief Belief Network}
+test
 
+test
+
+test
 \section{Experiments}
+test
 
+test
+
+test
 \section{Conclusions}
+test
+
+test
+
+test
+\section*{Acknowledgement}
+Acknowledgement is made for the measurements used in this work provided through data-acoustics.com Database.
 
 
 
-%\bibliographystyle{natbib}
-%\bibliographystyle{achemnat}
-%\bibliographystyle{plainnat}
-%\bibliographystyle{abbrv}
+
 \bibliographystyle{unsrt}
-%\bibliographystyle{bioinformatics}
-
-%\bibliographystyle{plain}
-%
-%\bibliography{Document}
-
-%\bibliographystyle{natbib}
-%\bibliographystyle{myunsrt} 
 \bibliography{ref} 
 
 

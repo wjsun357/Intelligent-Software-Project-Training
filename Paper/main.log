@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.10.15)  31 MAY 2019 22:36
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.10.15)  1 JUN 2019 10:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -379,29 +379,29 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for LY1/ptm/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-Package crop Info: using `pdftex' graphics driver on input line 28.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for LY1/ptm/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+Package crop Info: using `pdftex' graphics driver on input line 26.
 \AtBeginShipoutBox=\box40
-Package hyperref Info: Link coloring ON on input line 28.
+Package hyperref Info: Link coloring ON on input line 26.
 
 (c:/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -411,91 +411,101 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count126
 )
-LaTeX Info: Redefining \ref on input line 28.
-LaTeX Info: Redefining \pageref on input line 28.
-LaTeX Info: Redefining \nameref on input line 28.
+LaTeX Info: Redefining \ref on input line 26.
+LaTeX Info: Redefining \pageref on input line 26.
+LaTeX Info: Redefining \nameref on input line 26.
 
 (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
-LaTeX Font Info:    Try loading font information for LY1+phv on input line 50.
+LaTeX Font Info:    Try loading font information for LY1+phv on input line 48.
  (c:/texlive/2018/texmf-dist/tex/latex/ly1/ly1phv.fd
 File: ly1phv.fd 2001/02/01 scalable font definitions for LY1/phv using Berry na
 mes.
 )
-Invalid UTF-8 byte or sequence at line 50 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 50 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 50 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 50 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 50 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 50 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 50 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 50 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 48 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 48 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 48 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 48 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 48 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 48 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 48 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 48 replaced by U+FFFD.
 File: icon.eps Graphic file (type eps)
 <icon.eps>
-LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <8> not available
-(Font)              Font shape `LY1/phv/b/n' tried instead on input line 50.
+LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <10> not available
+(Font)              Font shape `LY1/phv/b/n' tried instead on input line 48.
 LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <18> not available
-(Font)              Font shape `LY1/phv/b/n' tried instead on input line 50.
+(Font)              Font shape `LY1/phv/b/n' tried instead on input line 48.
 LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <12> not available
-(Font)              Font shape `LY1/phv/b/n' tried instead on input line 50.
-LaTeX Font Info:    Try loading font information for U+msa on input line 50.
+(Font)              Font shape `LY1/phv/b/n' tried instead on input line 48.
+LaTeX Font Info:    Try loading font information for U+msa on input line 48.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 50.
+LaTeX Font Info:    Try loading font information for U+msb on input line 48.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <9> not available
-(Font)              Font shape `LY1/phv/b/n' tried instead on input line 50.
+(Font)              Font shape `LY1/phv/b/n' tried instead on input line 48.
 LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <7> not available
-(Font)              Font shape `LY1/phv/b/n' tried instead on input line 50.
+(Font)              Font shape `LY1/phv/b/n' tried instead on input line 48.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 48.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <7.5> not available
+(Font)              size <7> substituted on input line 48.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 48.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 50.
+(Font)              size <6> substituted on input line 48.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <6.5> not available
-(Font)              size <6> substituted on input line 50.
+(Font)              size <6> substituted on input line 48.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 50.
+(Font)              size <6> substituted on input line 48.
 
-LaTeX Font Info:    Calculating math sizes for size <8.5> on input line 50.
+LaTeX Font Info:    Calculating math sizes for size <8.5> on input line 48.
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <8.5> not available
-(Font)              size <8> substituted on input line 50.
+(Font)              size <8> substituted on input line 48.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4.25> not available
-(Font)              size <5> substituted on input line 50.
+(Font)              size <5> substituted on input line 48.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <8.5> not available
-(Font)              size <8> substituted on input line 50.
+(Font)              size <8> substituted on input line 48.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.25> not available
-(Font)              size <5> substituted on input line 50.
+(Font)              size <5> substituted on input line 48.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <8.5> not available
-(Font)              size <8> substituted on input line 50.
+(Font)              size <8> substituted on input line 48.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.25> not available
-(Font)              size <5> substituted on input line 50.
+(Font)              size <5> substituted on input line 48.
 
-LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <10> not available
-(Font)              Font shape `LY1/phv/b/n' tried instead on input line 50.
 
-Underfull \hbox (badness 10000) detected at line 50
+Underfull \hbox (badness 10000) detected at line 48
 []
  []
 
@@ -503,18 +513,28 @@ Underfull \hbox (badness 10000) detected at line 50
 File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
 
 )
-(./main.bbl
+Underfull \hbox (badness 1122) in paragraph at lines 52--53
+[]\LY1/ptm/m/n/10 Since the accelerometer data is affected by noise,
+ []
 
-Package natbib Warning: Empty `thebibliography' environment on input line 3.
 
-)
-- LAST -
-Extra skip:280.0825pt
-Left:280.0825pt/0.0pt
-Right:0.0pt/0.0pt
-Output:140.04124pt
+Underfull \hbox (badness 1062) in paragraph at lines 52--53
+\LY1/ptm/m/n/10 we need to perform noise reduction. Wavelet packet
+ []
 
-Overfull \hbox (1.12001pt too wide) has occurred while \output is active
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 2376) in paragraph at lines 57--58
+\LY1/ptm/m/n/10 algorithms such as support vector machine [[]] and
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (1.40001pt too wide) has occurred while \output is active
  []
  []
 
@@ -522,14 +542,46 @@ Overfull \hbox (1.12001pt too wide) has occurred while \output is active
 
 
 
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 78.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 78.
+] (./main.bbl
+Underfull \hbox (badness 2384) in paragraph at lines 21--24
+[]\LY1/ptm/m/n/10 Vladimir N Vapnik.  An overview of statistical
+ []
+
+Missing character: There is no — in font ptmr8y!
+
+Underfull \hbox (badness 1107) in paragraph at lines 26--30
+\LY1/ptm/m/it/10 Computers & Chemical Engineering\LY1/ptm/m/n/10 , 14(12):1323-
+-
+ []
+
+
+Underfull \hbox (badness 1038) in paragraph at lines 39--43
+\LY1/ptm/m/n/10 Deep neural networks: A promising tool for fault
+ []
+
+)
+- LAST -
+Extra skip:15.04999pt
+Left:374.0pt/2.04999pt
+Right:361.0pt/0.0pt
+Output:374.0pt
+LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <8> not available
+(Font)              Font shape `LY1/phv/b/n' tried instead on input line 101.
+LaTeX Font Info:    Font shape `LY1/phv/m/it' in size <8> not available
+(Font)              Font shape `LY1/phv/m/sl' tried instead on input line 101.
+
+Overfull \hbox (252.0pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[2]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 101.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 101.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 78.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 78.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 101.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 101.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: D90F013EAC5DB6250121949B1EF96952.
+(rerunfilecheck)             Checksum: 779AA4A5A1C92FD916BE27F4EFD09B84.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -537,12 +589,12 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 10660 strings out of 494895
- 144000 string characters out of 6176371
- 227855 words of memory out of 5000000
- 14420 multiletter control sequences out of 15000+600000
- 46812 words of font info for 89 fonts, out of 8000000 for 9000
+ 10692 strings out of 494895
+ 144647 string characters out of 6176371
+ 232900 words of memory out of 5000000
+ 14450 multiletter control sequences out of 15000+600000
+ 50257 words of font info for 91 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 34i,10n,45p,853b,351s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 51i,11n,45p,1323b,380s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (1 page).
+Output written on main.pdf (2 pages).
