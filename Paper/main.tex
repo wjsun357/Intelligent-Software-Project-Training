@@ -39,7 +39,7 @@
 \editor{Associate Editor: XXXXXXX}
 
 \abstract{
-It is important to judge whether the bearing is faulty and the possible fault location based on the acceleration of the bearing. However, the acceleration of the bearing is affected by noise, and it is difficult to rely on observation to find the law. This problem can be solved by using wavelet packet decomposition and deep belief network. In this paper, we use wavelet packet decomposition for noise reduction, and extract features from the noise-reduced data, and then use the deep belief network for training. The experimental results show its effectiveness.\\
+It is important to judge whether the bearing is faulty and the possible fault location based on the acceleration of the bearing. However, the acceleration of the bearing is affected by noise, and it is difficult to rely on observation to find the law. This problem can be solved by using wavelet packet decomposition and deep belief network. In this paper, we use wavelet packet decomposition for noise reduction, and extract features from the noise-reduced data, and then use the deep belief network (DBN) for training. The experimental results show its effectiveness.\\
 \textbf{Keywords:} Deep belief network, fault diagnosis, wavelet packet decomposition, feature extraction\\
 \textbf{Contact:} \href{wjsunscut@163.edu.cn}{wjsunscut@163.edu.cn}
 }
@@ -58,24 +58,151 @@ In addition, deep belief network have better scalability and mapping capabilitie
 
 For the input data of the deep confidence network, some choose to use the time domain signal as the input \cite{guangquan2016fault}, and some choose to use the frequency domain signal as the input \cite{jia2016deep}. In this paper, we choose to extract features from the time domain and the frequency domain as the input to the deep belief network \cite{YiThe}.
 
-\section{Wavelet Packet Decomposition}
-test
+\section{Wavelet Packet Decomposition and Feature Extraction}
+\textcolor{blue}{Wavelet packet decomposition uses an analysis tree to represent wavelet packets, that is, using multiple iterations of wavelet transform to analyze the details of the input signal. From the perspective of function theory, wavelet packet decomposition is to map the signal into the space formed by the wavelet packet basis function. From a signal processing point of view, it is to pass the signal through a series of filters with different center frequencies but the same bandwidth.}
 
-test
+\textcolor{blue}{Since the wavelet decomposition \cite{Walczak1997Noise} is poor in frequency resolution in the high frequency band and time resolution in the low frequency band, wavelet packet is proposed to overcome this problem. It is a more sophisticated method of signal analysis that improves the time domain resolution of the signal. Fig. \ref{fig:wpd} shows the difference between them.}
 
-test
-\section{Feature Extraction}
-test
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\columnwidth]{wpd.eps}
+	\caption{Difference between wavelet decomposition and wavelet packet decomposition.}
+	\label{fig:wpd}
+\end{figure}
 
-test
+Since wavelet packet decomposition is not the main content of this article, it is not described too much. Wavelet packet decomposition can be easily implemented using functions such as wavedec, appcoef, detcoef, wbmpen, and wdencmp in MATLAB.
 
-test
-\section{Delief Belief Network}
-test
+Through the wavelet packet decomposition, we obtained the noise reduction data. Next, we should extract features from the data. We need to set up a sliding window to read the data by its length. For example, if there are 50,000 data and the sliding window length is 1000 and the number of statistical features is 100, then we can get 50 data with each containing 100 parameters. Table \ref{tab:sf} shows how to calculate the statistical features. $N$ is the length of sliding window and $x_i$ is the $i^{th}$ acceleration data in the sliding window. More discriminating parameters can help to improve the accuracy of the classification. Limited to the length, we only provide 18 parameters related to the time domain in the paper.
 
-test
+\begin{table}[htbp]
+	\centering
+	\caption{Statistical Features}  
+	\begin{tabular}{|c|c|}  
+		\hline  
+		Name & Formula\\  
+		\hline  
+		Peak-to-Peak  & $\mathrm{M} \mathrm{AX}|x_i|-\mathrm{MIN}|x_i|$ \\
+		\hline  
+		Peak  & $\mathrm{M} \mathrm{A} \mathrm{X}|x_i|$ \\ 
+		\hline  
+		Mean  & $\frac{1}{N} \sum\limits_{i}^{N} x_i$ \\ 
+		\hline  
+		Mean Square  & $\frac{1}{N} \sum\limits_{i}^{N} x_i^{2}$ \\ 
+		\hline  
+		Root Mean Square  & $\sqrt{\frac{1}{N} \sum\limits_{i}^{N} x_i^{2}}$ \\ 
+		\hline  
+		Mean Amplitude  & $\frac{1}{N} \sum\limits_{i}^{N}|x_i|$ \\
+		\hline  
+		Square Mean Root  & $\left(\frac{1}{N} \sum\limits_{i}^{N}|x_i|^{1 / 2}\right)^{2}$ \\ 
+		\hline  
+		Variance  & $\frac{1}{N} \sum\limits_{i}^{N}(x_i-\overline{x})^{2}$ \\ 
+		\hline  
+		Standard Deviation  & $\sqrt{\frac{1}{N} \sum\limits_{i}^{N}(x_i-\overline{x})^{2}}$ \\
+		\hline   
+		Skewness  & $\frac{1}{N} \sum\limits_{i}^{N} x_i^{3}$ \\ 
+		\hline  
+		Kurtosis  & $\frac{1}{N} \sum\limits_{i}^{N}|x_i|^{4}$ \\
+		\hline  
+		Skewness Factor  & $\frac{1}{N} \sum\limits_{i}^{N}|x_i|^{3} /\left(\sqrt{\frac{1}{N} \sum\limits_{i}^{N} x_i^{2}}\right)^{3}$ \\ 
+		\hline  
+		Kurtosis Factor  & $\frac{1}{N} \sum\limits_{i}^{N}|x_i|^{4} /\left(\sqrt{\frac{1}{N} \sum\limits_{i}^{N} x_i^{2}}\right)^{4}$ \\ 
+		\hline  
+		Peak Factor  & $\mathrm{MAX}|x_i| / \sqrt{\frac{1}{N} \sum\limits_{i}^{N} x_i^{2}}$ \\ 
+		\hline  
+		Impulsive Factor  & $\operatorname{MAX}|x_i| / \frac{1}{N} \sum\limits_{i}^{N}|x_i|$ \\ 
+		\hline  
+		Clearance Factor  & $\operatorname{MAX}|x_i| /\left(\frac{1}{N} \sum\limits_{i}^{N}|x_i|^{1 / 2}\right)^{2}$ \\ 
+		\hline  
+		Waveform Factor  & $\sqrt{\frac{1}{N} \sum\limits_{i}^{N} x_i^{2}} / \frac{1}{N} \sum\limits_{i}^{N}|x_i|$ \\ 
+		\hline  
+		Waveform Entropy \cite{ZHANG201914} & $\frac{1}{N}\sum\limits_{i}^{N}x_i\log x_i$ \\ 
+		\hline  
+	\end{tabular} 
+	\label{tab:sf} 
+\end{table} 
 
-test
+\section{Deep Belief Network}
+A common DBN model \cite{hinton2006fast} proposed by Hinton consists of a classifier and multiple restricted Boltzmann machines (RBMs) as shown in Fig. \ref{fig:dbn}. If we want to figure out the principles of the DBN, first we need to master the knowledge related to RBM.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\columnwidth]{dbn.eps}
+	\caption{A simple DBN model with 2 RBMs.}
+	\label{fig:dbn}
+\end{figure}
+
+\subsection{Restricted Boltzmann Machine}
+\textcolor{blue}{RBM \cite{hinton1986learning} has a visible layer, a hidden layer, but there is no connection within the layer, and the layer is fully connected between the layers, and the node variable takes a value of 0 or 1. It removes the intra-layer connection of the Boltzmann machine (BM), which greatly reduces the amount of calculation. The structure of the RBM is shown in Fig. \ref{fig:rbm}. }
+		
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\columnwidth]{rbm.eps}
+	\caption{A simple RBM model.}
+	\label{fig:rbm}
+\end{figure}
+	
+\textcolor{blue}{In RBM, the activation conditions of each hidden layer units are independent when the visible layer units' state is given. Similarly, the activation conditions of the visible layer units are independent when the hidden layer units' state is given.}
+
+\textcolor{blue}{The essence of RBM is a useful tool for unsupervised learning, which can be used for dimensionality reduction, feature extraction, autoencoder, deep belief network, and so on.}
+
+Next we will formulate the formula according to \cite{zhangchunxia}. Assume the RBM has $n$ visible layer units and $m$ hidden layer units. We use the vectors $\mathbf{v}$ and $\mathbf{h}$ to represent the states of its visible layer and hidden layer where $v_i$ is the $i^{th}$ visible layer unit and $h_j$ is the $j^{th}$ hidden layer unit. Therefore, for a given state $(\mathbf{v}, \mathbf{h})$, the energy of the RBM can be calculated as
+\begin{equation}
+E(\mathbf{v}, \mathbf{h})=-\sum_{i=1}^{m} \sum_{j=1}^{n} w_{i j} v_{i} h_{j}-\sum_{i=1}^{m} a_{i} v_{i}-\sum_{j=1}^{n} b_{j} h_{j}
+\end{equation}
+where $w_{ij}$ is the weight, $a_{i}$ is the visible layer unit bias, $b_{j}$ is the hidden layer unit bias, and $\boldsymbol{\theta}=\{w_{ij}, a_i, b_j\}$.
+
+After that, the joint probability distribution can be calculated as 
+\begin{equation}
+P(\mathbf{v}, \mathbf{h} | \boldsymbol{\theta})=\frac{\mathbf{e}^{-E(\mathbf{v}, \mathbf{h} | \boldsymbol{\theta})}}{Z(\boldsymbol{\theta})}, \quad Z(\boldsymbol{\theta})=\sum_{\mathbf{v}, \mathbf{h}} \mathrm{e}^{-E(\mathbf{v}, \mathbf{h} | \boldsymbol{\theta})}
+\end{equation}
+and the likehood function can be calculated as
+\begin{equation}
+P(\mathbf{v} | \boldsymbol{\theta})=\frac{1}{Z(\boldsymbol{\theta})} \sum_{\mathbf{h}} \mathrm{e}^{-E(\mathbf{v}, \mathbf{h} | \boldsymbol{\theta})}
+\end{equation}
+
+By formula derivation, we can get the following activation probability formula
+\begin{equation}
+P\left(h_{j}=1 | \mathbf{v}, \boldsymbol{\theta}\right)=\sigma\left(b_{j}+\sum_{i} v_{i} w_{i j}\right)
+\end{equation}
+\begin{equation}
+P\left(v_{i}=1 | \mathbf{h}, \boldsymbol{\theta}\right)=\sigma\left(a_{i}+\sum_{j} w_{i j} h_{j}\right)
+\end{equation}
+where $\sigma(x)=1/(1+e^{-x})$.
+\subsection{Contrastive Divergence Algorithm}
+The purpose of learning RBM is to find the value of $\boldsymbol{\theta}$ to fit the given training data. However, obtaining results based on methods such as Gibbs sampling is cumbersome and time consuming \cite{zhangchunxia}. Hinton proposed a algorithm called Contrastive Divergence (CD) \cite{Hinton2002Training} which is easy to calculate. Algorithm is shown as Alg. \ref{alg:cd}.
+\begin{algorithm}
+	\caption{Contrastive Divergence}
+	\label{alg:cd}
+	\begin{algorithmic}[1]
+		\STATE Training sample $x_0$, learning rate $\epsilon$, max epoch $T$;
+		\STATE $\mathbf{v_1}=x_0$, $\mathbf{w}$, $\mathbf{a}$, and $\mathbf{b}$ are random small values;
+		\FOR{$epoch = 1,2,...,T$}
+		\FOR{$j=1,2,...,m$}
+			\STATE Calc $P\left(h_{1j}=1 | \mathbf{v_1} \right)=\sigma\left(b_{j}+\sum_{i} v_{1i} w_{i j}\right)$;
+			\STATE Randomly select $h_{1j}\in\{0,1\}$;
+		\ENDFOR
+		\FOR{$i=1,2,...,n$}
+			\STATE Calc $P\left(v_{2i}=1 | \mathbf{h_1} \right)=\sigma\left(a_{i}+\sum_{j} h_{1j} w_{i j}\right)$;
+			\STATE Randomly select $v_{2i}\in\{0,1\}$;
+		\ENDFOR
+		\FOR{$j=1,2,...,m$}
+			\STATE Calc $P\left(h_{2j}=1 | \mathbf{v_2} \right)=\sigma\left(b_{j}+\sum_{i} v_{2i} w_{i j}\right)$;
+		\ENDFOR
+		\STATE $\mathbf{\triangle w}=P(h_{1.}=1|\mathbf{v_1})\mathbf{v_1^T}-P(h_{2.}=1|\mathbf{v_2})\mathbf{v_2^T}$;
+		\STATE $\mathbf{\triangle a}=\mathbf{v_1}-\mathbf{v_2}$;
+		\STATE $\mathbf{\triangle b}=P(h_{1.}=1|\mathbf{v_1})-P(h_{2.}=1|\mathbf{v_2})$;
+		\STATE $\mathbf{w}\leftarrow \mathbf{w}+\epsilon\triangle\mathbf{w}$;
+		\STATE $\mathbf{a}\leftarrow \mathbf{a}+\epsilon\triangle\mathbf{a}$;
+		\STATE $\mathbf{b}\leftarrow \mathbf{b}+\epsilon\triangle\mathbf{b}$;
+		\ENDFOR
+	\end{algorithmic} 
+\end{algorithm} 
+\subsection{Run DBN}
+Now we construct DBN as shown in Fig. \ref{fig:dbn}. First, we input the data into RBM0 and run CD algorithm. Then we should consider the output of RBM0 as the input of RBM1 and run CD algorithm. After that, we can see the network as back propagation neural network and train it. The $\boldsymbol{\theta}$ trained by RBMs should be the initial value of the back propagation neural network.
+
+This is the most basic DBN model and we can optimize it for better classification. In \cite{YiThe}, the authors improved the activation function by combining Sigmoid with LReL to achieving the goal. Authors of \cite{wang2017improved} proposed the semi-supervised DBN to improve the structure of the DBN to achieve better performance.
+
+\textcolor{red}{In this project training, I reproduced these two papers. Since there is no suitable optimization method at present, in the DBN and experiment part, only the optimization methods of the published papers are involved.}
 \section{Experiments}
 test
 

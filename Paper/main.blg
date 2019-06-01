@@ -3,46 +3,44 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: main.aux
 The style file: unsrt.bst
 Database file #1: ref.bib
-Warning--empty year in YiThe
-You've used 8 entries,
+You've used 15 entries,
             1791 wiz_defined-function locations,
-            506 strings with 5198 characters,
-and the built_in function-call counts, 1923 in all, are:
-= -- 167
-> -- 89
+            555 strings with 6415 characters,
+and the built_in function-call counts, 3517 in all, are:
+= -- 308
+> -- 162
 < -- 0
-+ -- 33
-- -- 25
-* -- 157
-:= -- 319
-add.period$ -- 24
-call.type$ -- 8
-change.case$ -- 8
++ -- 60
+- -- 45
+* -- 281
+:= -- 583
+add.period$ -- 45
+call.type$ -- 15
+change.case$ -- 15
 chr.to.int$ -- 0
-cite$ -- 9
-duplicate$ -- 71
-empty$ -- 183
-format.name$ -- 25
-if$ -- 412
+cite$ -- 15
+duplicate$ -- 133
+empty$ -- 338
+format.name$ -- 45
+if$ -- 760
 int.to.chr$ -- 0
-int.to.str$ -- 8
-missing$ -- 8
-newline$ -- 43
-num.names$ -- 8
-pop$ -- 11
+int.to.str$ -- 15
+missing$ -- 15
+newline$ -- 78
+num.names$ -- 15
+pop$ -- 19
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 25
+skip$ -- 46
 stack$ -- 0
-substring$ -- 165
-swap$ -- 8
+substring$ -- 293
+swap$ -- 15
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 1
-while$ -- 18
-width$ -- 9
-write$ -- 88
-(There was 1 warning)
+warning$ -- 0
+while$ -- 33
+width$ -- 17
+write$ -- 165

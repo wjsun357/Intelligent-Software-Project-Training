@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{Wang2015Detection}
 Yi~Wang, Guanghua Xu, Lin Liang, and Kuosheng Jiang.
@@ -46,6 +46,45 @@ Qin Yi, Wang Xin, and Zou Jingqiang.
 \newblock The optimized deep belief networks with improved logistic sigmoid
   units and their application in fault diagnosis for planetary gearboxes of
   wind turbines.
-\newblock {\em IEEE Transactions on Industrial Electronics}.
+\newblock {\em IEEE Transactions on Industrial Electronics}, 2019.
+
+\bibitem{Walczak1997Noise}
+B.~Walczak and D.~L. Massart.
+\newblock Noise suppression and signal compression using the wavelet packet
+  transform.
+\newblock {\em Chemometrics \& Intelligent Laboratory Systems}, 36(2):81--94,
+  1997.
+
+\bibitem{ZHANG201914}
+Bin Zhang, Shaohui Zhang, and Weihua Li.
+\newblock Bearing performance degradation assessment using long short-term
+  memory recurrent network.
+\newblock {\em Computers in Industry}, 106:14 -- 29, 2019.
+
+\bibitem{hinton2006fast}
+Geoffrey~E Hinton, Simon Osindero, and Yee-Whye Teh.
+\newblock A fast learning algorithm for deep belief nets.
+\newblock {\em Neural computation}, 18(7):1527--1554, 2006.
+
+\bibitem{hinton1986learning}
+Geoffrey~E Hinton, Terrence~J Sejnowski, et~al.
+\newblock Learning and relearning in boltzmann machines.
+\newblock {\em Parallel distributed processing: Explorations in the
+  microstructure of cognition}, 1(282-317):2, 1986.
+
+\bibitem{zhangchunxia}
+ZHANG Chun-xia, JI~Nan-nan, and WANG Guan-wei.
+\newblock Restricted boltzmann machines.
+\newblock {\em CHINESE JOURNAL OF ENGINEERING MATHEMATICS}, 2015.
+
+\bibitem{Hinton2002Training}
+G.~E. Hinton.
+\newblock Training products of experts by minimizing contrastive divergence.
+\newblock {\em Neural Computation}, 14(8):1771--1800, 2002.
+
+\bibitem{wang2017improved}
+Gongming Wang, Junfei Qiao, Xiaoli Li, Lei Wang, and Xiaolong Qian.
+\newblock Improved classification with semi-supervised deep belief network.
+\newblock {\em IFAC-PapersOnLine}, 50(1):4174--4179, 2017.
 
 \end{thebibliography}

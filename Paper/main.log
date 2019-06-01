@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.10.15)  1 JUN 2019 10:19
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.10.15)  1 JUN 2019 18:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -542,59 +542,162 @@ Overfull \hbox (1.40001pt too wide) has occurred while \output is active
 
 
 
-] (./main.bbl
-Underfull \hbox (badness 2384) in paragraph at lines 21--24
-[]\LY1/ptm/m/n/10 Vladimir N Vapnik.  An overview of statistical
- []
-
-Missing character: There is no — in font ptmr8y!
-
-Underfull \hbox (badness 1107) in paragraph at lines 26--30
-\LY1/ptm/m/it/10 Computers & Chemical Engineering\LY1/ptm/m/n/10 , 14(12):1323-
--
- []
+]
+File: wpd.eps Graphic file (type eps)
+<wpd.eps>
+LaTeX Font Info:    Try loading font information for LY1+phb on input line 69.
+LaTeX Font Info:    No file LY1phb.fd. on input line 69.
 
 
-Underfull \hbox (badness 1038) in paragraph at lines 39--43
-\LY1/ptm/m/n/10 Deep neural networks: A promising tool for fault
- []
+LaTeX Font Warning: Font shape `LY1/phb/m/n' undefined
+(Font)              using `LY1/ptm/m/n' instead on input line 69.
 
-)
-- LAST -
-Extra skip:15.04999pt
-Left:374.0pt/2.04999pt
-Right:361.0pt/0.0pt
-Output:374.0pt
+LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <6.5> not available
+(Font)              Font shape `LY1/phv/b/n' tried instead on input line 69.
+
+LaTeX Font Warning: Font shape `LY1/phb/bx/n' undefined
+(Font)              using `LY1/phb/m/n' instead on input line 79.
+
+File: dbn.eps Graphic file (type eps)
+<dbn.eps>
+File: rbm.eps Graphic file (type eps)
+<rbm.eps>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <8> not available
-(Font)              Font shape `LY1/phv/b/n' tried instead on input line 101.
+(Font)              Font shape `LY1/phv/b/n' tried instead on input line 145.
 LaTeX Font Info:    Font shape `LY1/phv/m/it' in size <8> not available
-(Font)              Font shape `LY1/phv/m/sl' tried instead on input line 101.
+(Font)              Font shape `LY1/phv/m/sl' tried instead on input line 145.
 
 Overfull \hbox (252.0pt too wide) has occurred while \output is active
 [][] 
  []
 
 [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 101.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 101.
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 148.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <7.5> not available
+(Font)              size <7> substituted on input line 152.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 152.
+
+
+Underfull \hbox (badness 1558) in paragraph at lines 163--164
+[]\LY1/ptm/m/n/10 By formula derivation, we can get the following
+ []
+
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 174.
+LaTeX Font Info:    Font shape `LY1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `LY1/ptm/b/n' tried instead on input line 174.
+(./main.bbl
+Underfull \hbox (badness 5578) in paragraph at lines 10--14
+\LY1/ptm/m/n/10 and Hui Peng.  Zero drift compensation of
+ []
+
+
+Overfull \hbox (252.0pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[3]
+Underfull \hbox (badness 1546) in paragraph at lines 21--24
+[]\LY1/ptm/m/n/10 Vladimir N Vapnik.  An overview of statistical
+ []
+
+Missing character: There is no — in font ptmr8y!
+
+Underfull \hbox (badness 2221) in paragraph at lines 26--30
+[]\LY1/ptm/m/n/10 M. A. Kramer and J. A. Leonard.  Diagnosis
+ []
+
+
+Underfull \hbox (badness 2142) in paragraph at lines 26--30
+\LY1/ptm/m/n/10 criticism.  \LY1/ptm/m/it/10 Computers & Chemical Engineering\L
+Y1/ptm/m/n/10 ,
+ []
+
+
+Underfull \hbox (badness 1147) in paragraph at lines 39--43
+[]\LY1/ptm/m/n/10 Feng Jia, Yaguo Lei, Jing Lin, Xin Zhou, and
+ []
+
+
+Underfull \hbox (badness 2005) in paragraph at lines 45--50
+[]\LY1/ptm/m/n/10 Qin Yi, Wang Xin, and Zou Jingqiang.  The
+ []
+
+
+Underfull \hbox (badness 1360) in paragraph at lines 52--57
+\LY1/ptm/m/n/10 and signal compression using the wavelet packet
+ []
+
+
+Underfull \hbox (badness 1742) in paragraph at lines 59--63
+\LY1/ptm/m/n/10 term memory recurrent network.  \LY1/ptm/m/it/10 Computers in
+ []
+
+
+Underfull \hbox (badness 1067) in paragraph at lines 70--74
+[]\LY1/ptm/m/n/10 Geoffrey E Hinton, Terrence J Sejnowski, et al.
+ []
+
+
+Underfull \hbox (badness 2529) in paragraph at lines 70--74
+\LY1/ptm/m/n/10 Learning and relearning in boltzmann machines.
+ []
+
+
+Underfull \hbox (badness 4832) in paragraph at lines 81--84
+[]\LY1/ptm/m/n/10 G. E. Hinton.  Training products of experts
+ []
+
+
+Underfull \hbox (badness 4013) in paragraph at lines 81--84
+\LY1/ptm/m/n/10 by minimizing contrastive divergence.  \LY1/ptm/m/it/10 Neural
+ []
+
+)
+- LAST -
+Extra skip:39.39pt
+Left:335.0pt/2.17pt
+Right:296.0pt/1.78pt
+Output:335.0pt
+
+Overfull \hbox (252.0pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[4]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 228.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 228.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 101.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 101.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 228.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 228.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 779AA4A5A1C92FD916BE27F4EFD09B84.
+(rerunfilecheck)             Checksum: C52E14A07D4B3DA8E725322A7FB16769.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.75pt have occurred.
 
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
  ) 
 Here is how much of TeX's memory you used:
- 10692 strings out of 494895
- 144647 string characters out of 6176371
- 232900 words of memory out of 5000000
- 14450 multiletter control sequences out of 15000+600000
- 50257 words of font info for 91 fonts, out of 8000000 for 9000
+ 10789 strings out of 494895
+ 145909 string characters out of 6176371
+ 236900 words of memory out of 5000000
+ 14537 multiletter control sequences out of 15000+600000
+ 55454 words of font info for 100 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 51i,11n,45p,1323b,380s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 57i,12n,51p,1323b,568s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (2 pages).
+Output written on main.pdf (4 pages).
