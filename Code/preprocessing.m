@@ -1,9 +1,9 @@
 clear all
 clc
 %读取数据
-name = '../Data/12k Drive End Bearing Fault Data/OR021@6_1.mat';
-data = load(name,'X235_DE_time');
-data = data.X235_DE_time;
+name = '../Data/12k Drive End Bearing Fault Data/B028_0.mat';
+data = load(name,'X048_DE_time');
+data = data.X048_DE_time;
 %小波包分解
 N = 5;
 num = 50*2048;
@@ -62,12 +62,12 @@ THR = [THR1,THR2,THR3,THR4,THR5];
 %[thr,nkeep]=wdcbm(C,L,3);
 [XC,CXC,LXC,PERF0,PERFL2] = wdencmp('lvd',C,L,method,N,THR,'s');
 figure(1);
-subplot(211);
-plot(XC);
 subplot(212);
+plot(XC);
+subplot(211);
 plot(data(1:num,:));
 XC = XC';
-save OR021@6_1.mat XC;
+%save OR021@6_1.mat XC;
 %A0=waverec(C,L,'db10');
 %GRNN
 %{

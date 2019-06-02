@@ -204,11 +204,49 @@ This is the most basic DBN model and we can optimize it for better classificatio
 
 \textcolor{red}{In this project training, I reproduced these two papers. Since there is no suitable optimization method at present, in the DBN and experiment part, only the optimization methods of the published papers are involved.}
 \section{Experiments}
-test
+In the experiments in this paper, we used the drive end bearing accelerometer data provided by the Electrical Engineering Laboratory of Case Western Reserve University \cite{data}. \textcolor{red}{Since the content only covers the recurring part, the main goal is to compare whether the various methods speed up the convergence or improve the classification accuracy rate when the parameters are basically consistent, instead of finding the highest classification accuracy rate.}
 
-test
+In the classification of faults, we refer to \cite{guangquan2016fault} to classify faults into 10 categories. In this experiment, 500 data were used, that is, 50 data per category, and each data was extracted from 2048 points.
 
-test
+First we use MATLAB to denoise the data, some of which are shown in the Fig. \ref{fig:pre}.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\columnwidth]{pre.eps}
+	\caption{The above figure is the original data, and the figure below is the data after noise reduction. By noise reduction, a large amount of noise is filtered out so that features can be more easily resolved.}
+	\label{fig:pre}
+\end{figure}
+
+Then we use the sliding window to segment the noise reduction data and calculate its features according to Table \ref{tab:sf}. The feature distribution can be seen in Fig. \ref{fig:feature}.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\columnwidth]{feature.eps}
+	\caption{The figure includes a total of eighteen axes. In each axis, curves of different colors represent different fault type data. It can be seen that different fault types have distinct feature distributions, so we should extract features which can distinguish different fault types easily and classify them.}
+	\label{fig:feature}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\columnwidth]{dbnVSbp.eps}
+	\caption{Accurancy.}
+	\label{fig:dbnVSbp}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\columnwidth]{SigmoidVSIsigmoid.eps}
+	\caption{Accurancy.}
+	\label{fig:SigmoidVSIsigmoid}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\columnwidth]{SSDBN.eps}
+	\caption{Accurancy.}
+	\label{fig:SSDBN}
+\end{figure}
+
 \section{Conclusions}
 test
 

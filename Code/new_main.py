@@ -46,16 +46,16 @@ for i in range(250):
     t_A[17, i] = np.mean(np.multiply(data_A[:, i], np.log(np.abs(data_A[:, i]))))
 print("Extraction finished.")
 #'''
-'''
+
 import warnings
 warnings.filterwarnings("ignore")
 plt.figure(1)
 for k in range(n_feature):
     for i in range(4):
-        plt.subplot(n_feature,1,k+1)
-        sns.distplot(t_A[k,(50*i):(50*(i+1))], rug=True, hist=False)
+        plt.subplot(n_feature, 1, k+1)
+        sns.distplot(t_A[k, (50*i):(50*(i+1))], rug=True, hist=False)
 plt.show()
-'''
+
 
 #'''
 data_A_minmax = min_max_scaler.fit_transform(np.transpose(t_A))

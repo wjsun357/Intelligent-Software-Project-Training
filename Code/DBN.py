@@ -49,30 +49,34 @@ class RBM(object):
         _hb = tf.placeholder(tf.float64, [self._output_size])
         _vb = tf.placeholder(tf.float64, [self._input_size])
 
-        prv_w = 0.1 * np.random.randn(self._input_size, self._output_size)
-        prv_hb = np.zeros([self._output_size], np.float64)
-        prv_vb = np.zeros([self._input_size], np.float64)
+        prv_w = self.w
+        prv_hb = self.hb
+        prv_vb = self.vb
 
-        cur_w = np.zeros([self._input_size, self._output_size], np.float64)
-        cur_hb = np.zeros([self._output_size], np.float64)
-        cur_vb = np.zeros([self._input_size], np.float64)
+        cur_w = self.w
+        cur_hb = self.hb
+        cur_vb = self.vb
         v0 = tf.placeholder(tf.float64, [None, self._input_size])
 
         # 初始样本概率
-        h0 = self.sample_prob(self.prob_h_given_v(v0, _w, _hb))  # 0或1
-        v1 = self.sample_prob(self.prob_v_given_h(h0, _w, _vb))  # 0或1
+        temp_h0 = self.prob_h_given_v(v0, _w, _hb)
+        h0 = self.sample_prob(temp_h0)  # 0或1
+        temp_v1 = self.prob_v_given_h(h0, _w, _vb)
+        v1 = self.sample_prob(temp_v1)  # 0或1
         h1 = self.prob_h_given_v(v1, _w, _hb)
-
+        '''
         positive_grad = tf.matmul(tf.transpose(v0), h0)  # 取决于观测值，正阶段增加训练数据的可能性
         negative_grad = tf.matmul(tf.transpose(v1), h1)  # 只取决于模型，负阶段减少由模型生成的样本的概率
-
-        # (positive_grad - negative_grad) / tf.cast(tf.shape(v0)[0], np.float64)为对比散度
         update_w = _w + self._learning_rate * (positive_grad - negative_grad) / tf.cast(tf.shape(v0)[0], np.float64)
         update_vb = _vb + self._learning_rate * tf.reduce_mean(v0 - v1, 0)
         update_hb = _hb + self._learning_rate * tf.reduce_mean(h0 - h1, 0)
+        '''
+        update_w = _w + self._learning_rate * ((tf.matmul(tf.transpose(v0), temp_h0) - tf.matmul(tf.transpose(v1), h1)) / tf.cast(tf.shape(v0)[0], np.float64))
+        update_vb = _vb + self._learning_rate * tf.reduce_mean(v0 - v1, 0)
+        update_hb = _hb + self._learning_rate * tf.reduce_mean(temp_h0 - h1, 0)
 
         # 错误值
-        err = tf.reduce_mean(tf.square(v0 - v1))
+        err = tf.reduce_sum(tf.square(v0 - v1))
 
         # 循环
         with tf.Session() as sess:
@@ -122,9 +126,9 @@ class NN(object):
         # 循环初始化
         for size in self._sizes + [Y.shape[1]]:
             # Define upper limit for the uniform distribution range
-            max_range = 4 * math.sqrt(6. / (input_size + size))
+            # max_range = 4 * math.sqrt(6. / (input_size + size))
             # 初始化权重，随机均匀分布
-            self.w_list.append(np.random.uniform(-max_range, max_range, [input_size, size]).astype(np.float64))
+            self.w_list.append(0.1 * np.random.randn(input_size, size))
             # 初始化偏差
             self.b_list.append(np.zeros([size], np.float64))
             input_size = size
@@ -151,7 +155,7 @@ class NN(object):
             _w[i] = tf.Variable(self.w_list[i])
             _b[i] = tf.Variable(self.b_list[i])
         for i in range(1, len(self._sizes) + 2):
-            # a[i] = tf.nn.sigmoid(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
+            #_a[i] = tf.nn.sigmoid(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
             _a[i] = isigmoid.my_sigmoid_tf(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
 
         # _a[-1] = tf.nn.softmax(_a[-1])
@@ -173,8 +177,10 @@ class NN(object):
             for i in range(self._epoches):
                 for start, end in zip(range(0, len(self._X), self._batchsize), range(self._batchsize, len(self._X), self._batchsize)):
                     # Run the training operation on the input data
-                    if(i>(int)(self._epoches/2)):
+                    if i>(int)(self._epoches/3*2):
                         sess.run(train_op, feed_dict={_a[0]: self._X[start:end], y: self._Y[start:end], _momentum: 0.5})
+                    elif i>(int)(self._epoches/3):
+                        sess.run(train_op, feed_dict={_a[0]: self._X[start:end], y: self._Y[start:end], _momentum: 0.9})
                     else:
                         sess.run(train_op, feed_dict={_a[0]: self._X[start:end], y: self._Y[start:end], _momentum: 0.9})
                 for j in range(len(self._sizes) + 1):

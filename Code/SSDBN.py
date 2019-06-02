@@ -57,40 +57,44 @@ class SSRBM(object):
         _ub = tf.placeholder(tf.float64, [self._input_size])
         _p = tf.placeholder(tf.float64, [self._input_size, self._output_size])
 
-        prv_w = 0.1 * np.random.randn(self._input_size, self._output_size)
-        prv_hb = np.zeros([self._output_size], np.float64)
-        prv_vb = np.zeros([self._input_size], np.float64)
-        prv_ub = np.zeros([self._input_size], np.float64)
-        prv_p = 0.1 * np.random.randn(self._input_size, self._output_size)
+        prv_w = self.w
+        prv_hb = self.hb
+        prv_vb = self.vb
+        prv_ub = self.ub
+        prv_p = self.p
 
-        cur_w = np.zeros([self._input_size, self._output_size], np.float64)
-        cur_hb = np.zeros([self._output_size], np.float64)
-        cur_vb = np.zeros([self._input_size], np.float64)
-        cur_ub = np.zeros([self._input_size], np.float64)
-        cur_p = np.zeros([self._input_size, self._output_size], np.float64)
+        cur_w = self.w
+        cur_hb = self.hb
+        cur_vb = self.vb
+        cur_ub = self.ub
+        cur_p = self.p
 
         v0 = tf.placeholder(tf.float64, [None, self._input_size])
         u0 = tf.placeholder(tf.float64, [None, self._input_size])
 
         # 初始样本概率
-        h0 = self.sample_prob(self.prob_h_given_vu(v0, u0, _p, _w, _hb))  # 0或1
-        v1 = self.sample_prob(self.prob_v_given_h(h0, _w, _vb))  # 0或1
-        u1 = self.sample_prob(self.prob_u_given_h(h0, _p, _ub))
+        temp_h0 = self.prob_h_given_vu(v0, u0, _p, _w, _hb)
+        h0 = self.sample_prob(temp_h0)  # 0或1
+        temp_v1 = self.prob_v_given_h(h0, _w, _vb)
+        v1 = self.sample_prob(temp_v1)  # 0或1
+        temp_u1 = self.prob_u_given_h(h0, _p, _ub)
+        u1 = self.sample_prob(temp_u1)
         h1 = self.prob_h_given_vu(v1, u1, _p, _w, _hb)
 
-        positive_grad = tf.matmul(tf.transpose(v0), h0)  # 取决于观测值，正阶段增加训练数据的可能性
+        positive_grad = tf.matmul(tf.transpose(v0), temp_h0)  # 取决于观测值，正阶段增加训练数据的可能性
         negative_grad = tf.matmul(tf.transpose(v1), h1)  # 只取决于模型，负阶段减少由模型生成的样本的概率
-        positive_grad_u = tf.matmul(tf.transpose(u0), h0)
+        positive_grad_u = tf.matmul(tf.transpose(u0), temp_h0)
         negative_grad_u = tf.matmul(tf.transpose(u1), h1)
 
         # (positive_grad - negative_grad) / tf.cast(tf.shape(v0)[0], np.float64)为对比散度
         update_w = _w + self._learning_rate * (positive_grad - negative_grad) / tf.cast(tf.shape(v0)[0], np.float64)
         update_vb = _vb + self._learning_rate * tf.reduce_mean(v0 - v1, 0)
-        update_hb = _hb + self._learning_rate * tf.reduce_mean(h0 - h1, 0)
+        update_hb = _hb + self._learning_rate * tf.reduce_mean(temp_h0 - h1, 0)
         update_ub = _ub + self._learning_rate * tf.reduce_mean(self._proportion * (u0 - u1), 0)
         update_p = _w + self._learning_rate * self._proportion * (positive_grad_u - negative_grad_u) / tf.cast(tf.shape(u0)[0], np.float64)
         # 错误值
-        err = tf.reduce_mean(tf.abs(v1 - u0))
+        #err = tf.reduce_mean(tf.abs(v1 - u0))
+        err = tf.reduce_sum(tf.square(v0 - v1))
 
         U, sigma, VT = np.linalg.svd(S)
         Sigma = np.zeros([X.shape[1], X.shape[1]])
@@ -140,7 +144,7 @@ class SSRBM(object):
 
 
 class NN(object):
-    def __init__(self, sizes, X, Y, learning_rate, momentum, epoches, batchsize):
+    def __init__(self, sizes, X, Y, learning_rate, epoches, batchsize):
         # 超参数
         self._sizes = sizes
         self._X = X
@@ -148,7 +152,6 @@ class NN(object):
         self.w_list = []
         self.b_list = []
         self._learning_rate = learning_rate
-        self._momentum = momentum
         self._epoches = epoches
         self._batchsize = batchsize
         input_size = X.shape[1]  # 特征数
@@ -156,9 +159,9 @@ class NN(object):
         # 循环初始化
         for size in self._sizes + [Y.shape[1]]:
             # Define upper limit for the uniform distribution range
-            max_range = 4 * math.sqrt(6. / (input_size + size))
+            # max_range = 4 * math.sqrt(6. / (input_size + size))
             # 初始化权重，随机均匀分布
-            self.w_list.append(np.random.uniform(-max_range, max_range, [input_size, size]).astype(np.float64))
+            self.w_list.append(0.1 * np.random.randn(input_size, size))
             # 初始化偏差
             self.b_list.append(np.zeros([size], np.float64))
             input_size = size
@@ -185,14 +188,16 @@ class NN(object):
             _w[i] = tf.Variable(self.w_list[i])
             _b[i] = tf.Variable(self.b_list[i])
         for i in range(1, len(self._sizes) + 2):
-            # a[i] = tf.nn.sigmoid(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
-            _a[i] = isigmoid.my_sigmoid_tf(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
+            _a[i] = tf.nn.sigmoid(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
+            #_a[i] = isigmoid.my_sigmoid_tf(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
 
         # _a[-1] = tf.nn.softmax(_a[-1])
         # cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=_a[-1], labels=y))
         cost = tf.reduce_mean(tf.square(_a[-1] - y))
 
-        train_op = tf.train.MomentumOptimizer(self._learning_rate, self._momentum).minimize(cost)
+        _momentum = tf.placeholder(tf.float64, shape=[])
+
+        train_op = tf.train.MomentumOptimizer(self._learning_rate, momentum=_momentum).minimize(cost)
 
         # Prediction operation
         # predict_op = tf.argmax(tf.nn.softmax(_a[-1]), 1)
@@ -205,7 +210,12 @@ class NN(object):
             for i in range(self._epoches):
                 for start, end in zip(range(0, len(self._X), self._batchsize), range(self._batchsize, len(self._X), self._batchsize)):
                     # Run the training operation on the input data
-                    sess.run(train_op, feed_dict={_a[0]: self._X[start:end], y: self._Y[start:end]})
+                    if i>(int)(self._epoches/3*2):
+                        sess.run(train_op, feed_dict={_a[0]: self._X[start:end], y: self._Y[start:end], _momentum: 0.5})
+                    elif i>(int)(self._epoches/3):
+                        sess.run(train_op, feed_dict={_a[0]: self._X[start:end], y: self._Y[start:end], _momentum: 0.9})
+                    else:
+                        sess.run(train_op, feed_dict={_a[0]: self._X[start:end], y: self._Y[start:end], _momentum: 0.9})
                 for j in range(len(self._sizes) + 1):
                     # Retrieve weights and biases
                     self.w_list[j] = sess.run(_w[j])
@@ -215,6 +225,7 @@ class NN(object):
                 tr.append(np.mean(np.argmax(self._Y, axis=1) == sess.run(predict_op, feed_dict={_a[0]: self._X, y: self._Y})))
                 te.append(np.mean(np.argmax(test_Y, axis=1) == sess.run(predict_op, feed_dict={_a[0]: test_X, y: test_Y})))
                 # print(sess.run(_a[-1], feed_dict={_a[0]: self._X, y: self._Y}))
+            '''
             label = ['Training Dataset', 'Testing Dataset']
             plt.plot(range(self._epoches), tr)
             plt.plot(range(self._epoches), te)
@@ -222,6 +233,8 @@ class NN(object):
             plt.xlabel('Epoch')
             plt.ylabel('Accuracy Rate')
             plt.show()
+            '''
+        return max(tr), max(te), tr, te
 
 
 if __name__ == '__main__':

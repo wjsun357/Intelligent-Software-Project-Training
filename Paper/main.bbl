@@ -87,4 +87,11 @@ Gongming Wang, Junfei Qiao, Xiaoli Li, Lei Wang, and Xiaolong Qian.
 \newblock Improved classification with semi-supervised deep belief network.
 \newblock {\em IFAC-PapersOnLine}, 50(1):4174--4179, 2017.
 
+\bibitem{data}
+Electrical Engineering~Laboratory of~Case Western Reserve~University.
+\newblock Bearing data.
+\newblock {\em
+  \href{http://csegroups.case.edu/bearingdatacenter/pages/welcome-case-western-reserve-university-bearing-data-center-website}{Case
+  Western Reserve University Bearing Data Center Website}}.
+
 \end{thebibliography}
