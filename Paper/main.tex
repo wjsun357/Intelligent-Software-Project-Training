@@ -200,6 +200,8 @@ The purpose of learning RBM is to find the value of $\boldsymbol{\theta}$ to fit
 \subsection{Run DBN}
 Now we construct DBN as shown in Fig. \ref{fig:dbn}. First, we input the data into RBM0 and run CD algorithm. Then we should consider the output of RBM0 as the input of RBM1 and run CD algorithm. After that, we can see the network as back propagation neural network and train it. The $\boldsymbol{\theta}$ trained by RBMs should be the initial value of the back propagation neural network.
 
+\textcolor{blue}{So what is the advantage of DBN compared to the traditional back-propagation neural network? In my understanding, one problem with traditional multi-layer perception or neural networks is that the back propagation may always result in local minima. Because when the error surface contains multiple grooves, when the gradient descent is used, the deepest groove is not found. The deep belief network can solve the problem of local minimum through additional pre-training, i.e. RBM. Pre-training is done before back propagation so that the optimal point is not so far. Then we can slowly approach the optimal point through back propagation.}
+
 This is the most basic DBN model and we can optimize it for better classification. In \cite{YiThe}, the authors improved the activation function by combining Sigmoid with LReL to achieving the goal. Authors of \cite{wang2017improved} proposed the semi-supervised DBN to improve the structure of the DBN to achieve better performance.
 
 \textcolor{red}{In this project training, I reproduced these two papers. Since there is no suitable optimization method at present, in the DBN and experiment part, only the optimization methods of the published papers are involved.}
@@ -208,54 +210,72 @@ In the experiments in this paper, we used the drive end bearing accelerometer da
 
 In the classification of faults, we refer to \cite{guangquan2016fault} to classify faults into 10 categories. In this experiment, 500 data were used, that is, 50 data per category, and each data was extracted from 2048 points.
 
-First we use MATLAB to denoise the data, some of which are shown in the Fig. \ref{fig:pre}.
+First we use MATLAB to denoise the data, some of which are shown in the Fig. \ref{fig:pre}. As we can see, by noise reduction, a large amount of noise is filtered out so that features can be more easily resolved.
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\columnwidth]{pre.eps}
-	\caption{The above figure is the original data, and the figure below is the data after noise reduction. By noise reduction, a large amount of noise is filtered out so that features can be more easily resolved.}
+	\caption{The above figure is the original data, and the figure below is the data after noise reduction.}
 	\label{fig:pre}
 \end{figure}
 
-Then we use the sliding window to segment the noise reduction data and calculate its features according to Table \ref{tab:sf}. The feature distribution can be seen in Fig. \ref{fig:feature}.
+Then we use the sliding window to segment the noise reduction data and calculate its features according to Table \ref{tab:sf}. The feature distribution can be seen in Fig. \ref{fig:feature}. It can be seen that different fault types have distinct feature distributions, so we should extract features which can distinguish different fault types easily and classify them.
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\columnwidth]{feature.eps}
-	\caption{The figure includes a total of eighteen axes. In each axis, curves of different colors represent different fault type data. It can be seen that different fault types have distinct feature distributions, so we should extract features which can distinguish different fault types easily and classify them.}
+	\caption{The figure includes a total of eighteen axes. In each axis, curves of different colors represent different fault type data.}
 	\label{fig:feature}
 \end{figure}
+
+After the feature extraction, we can start the training of DBN. In this experiment, three RBMs are used, and the corresponding number of units per layer from bottom to top is 18, 15, 13, and 10. MomentumOptimizer is used in the back propagation. For each specific method, we run 10 times and average them for comparison.
+
+\subsection{Back propagation and DBN}
+First we compare the differences between DBN and traditional back propagation neural network. As we can see from Fig. \ref{fig:dbnVSbp}, there was no significant improvement in the accuracy rate of the back propagation neural network in the first 200 epoches. The accuracy rate is about the accuracy rate at random selection, i.e. 10\%. 
+
+When using DBN for the training, the initial accuracy rate can reach 20\%. And it converges faster, and the final accuracy rate is higher than the traditional back propagation neural network.
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\columnwidth]{dbnVSbp.eps}
-	\caption{Accurancy.}
+	\caption{Comparison of classification accuracy between traditional back propagation neural network and DBN in 1000 epoches.}
 	\label{fig:dbnVSbp}
 \end{figure}
+
+\subsection{Sigmoid and Isigmoid}
+Isigmoid proposed by Yi Qin \cite{YiThe} is capable to relax the vanishing gradient problem and converges faster then Sigmoid. As shown in Fig. \ref{fig:SigmoidVSIsigmoid}, since we did not use Isigmoid in RBM, their initial accuracy rates are similar. However, when using Isigmoid, the DBN can converge faster, and the final accuracy rate is higher than when using Sigmoid.
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\columnwidth]{SigmoidVSIsigmoid.eps}
-	\caption{Accurancy.}
+	\caption{Comparison of classification accuracy between DBN using Sigmoid and DBN using Isigmoid in 1000 epoches.}
 	\label{fig:SigmoidVSIsigmoid}
 \end{figure}
+
+\subsection{DBN and SSDBN}
+\textcolor{red}{Finally, we compare DBN and SSDBN. Since SSDBN has studied the sample labels at RBM, I thought that the initial classification accuracy rate should be higher than DBN, but the result is not the case. However, the final classification accuracy rate of SSDBN is higher than DBN.}
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\columnwidth]{SSDBN.eps}
-	\caption{Accurancy.}
+	\caption{Comparison of classification accuracy between DBN and SSDBN in 1000 epoches.}
 	\label{fig:SSDBN}
 \end{figure}
 
 \section{Conclusions}
-test
+This article is a summary of the project training. In this paper, two optimization methods of DBN are mainly involved, which are optimized from two aspects: activation function and structure. And it includes some noise reduction and feature extraction methods.
 
-test
+By using RBM, the DBN reduces the possibility of falling into the local minimum point due to the poor initial value of the traditional back propagation neural network. The network after pre-training using RBM has better initial weight, which makes neural network training more convenient and rapid, and has higher classification accuracy rate.
 
-test
+When using Sigmoid as the activation function, the problem of vanishing gradient easily occurs, and LReL cannot fully play its role in DBN. By combining them to form Isigmoid, the possibility of vanishing gradient problem is reduced, and the convergence is faster, and the advantages can be fully utilized in the DBN.
+
+SSDBN optimizes the DBN structure and introduces supervised learning into the DBN, which improves the classification accuracy. By combining SSDBN and Isigmoid, a higher classification accuracy rate can be achieved.
+
+\textcolor{red}{Unfortunately, in this training, I have not come up with a better optimization method to improve the initial classification accuracy rate, speed up the convergence or improve the final classification accuracy rate. In addition, due to the lack of data and poor computer performance, I am unable to successfully train large data sets such as MNIST to further demonstrate the optimization effects of Isigmoid and SSDBN. At the same time, taking the average of 10 experimental results may still cannot fully explain the performance difference of each method. Also, the parameter adjustment for each method may still cannot make the method achieve its optimal performance.}
+
+
 \section*{Acknowledgement}
-Acknowledgement is made for the measurements used in this work provided through data-acoustics.com Database.
-
+Acknowledgement is made for the measurements used in this work provided through data-acoustics.com Database. And I am grateful to senior apprentices and Ms. Huang for guiding me in the project training.
 
 
 

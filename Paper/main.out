@@ -5,4 +5,7 @@
 \BOOKMARK [2][-]{subsection.3.2}{Contrastive\040Divergence\040Algorithm}{section.3}% 5
 \BOOKMARK [2][-]{subsection.3.3}{Run\040DBN}{section.3}% 6
 \BOOKMARK [1][-]{section.4}{Experiments}{}% 7
-\BOOKMARK [1][-]{section.5}{Conclusions}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{Back\040propagation\040and\040DBN}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.2}{Sigmoid\040and\040Isigmoid}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.3}{DBN\040and\040SSDBN}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Conclusions}{}% 11

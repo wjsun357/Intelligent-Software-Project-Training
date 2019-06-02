@@ -5,22 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82cf8a35-c0e0-4bb2-bf33-1f915ba9ac0d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Code/draw.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/DBN.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/DBN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/SSDBN.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/SSDBN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/new_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/new_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/preprocessing.m" beforeDir="false" afterPath="$PROJECT_DIR$/Code/preprocessing.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Paper/main.aux" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/main.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paper/main.bbl" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/main.bbl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paper/main.blg" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/main.blg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Paper/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/main.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paper/main.out" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/main.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Paper/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/main.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Paper/main.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/main.synctex.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Paper/main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/main.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paper/ref.bib" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/ref.bib" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Report/6.9-DBN-孙武杰.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Report/6.9-DBN-孙武杰.docx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,8 +75,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Code/SSDBN.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-14">
-              <caret line="191" column="13" selection-start-line="191" selection-start-column="13" selection-end-line="191" selection-end-column="13" />
+            <state relative-caret-position="-200">
+              <caret line="199" column="45" selection-start-line="199" selection-start-column="28" selection-end-line="199" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -126,7 +116,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="630" />
     <option name="width" value="654" />
     <option name="height" value="729" />
@@ -321,7 +311,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="735" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="735" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18347895" />
@@ -400,8 +390,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Code/SSDBN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14">
-          <caret line="191" column="13" selection-start-line="191" selection-start-column="13" selection-end-line="191" selection-end-column="13" />
+        <state relative-caret-position="-200">
+          <caret line="199" column="45" selection-start-line="199" selection-start-column="28" selection-end-line="199" selection-end-column="45" />
         </state>
       </provider>
     </entry>
