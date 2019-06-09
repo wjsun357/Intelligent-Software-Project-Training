@@ -39,7 +39,7 @@
 \editor{Associate Editor: XXXXXXX}
 
 \abstract{
-It is important to judge whether the bearing is faulty and the possible fault location based on the acceleration of the bearing. However, the acceleration of the bearing is affected by noise, and it is difficult to rely on observation to find the law. This problem can be solved by using wavelet packet decomposition and deep belief network. In this paper, we use wavelet packet decomposition for noise reduction, and extract features from the noise-reduced data, and then use the deep belief network (DBN) for training. The experimental results show its effectiveness.\\
+It is important to judge whether the bearing is faulty and the possible fault location based on the acceleration of the bearing. However, the acceleration of the bearing is affected by noise, and it is difficult to rely on the observation to find the law. This problem can be solved by using wavelet packet decomposition and deep belief network. In this paper, we use wavelet packet decomposition for noise reduction, and extract features from the noise-reduced data, and then use the deep belief network (DBN) for training. The experimental results show its effectiveness.\\
 \textbf{Keywords:} Deep belief network, fault diagnosis, wavelet packet decomposition, feature extraction\\
 \textbf{Contact:} \href{mailto:wjsunscut@163.com}{wjsunscut@163.com}
 }
@@ -52,16 +52,16 @@ Mechanical bearing failures are common in daily life, and the economic and time 
 Since the accelerometer data is affected by noise, we need to perform noise reduction. Wavelet packet decomposition \cite{Wang2015Detection}\cite{Yongle2015Zero} is widely used for noise reduction and has achieved remarkable results.
 
 
-\textcolor{blue}{In recent years, deep learning, as an emerging method in the field of machine learning, has achieved brilliant results in the fields of image and speech recognition with its powerful capabilities. As one of the classical algorithms of deep learning, deep belief network \cite{Hinton2012A} successfully solves problems such as information retrieval, dimension reduction, fault classification and so on with its excellent feature extraction and training algorithms. The deep learning method has the following advantages compared with the traditional fault diagnosis methods: 1) Deep learning has powerful feature extraction ability, can automatically extract features from a large amount of data, and reduces the needs of the expert experience and signal processing technology. It reduces the uncertainty of feature extraction and fault diagnosis caused by human in traditional methods; 2) By establishing a deep model, it can well represent the complex mapping relationship between signal and health status, which is very suitable for big data background. The need for diagnostic analysis of diverse, nonlinear, and high-dimensional health monitoring data. Therefore, applying deep learning to the field of fault diagnosis has certain timeliness, practicability and versatility.}
+In recent years, deep learning, as an emerging method in the field of machine learning, has achieved brilliant results in the fields of image and speech recognition with its powerful capabilities. As one of the classical algorithms of deep learning, deep belief network \cite{Hinton2012A} successfully solves problems such as information retrieval, dimension reduction, fault classification and so on with its excellent feature extraction and training algorithms. The deep learning method has the following advantages compared with the traditional fault diagnosis methods: 1) Deep learning has powerful feature extraction ability, which can automatically extract features from a large amount of data, and reduces the needs of the expert experience and signal processing technology. It reduces the uncertainty of feature extraction and fault diagnosis caused by human in traditional methods; 2) By establishing a deep model, it can well represent the complex mapping relationship between signal and health status, which is very suitable for big data background. The need for diagnostic analysis of diverse, nonlinear, and high-dimensional health monitoring data. Therefore, applying deep learning to the field of fault diagnosis has certain timeliness, practicability and versatility.
 
-In addition, deep belief network have better scalability and mapping capabilities than other machine learning algorithms such as support vector machine \cite{vapnik1999overview} and backpropagation neural networks \cite{Kramer1990Diagnosis}.
+In addition, deep belief network has better scalability and mapping capabilities than other machine learning algorithms such as support vector machine \cite{vapnik1999overview} and back propagation neural network \cite{Kramer1990Diagnosis}.
 
-For the input data of the deep confidence network, some choose to use the time domain signal as the input \cite{guangquan2016fault}, and some choose to use the frequency domain signal as the input \cite{jia2016deep}. In this paper, we choose to extract features from the time domain and the frequency domain as the input to the deep belief network \cite{YiThe}.
+For the input data of the deep belief network, some choose to use the time domain signal as the input \cite{guangquan2016fault}, and some choose to use the frequency domain signal as the input \cite{jia2016deep}. In this paper, we choose to extract features from the time domain and the frequency domain as the input to the deep belief network \cite{YiThe}. Documents can be found on \href{https://github.com/wjsunscut/Intelligent-Software-Project-Training}{https://github.com/wjsunscut/Intelligent-Software-Project-Training}.
 
 \section{Wavelet Packet Decomposition and Feature Extraction}
-\textcolor{blue}{Wavelet packet decomposition uses an analysis tree to represent wavelet packets, that is, using multiple iterations of wavelet transform to analyze the details of the input signal. From the perspective of function theory, wavelet packet decomposition is to map the signal into the space formed by the wavelet packet basis function. From a signal processing point of view, it is to pass the signal through a series of filters with different center frequencies but the same bandwidth.}
+Wavelet packet decomposition uses an analysis tree to represent wavelet packets, that is, using multiple iterations of wavelet transform to analyze the details of the input signal. From the perspective of function theory, wavelet packet decomposition is to map the signal into the space formed by the wavelet packet basis function. From the perspective of signal processing, it is to pass the signal through a series of filters with different center frequencies but the same bandwidth.
 
-\textcolor{blue}{Since the wavelet decomposition \cite{Walczak1997Noise} is poor in frequency resolution in the high frequency band and time resolution in the low frequency band, wavelet packet is proposed to overcome this problem. It is a more sophisticated method of signal analysis that improves the time domain resolution of the signal. Fig. \ref{fig:wpd} shows the difference between them.}
+Since the wavelet decomposition \cite{Walczak1997Noise} is poor in frequency resolution in the high frequency band and time resolution in the low frequency band, wavelet packet is proposed to overcome this problem. It is a more sophisticated method of signal analysis that improves the time domain resolution of the signal. Fig. \ref{fig:wpd} shows the difference between them.
 
 \begin{figure}[htbp]
 	\centering
@@ -70,9 +70,9 @@ For the input data of the deep confidence network, some choose to use the time d
 	\label{fig:wpd}
 \end{figure}
 
-Since wavelet packet decomposition is not the main content of this article, it is not described too much. Wavelet packet decomposition can be easily implemented using functions such as wavedec, appcoef, detcoef, wbmpen, and wdencmp in MATLAB.
+Since wavelet packet decomposition is not the main content of this article, it is not described too much. Wavelet packet decomposition can be easily implemented using functions such as wavedec, appcoef, detcoef, wbmpen, and wdencmp in MATLAB (The specific code associated with the wavelet packet decomposition is in $preprocessing.m$ in the $Code$ folder).
 
-Through the wavelet packet decomposition, we obtained the noise reduction data. Next, we should extract features from the data. We need to set up a sliding window to read the data by its length. For example, if there are 50,000 data and the sliding window length is 1000 and the number of statistical features is 100, then we can get 50 data with each containing 100 parameters. Table \ref{tab:sf} shows how to calculate the statistical features. $N$ is the length of sliding window and $x_i$ is the $i^{th}$ acceleration data in the sliding window. More discriminating parameters can help to improve the accuracy of the classification. Limited to the length, we only provide 18 parameters related to the time domain in the paper.
+Through the wavelet packet decomposition, we obtained the noise-reduced data. Next, we should extract features from the data. We need to set a sliding window to read the data by its length. For example, if there are 50,000 data and the sliding window length is 1000 and the number of statistical features is 100, then we can get 50 data with each containing 100 parameters. Table \ref{tab:sf} shows how to calculate the statistical features. $N$ is the length of sliding window and $x_i$ is the $i^{th}$ accelerometer data in the sliding window. More discriminating parameters can help to improve the accuracy of the classification. Limited to the paper space, we only provide 18 statistical features related to the time domain in the paper.
 
 \begin{table}[htbp]
 	\centering
@@ -127,23 +127,23 @@ A common DBN model \cite{hinton2006fast} proposed by Hinton consists of a classi
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\columnwidth]{dbn.eps}
-	\caption{A simple DBN model with 2 RBMs.}
+	\caption{A simple DBN model with two RBMs and one classifier.}
 	\label{fig:dbn}
 \end{figure}
 
 \subsection{Restricted Boltzmann Machine}
-\textcolor{blue}{RBM \cite{hinton1986learning} has a visible layer, a hidden layer, but there is no connection within the layer, and the layer is fully connected between the layers, and the node variable takes a value of 0 or 1. It removes the intra-layer connection of the Boltzmann machine (BM), which greatly reduces the amount of calculation. The structure of the RBM is shown in Fig. \ref{fig:rbm}. }
+RBM \cite{hinton1986learning} has a visible layer, a hidden layer, but there is no connection within the layer, and is fully connected between the layers. And each layer unit takes a value of 0 or 1. It removes the intra-layer connection of the Boltzmann machine (BM), which greatly reduces the amount of calculation. The structure of the RBM is shown in Fig. \ref{fig:rbm}.
 		
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\columnwidth]{rbm.eps}
-	\caption{A simple RBM model.}
+	\caption{A simple RBM model with three hidden layer units and five visible layer units.}
 	\label{fig:rbm}
 \end{figure}
 	
-\textcolor{blue}{In RBM, the activation conditions of each hidden layer units are independent when the visible layer units' state is given. Similarly, the activation conditions of the visible layer units are independent when the hidden layer units' state is given.}
+In RBM, the activation conditions of each hidden layer units are independent when the visible layer units' state is given. Similarly, the activation conditions of the visible layer units are independent when the hidden layer units' state is given.
 
-\textcolor{blue}{The essence of RBM is a useful tool for unsupervised learning, which can be used for dimensionality reduction, feature extraction, autoencoder, deep belief network, and so on.}
+The essence of RBM is a useful tool for unsupervised learning, which can be used for dimensionality reduction, feature extraction, autoencoder, deep belief network, and so on.
 
 Next we will formulate the formula according to \cite{zhangchunxia}. Assume the RBM has $n$ visible layer units and $m$ hidden layer units. We use the vectors $\mathbf{v}$ and $\mathbf{h}$ to represent the states of its visible layer and hidden layer where $v_i$ is the $i^{th}$ visible layer unit and $h_j$ is the $j^{th}$ hidden layer unit. Therefore, for a given state $(\mathbf{v}, \mathbf{h})$, the energy of the RBM can be calculated as
 \begin{equation}
@@ -169,7 +169,7 @@ P\left(v_{i}=1 | \mathbf{h}, \boldsymbol{\theta}\right)=\sigma\left(a_{i}+\sum_{
 \end{equation}
 where $\sigma(x)=1/(1+e^{-x})$.
 \subsection{Contrastive Divergence Algorithm}
-The purpose of learning RBM is to find the value of $\boldsymbol{\theta}$ to fit the given training data. However, obtaining results based on methods such as Gibbs sampling is cumbersome and time consuming \cite{zhangchunxia}. Hinton proposed a algorithm called Contrastive Divergence (CD) \cite{Hinton2002Training} which is easy to calculate. Algorithm is shown as Alg. \ref{alg:cd}.
+The purpose of using RBM is to find the suitable value of $\boldsymbol{\theta}$ to fit the given training data. However, obtaining results based on methods such as Gibbs sampling is cumbersome and time consuming \cite{zhangchunxia}. Fortunately, Hinton proposed an algorithm called Contrastive Divergence (CD) \cite{Hinton2002Training} which is easy to calculate. Algorithm is shown as Alg. \ref{alg:cd}. By using the CD algorithm, the suitable $\boldsymbol{\theta}$ value can be calculated very conveniently and quickly.
 \begin{algorithm}
 	\caption{Contrastive Divergence}
 	\label{alg:cd}
@@ -197,20 +197,73 @@ The purpose of learning RBM is to find the value of $\boldsymbol{\theta}$ to fit
 		\ENDFOR
 	\end{algorithmic} 
 \end{algorithm} 
-\subsection{Run DBN}
-Now we construct DBN as shown in Fig. \ref{fig:dbn}. First, we input the data into RBM0 and run CD algorithm. Then we should consider the output of RBM0 as the input of RBM1 and run CD algorithm. After that, we can see the network as back propagation neural network and train it. The $\boldsymbol{\theta}$ trained by RBMs should be the initial value of the back propagation neural network.
+\subsection{Train DBN}
+Now we construct DBN as shown in Fig. \ref{fig:dbn}. First, we input the data into RBM0 and run CD algorithm. Then we should consider the output of RBM0 as the input of RBM1 and run CD algorithm. After that, we can see the whole network as back propagation neural network and train it. The $\boldsymbol{\theta}$ trained by RBMs should be the initial value of the back propagation neural network.
 
-\textcolor{blue}{So what is the advantage of DBN compared to the traditional back-propagation neural network? In my understanding, one problem with traditional multi-layer perception or neural networks is that the back propagation may always result in local minima. Because when the error surface contains multiple grooves, when the gradient descent is used, the deepest groove is not found. The deep belief network can solve the problem of local minimum through additional pre-training, i.e. RBM. Pre-training is done before back propagation so that the optimal point is not so far. Then we can slowly approach the optimal point through back propagation.}
+So what is the advantage of DBN compared to the traditional back propagation neural network? One problem with traditional multi-layer perception or neural network is that the back propagation may always result in local minima. Because when the error surface contains multiple grooves, the deepest groove may cannot be found when using the gradient descent. The deep belief network can solve the problem of local minimum through additional pre-training, i.e. RBM. Pre-training is done before back propagation so that the optimal point is not so far from the initial point. Then we can slowly approach the optimal point through back propagation.
 
-This is the most basic DBN model and we can optimize it for better classification. In \cite{YiThe}, the authors improved the activation function by combining Sigmoid with LReL to achieving the goal. Authors of \cite{wang2017improved} proposed the semi-supervised DBN to improve the structure of the DBN to achieve better performance.
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\columnwidth]{surface.eps}
+	\caption{Error surface with multiple grooves. The yellow pentagram indicates the local minimum point, and the red pentagram indicates the global minimum point. The yellow dot indicates the starting point when RBM is not used. The red dot indicates the starting point when RBM is used. The yellow and red curves indicate the gradient descent route. Obviously, the red starting point is more helpful for training to get a better classification model.}
+	\label{fig:surface}
+\end{figure}
 
-\textcolor{red}{In this project training, I reproduced these two papers. Since there is no suitable optimization method at present, in the DBN and experiment part, only the optimization methods of the published papers are involved.}
+This is the most basic DBN model and we can optimize it for better classification accuracy and performance. In \cite{YiThe}, the authors improved the activation function by combining Sigmoid with LReL to achieve the goal. Authors of \cite{wang2017improved} proposed the semi-supervised DBN (SSDBN) to improve the structure of the DBN to achieve better performance.
+
+\textcolor{red}{In this project training, I reproduced these two papers. Since there is no suitable optimization method at present, in the DBN and experiment part, only the optimization methods of the published papers are involved. In addition, I found some problems in the process of reading and reproducing the papers, which I will explain and correct below.}
+\subsection{Correction of Problems}
+The $15^{th}$ formula in \cite{YiThe} is written incorrectly and should be changed to
+
+\begin{equation}
+\nonumber
+f_{I}(x)=\left\{\begin{array}{ll}{\alpha(x-a)+\operatorname{Sigmoid}(a)} & {x>=a} \\ {\operatorname{Sigmoid}(x)} & {-a<x<a} \\ {\alpha(x+a)+\operatorname{Sigmoid}(-a)} & {x<=-a}\end{array}\right.
+\end{equation}
+
+The $17^{th}$ formula in \cite{wang2017improved} is written incorrectly and should be changed to
+\begin{equation}
+\nonumber
+\begin{aligned} E(\boldsymbol{v}, \boldsymbol{u}, \boldsymbol{h} / \boldsymbol{\psi})=&-\sum_{i=1}^{m} a_{i} v_{i}-\sum_{j=1}^{n} b_{j} h_{j}-\sum_{i=1}^{m} \sum_{j=1}^{n} v_{i} w_{i j} h_{j} \\ &-\lambda \sum_{k=1}^{m} c_{k} u_{k}-\lambda \sum_{k=1}^{m} \sum_{j=1}^{n} u_{k} p_{k j} h_{j} \end{aligned}
+\end{equation}
+and the $18^{th}$ should be changed to
+\begin{equation}
+\nonumber
+P\left(h_{j} / \boldsymbol{v}, \boldsymbol{u}, \psi\right)=\sigma\left(\sum_{i=1}^{m} v_{i} w_{i j}+\lambda \sum_{k}^{m} u_{k}p_{kj}+b_{j}\right)
+\end{equation}
+
+In addition, the corresponding derivatives are not given in the paper, so we give the results here. The specific derivation process is in the report.
+\begin{equation}
+\begin{aligned} 
+\frac{\partial \log P(\boldsymbol{v}, \boldsymbol{u}, \boldsymbol{h})}{\partial w_{ij}}=&P(h_j=1|\boldsymbol{v^{(0)}},\boldsymbol{u^{(0)}})v_i^{(0)}\\&-P(h_j=1|\boldsymbol{v^{(1)}},\boldsymbol{u^{(1)}})v_i^{(1)}
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+\begin{aligned} 
+\frac{\partial \log P(\boldsymbol{v}, \boldsymbol{u}, \boldsymbol{h})}{\partial p_{kj}}=&\lambda P(h_j=1|\boldsymbol{v^{(0)}},\boldsymbol{u^{(0)}})u_k^{(0)}\\&-\lambda P(h_j=1|\boldsymbol{v^{(1)}},\boldsymbol{u^{(1)}})u_k^{(1)}
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+\frac{\partial \log P(\boldsymbol{v}, \boldsymbol{u}, \boldsymbol{h})}{\partial a_{i}}=v_i^{(0)}-v_i^{(1)}
+\end{equation}
+
+\begin{equation}
+\frac{\partial \log P(\boldsymbol{v}, \boldsymbol{u}, \boldsymbol{h})}{\partial c_{k}}=\lambda u_k^{(0)}-\lambda u_k^{(1)}
+\end{equation}
+
+\begin{equation}
+\begin{aligned} 
+\frac{\partial \log P(\boldsymbol{v}, \boldsymbol{u}, \boldsymbol{h})}{\partial b_{j}}=&P(h_j=1|\boldsymbol{v^{(0)}},\boldsymbol{u^{(0)}})\\&-P(h_j=1|\boldsymbol{v^{(1)}},\boldsymbol{u^{(1)}})
+\end{aligned}
+\end{equation}
+
 \section{Experiments}
-In the experiments in this paper, we used the drive end bearing accelerometer data provided by the Electrical Engineering Laboratory of Case Western Reserve University \cite{data}. \textcolor{red}{Since the content only covers the recurring part, the main goal is to compare whether the various methods speed up the convergence or improve the classification accuracy rate when the parameters are basically consistent, instead of finding the highest classification accuracy rate.}
+In the experiments in this paper, we used the drive end bearing accelerometer data provided by the Electrical Engineering Laboratory of Case Western Reserve University \cite{data}. \textcolor{red}{Since the content only covers the reproducing part, the main goal is to compare whether the various methods speed up the convergence or improve the classification accuracy rate when the parameters are basically consistent, instead of finding the highest classification accuracy rate.}
 
-In the classification of faults, we refer to \cite{guangquan2016fault} to classify faults into 10 categories. In this experiment, 500 data were used, that is, 50 data per category, and each data was extracted from 2048 points.
+In the classification of faults, we refer to \cite{guangquan2016fault} to classify faults into 10 categories. In this experiment, 500 data were used, that is, 50 data per category, and each data was extracted from 2048 continuous points to form 18 statistical features.
 
-First we use MATLAB to denoise the data, some of which are shown in the Fig. \ref{fig:pre}. As we can see, by noise reduction, a large amount of noise is filtered out so that features can be more easily resolved.
+First we use MATLAB to denoise the data, and the waveform comparison before and after noise reduction is shown in the Fig. \ref{fig:pre}. As we can see, by noise reduction, a large amount of noise is filtered out so that features can be more easily resolved.
 
 \begin{figure}[htbp]
 	\centering
@@ -219,7 +272,7 @@ First we use MATLAB to denoise the data, some of which are shown in the Fig. \re
 	\label{fig:pre}
 \end{figure}
 
-Then we use the sliding window to segment the noise reduction data and calculate its features according to Table \ref{tab:sf}. The feature distribution can be seen in Fig. \ref{fig:feature}. It can be seen that different fault types have distinct feature distributions, so we should extract features which can distinguish different fault types easily and classify them.
+Then we use the sliding window to segment the noise reduction data and calculate its features according to Table \ref{tab:sf}. The feature distribution can be seen in Fig. \ref{fig:feature}. It can be seen that different fault types have distinct feature distributions, so we should extract and use features which can distinguish different fault types easily and classify them.
 
 \begin{figure}[htbp]
 	\centering
@@ -228,9 +281,9 @@ Then we use the sliding window to segment the noise reduction data and calculate
 	\label{fig:feature}
 \end{figure}
 
-After the feature extraction, we can start the training of DBN. In this experiment, three RBMs are used, and the corresponding number of units per layer from bottom to top is 18, 15, 13, and 10. MomentumOptimizer is used in the back propagation. For each specific method, we run 10 times and average them for comparison.
+After the feature extraction, we can start the training of DBN. In this experiment, three RBMs are used, and the corresponding number of units per layer from bottom to top is 18, 15, 13, and 10. And we should add a classifier which has 10 units at the end of the DBN and compare the result with the label to determine the correctness. MomentumOptimizer is used in the back propagation. For each specific method, we run 10 times and average them for comparison.
 
-\subsection{Back propagation and DBN}
+\subsection{Back Propagation and DBN}
 First we compare the differences between DBN and traditional back propagation neural network. As we can see from Fig. \ref{fig:dbnVSbp}, there was no significant improvement in the accuracy rate of the back propagation neural network in the first 200 epoches. The accuracy rate is about the accuracy rate at random selection, i.e. 10\%. 
 
 When using DBN for the training, the initial accuracy rate can reach 20\%. And it converges faster, and the final accuracy rate is higher than the traditional back propagation neural network.
@@ -243,7 +296,7 @@ When using DBN for the training, the initial accuracy rate can reach 20\%. And i
 \end{figure}
 
 \subsection{Sigmoid and Isigmoid}
-Isigmoid proposed by Yi Qin \cite{YiThe} is capable to relax the vanishing gradient problem and converges faster then Sigmoid. As shown in Fig. \ref{fig:SigmoidVSIsigmoid}, since we did not use Isigmoid in RBM, their initial accuracy rates are similar. However, when using Isigmoid, the DBN can converge faster, and the final accuracy rate is higher than when using Sigmoid.
+Isigmoid proposed by Yi Qin \cite{YiThe} is capable to relax the vanishing gradient problem and converges faster then Sigmoid. As shown in Fig. \ref{fig:SigmoidVSIsigmoid}, since we did not use Isigmoid in RBM (pre-training), their initial accuracy rates are similar. However, when using Isigmoid in the back propagation, the DBN can converge faster, and the final accuracy rate is higher than when using Sigmoid.
 
 \begin{figure}[htbp]
 	\centering
@@ -253,7 +306,7 @@ Isigmoid proposed by Yi Qin \cite{YiThe} is capable to relax the vanishing gradi
 \end{figure}
 
 \subsection{DBN and SSDBN}
-\textcolor{red}{Finally, we compare DBN and SSDBN. Since SSDBN has studied the sample labels at RBM, I thought that the initial classification accuracy rate should be higher than DBN, but the result is not the case. However, the final classification accuracy rate of SSDBN is higher than DBN.}
+\textcolor{red}{Finally, we compare DBN with SSDBN. Since SSDBN has studied the sample labels at RBM, I thought that the initial classification accuracy rate should be higher than DBN, but the result is not the case. However, the final classification accuracy rate of SSDBN is higher than DBN.}
 
 \begin{figure}[htbp]
 	\centering
@@ -263,9 +316,9 @@ Isigmoid proposed by Yi Qin \cite{YiThe} is capable to relax the vanishing gradi
 \end{figure}
 
 \section{Conclusions}
-This article is a summary of the project training. In this paper, two optimization methods of DBN are mainly involved, which are optimized from two aspects: activation function and structure. And it includes some noise reduction and feature extraction methods.
+This paper is a summary of the project training. In this paper, two optimization methods of DBN are mainly involved, which are optimized from two aspects: activation function and structure. The paper also includes some noise reduction and feature extraction methods.
 
-By using RBM, the DBN reduces the possibility of falling into the local minimum point due to the poor initial value of the traditional back propagation neural network. The network after pre-training using RBM has better initial weight, which makes neural network training more convenient and rapid, and has higher classification accuracy rate.
+By using RBM, the DBN reduces the possibility of falling into the local minimum point due to the poor initial value when using the traditional back propagation neural network. The network after pre-training using RBM has better initial weight and bias, which makes neural network training more rapid, and has higher classification accuracy rate.
 
 When using Sigmoid as the activation function, the problem of vanishing gradient easily occurs, and LReL cannot fully play its role in DBN. By combining them to form Isigmoid, the possibility of vanishing gradient problem is reduced, and the convergence is faster, and the advantages can be fully utilized in the DBN.
 

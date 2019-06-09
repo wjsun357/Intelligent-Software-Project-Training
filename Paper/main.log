@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.10.15)  2 JUN 2019 22:25
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.10.15)  9 JUN 2019 20:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -526,11 +526,6 @@ Underfull \hbox (badness 1062) in paragraph at lines 52--53
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Underfull \hbox (badness 2376) in paragraph at lines 57--58
-\LY1/ptm/m/n/10 algorithms such as support vector machine [[]] and
- []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -560,25 +555,27 @@ LaTeX Font Warning: Font shape `LY1/phb/bx/n' undefined
 
 File: dbn.eps Graphic file (type eps)
 <dbn.eps>
+
+Underfull \hbox (badness 1057) in paragraph at lines 135--136
+\LY1/ptm/m/n/10 machine (BM), which greatly reduces the amount of
+ []
+
 File: rbm.eps Graphic file (type eps)
 <rbm.eps>
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 148.
 
 LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <8> not available
-(Font)              Font shape `LY1/phv/b/n' tried instead on input line 145.
+(Font)              Font shape `LY1/phv/b/n' tried instead on input line 149.
 LaTeX Font Info:    Font shape `LY1/phv/m/it' in size <8> not available
-(Font)              Font shape `LY1/phv/m/sl' tried instead on input line 145.
+(Font)              Font shape `LY1/phv/m/sl' tried instead on input line 149.
 
 Overfull \hbox (252.0pt too wide) has occurred while \output is active
 [][] 
  []
 
 [2]
-
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 148.
-
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <7.5> not available
 (Font)              size <7> substituted on input line 152.
@@ -596,38 +593,44 @@ Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 174.
 LaTeX Font Info:    Font shape `LY1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `LY1/ptm/b/n' tried instead on input line 174.
-
-Underfull \hbox (badness 2253) in paragraph at lines 203--204
-[][]\LY1/ptm/m/n/10 So what is the advantage of DBN compared to
- []
-
-
-Underfull \hbox (badness 6961) in paragraph at lines 209--210
-\LY1/ptm/m/n/10 In the experiments in this paper, we used the
- []
-
-
-Underfull \hbox (badness 2662) in paragraph at lines 209--210
-\LY1/ptm/m/n/10 University [[]]. []Since the content only covers the
- []
-
-
-Underfull \hbox (badness 2080) in paragraph at lines 209--210
-\LY1/ptm/m/n/10 the classification accuracy rate when the parameters
- []
-
-File: pre.eps Graphic file (type eps)
-<pre.eps>
+File: surface.eps Graphic file (type eps)
+<surface.eps>
 
 Overfull \hbox (252.0pt too wide) has occurred while \output is active
 [][] 
  []
 
 [3]
+Overfull \hbox (2.3937pt too wide) detected at line 227
+[][][]
+ []
+
+
+Underfull \hbox (badness 6961) in paragraph at lines 262--263
+\LY1/ptm/m/n/10 In the experiments in this paper, we used the
+ []
+
+
+Underfull \hbox (badness 2662) in paragraph at lines 262--263
+\LY1/ptm/m/n/10 University [[]]. []Since the content only covers the
+ []
+
+
+Underfull \hbox (badness 2080) in paragraph at lines 262--263
+\LY1/ptm/m/n/10 the classification accuracy rate when the parameters
+ []
+
+File: pre.eps Graphic file (type eps)
+<pre.eps>
 File: feature.eps Graphic file (type eps)
 <feature.eps>
 
-Underfull \hbox (badness 1371) in paragraph at lines 234--235
+Overfull \hbox (252.0pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[4]
+Underfull \hbox (badness 1371) in paragraph at lines 287--288
 \LY1/ptm/m/n/10 First we compare the differences between DBN and
  []
 
@@ -638,16 +641,16 @@ File: SigmoidVSIsigmoid.eps Graphic file (type eps)
 File: SSDBN.eps Graphic file (type eps)
 <SSDBN.eps>
 
-Overfull \hbox (252.0pt too wide) has occurred while \output is active
-[][] 
- []
-
-[4]
-Underfull \hbox (badness 3271) in paragraph at lines 272--273
+Underfull \hbox (badness 3271) in paragraph at lines 325--326
 \LY1/ptm/m/n/10 supervised learning into the DBN, which improves
  []
 
 (./main.bbl
+Overfull \hbox (252.0pt too wide) has occurred while \output is active
+[][] 
+ []
+
+[5]
 Underfull \hbox (badness 5578) in paragraph at lines 10--14
 \LY1/ptm/m/n/10 and Hui Peng.  Zero drift compensation of
  []
@@ -709,26 +712,35 @@ Underfull \hbox (badness 4013) in paragraph at lines 81--84
 \LY1/ptm/m/n/10 by minimizing contrastive divergence.  \LY1/ptm/m/it/10 Neural
  []
 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 )
 - LAST -
-Extra skip:2.12001pt
-Left:701.0pt/2.17pt
-Right:699.0pt/2.04999pt
-Output:701.5pt
+Extra skip:17.72pt
+Left:417.0pt/2.17pt
+Right:399.40001pt/2.04999pt
+Output:417.7pt
 
 Overfull \hbox (252.0pt too wide) has occurred while \output is active
 [][] 
  []
 
-[5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 286.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 286.
+[6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 339.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 339.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 286.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 286.
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 2FF38D271C4EC49199F95B2708572FE6.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 339.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 339.
 
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: 2A0B1812F17C004C8B35483E2BA0560F
+(rerunfilecheck)             After:  1924589EB1D253FCAD424525A8906DC8.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.75pt have occurred.
@@ -738,12 +750,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 10812 strings out of 494895
- 146264 string characters out of 6176371
- 238900 words of memory out of 5000000
- 14556 multiletter control sequences out of 15000+600000
+ 10816 strings out of 494895
+ 146323 string characters out of 6176371
+ 238254 words of memory out of 5000000
+ 14559 multiletter control sequences out of 15000+600000
  55454 words of font info for 100 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 62i,12n,55p,1323b,568s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 69i,12n,62p,1311b,568s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (5 pages).
+Output written on main.pdf (6 pages).
