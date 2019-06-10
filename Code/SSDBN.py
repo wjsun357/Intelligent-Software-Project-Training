@@ -103,6 +103,7 @@ class SSRBM(object):
         batch2 = np.transpose(np.matmul(np.sqrt(Sigma), np.transpose(U[0:self._batchsize, 0:X.shape[1]])))
 
         # 循环
+        error_array = []
         with tf.Session() as sess:
             sess.run(tf.global_variables_initializer())
             for epoch in range(self._epoches):
@@ -124,11 +125,13 @@ class SSRBM(object):
                 X_ = np.transpose(np.matmul(np.sqrt(Sigma), np.transpose(U[0:X.shape[0], 0:X.shape[1]])))
                 error = sess.run(err, feed_dict={v0: X, u0: X_, _w: cur_w, _vb: cur_vb, _hb: cur_hb, _ub: cur_ub, _p: cur_p})
                 print('Epoch: %d' % epoch, 'reconstruction error: %f' % error)
+                error_array.append(error)
             self.w = prv_w
             self.hb = prv_hb
             self.vb = prv_vb
             self.ub = prv_ub
             self.p = prv_p
+        return error_array
 
     def rbm_outpt(self, X1, X2):
         input_X1 = tf.constant(X1)
@@ -188,8 +191,8 @@ class NN(object):
             _w[i] = tf.Variable(self.w_list[i])
             _b[i] = tf.Variable(self.b_list[i])
         for i in range(1, len(self._sizes) + 2):
-            #_a[i] = tf.nn.sigmoid(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
-            _a[i] = isigmoid.my_sigmoid_tf(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
+            _a[i] = tf.nn.sigmoid(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
+            #_a[i] = isigmoid.my_sigmoid_tf(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
 
         # _a[-1] = tf.nn.softmax(_a[-1])
         # cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=_a[-1], labels=y))

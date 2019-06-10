@@ -261,7 +261,7 @@ In addition, the corresponding derivatives are not given in the paper, so we giv
 \section{Experiments}
 In the experiments in this paper, we used the drive end bearing accelerometer data provided by the Electrical Engineering Laboratory of Case Western Reserve University \cite{data}. \textcolor{red}{Since the content only covers the reproducing part, the main goal is to compare whether the various methods speed up the convergence or improve the classification accuracy rate when the parameters are basically consistent, instead of finding the highest classification accuracy rate.}
 
-In the classification of faults, we refer to \cite{guangquan2016fault} to classify faults into 10 categories. In this experiment, 500 data were used, that is, 50 data per category, and each data was extracted from 2048 continuous points to form 18 statistical features.
+In the classification of faults, we refer to \cite{guangquan2016fault} to classify faults into 10 categories. In this experiment, 1500 data were used, that is, 150 data per category, and each data was extracted from 2048 continuous points to form statistical features.
 
 First we use MATLAB to denoise the data, and the waveform comparison before and after noise reduction is shown in the Fig. \ref{fig:pre}. As we can see, by noise reduction, a large amount of noise is filtered out so that features can be more easily resolved.
 
@@ -272,16 +272,16 @@ First we use MATLAB to denoise the data, and the waveform comparison before and 
 	\label{fig:pre}
 \end{figure}
 
-Then we use the sliding window to segment the noise reduction data and calculate its features according to Table \ref{tab:sf}. The feature distribution can be seen in Fig. \ref{fig:feature}. It can be seen that different fault types have distinct feature distributions, so we should extract and use features which can distinguish different fault types easily and classify them.
+Then we use the sliding window to segment the noise reduction data and calculate its features according to Table \ref{tab:sf}. During the experiment, we found that noise reduction has the potential to remove useful signals, so when calculating features, we separately calculate the features of the original data and the noise-reduced data, and combine them together. The feature distribution can be seen in Fig. \ref{fig:feature}. It can be seen that different fault types have distinct feature distributions, so we should extract and use features which can distinguish different fault types easily and classify them.
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\columnwidth]{feature.eps}
-	\caption{The figure includes a total of eighteen axes. In each axis, curves of different colors represent different fault type data.}
+	\caption{The figure includes a total of 36 axes. In each axis, curves of different colors represent different fault type data.}
 	\label{fig:feature}
 \end{figure}
 
-After the feature extraction, we can start the training of DBN. In this experiment, three RBMs are used, and the corresponding number of units per layer from bottom to top is 18, 15, 13, and 10. And we should add a classifier which has 10 units at the end of the DBN and compare the result with the label to determine the correctness. MomentumOptimizer is used in the back propagation. For each specific method, we run 10 times and average them for comparison.
+After the feature extraction, we can start the training of DBN. In this experiment, three RBMs are used, and the corresponding number of units per layer from bottom to top is 36, 18, 13, and 10. And we should add a classifier which has 10 units at the end of the DBN and compare the result with the label to determine the correctness. MomentumOptimizer is used in the back propagation. For each specific method, we run 10 times and average them for comparison. In the next three comparisons, the black curves always represents the method with theoretically better performance.
 
 \subsection{Back Propagation and DBN}
 First we compare the differences between DBN and traditional back propagation neural network. As we can see from Fig. \ref{fig:dbnVSbp}, there was no significant improvement in the accuracy rate of the back propagation neural network in the first 200 epoches. The accuracy rate is about the accuracy rate at random selection, i.e. 10\%. 
@@ -291,7 +291,7 @@ When using DBN for the training, the initial accuracy rate can reach 20\%. And i
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\columnwidth]{dbnVSbp.eps}
-	\caption{Comparison of classification accuracy between traditional back propagation neural network and DBN in 1500 epoches.}
+	\caption{Comparison of classification accuracy between traditional back propagation neural network and DBN in 1000 epoches.}
 	\label{fig:dbnVSbp}
 \end{figure}
 
@@ -306,13 +306,29 @@ Isigmoid proposed by Yi Qin \cite{YiThe} is capable to relax the vanishing gradi
 \end{figure}
 
 \subsection{DBN and SSDBN}
-\textcolor{red}{Finally, we compare DBN with SSDBN. Since SSDBN has studied the sample labels at RBM, I thought that the initial classification accuracy rate should be higher than DBN, but the result is not the case. However, SSDBN converges faster and the final classification accuracy rate of SSDBN is higher than DBN.}
+\textcolor{red}{Finally, we compare DBN with SSDBN. Since SSDBN has studied the sample labels at RBM, I thought that the initial classification accuracy rate should be higher than DBN, but the result is not the case. And DBN seems to converge faseter than SSDBN. However, the final classification accuracy rate of SSDBN is slightly higher than DBN.}
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\columnwidth]{SSDBN.eps}
 	\caption{Comparison of classification accuracy between DBN and SSDBN in 1000 epoches.}
 	\label{fig:SSDBN}
+\end{figure}
+
+In order to find out whether SSDBN really improves the performance of DBN, we compare the reconstruction error of each RBM. The reconstruction error can be calculated as 
+
+\begin{equation}
+R-Error = \sum_{s=1}^{N}\sum_{i=1}^{m}(v_{s,i}^{(0)}-v_{s,i}^{(1)})^2
+\end{equation}
+where $N$ is the number of input data and $m$ is the number of visible layer units.
+
+The result is shown as Fig. \ref{fig:RBM012}. As we can see, in the first two RBMs, the SSRBM does reduce the reconstruction error.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\columnwidth]{RBM012.eps}
+	\caption{Comparison of reconstruction error between DBN and SSDBN.}
+	\label{fig:RBM012}
 \end{figure}
 
 \section{Conclusions}

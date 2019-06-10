@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-plt.tick_params(labelsize=23)
+plt.tick_params(labelsize=20)
 tr_normal_sigmoid = np.load('./result/tr_normal_sigmoid.npy')
 te_normal_sigmoid = np.load('./result/te_normal_sigmoid.npy')
 tr_normal_isigmoid = np.load('./result/tr_normal_isigmoid.npy')
@@ -13,17 +13,33 @@ tr_SSDBN_sigmoid = np.load('./result/tr_SSDBN_sigmoid.npy')
 te_SSDBN_sigmoid = np.load('./result/te_SSDBN_sigmoid.npy')
 tr_SSDBN_isigmoid = np.load('./result/tr_SSDBN_isigmoid.npy')
 te_SSDBN_isigmoid = np.load('./result/te_SSDBN_isigmoid.npy')
-#'''
-label = ['Back propagation (Training, Sigmoid)', 'Back propagation (Testing, Sigmoid)', 'DBN (Trainging, Sigmoid)', 'DBN (Testing, Sigmoid)']
-plt.plot(range(0, 1500, 20), tr_normal_sigmoid[0:1500:20], color='r')
-plt.plot(range(0, 1500, 20), te_normal_sigmoid[0:1500:20], color='r', marker='x')
-plt.plot(range(0, 1500, 20), tr_DBN_sigmoid[0:1500:20], color='k')
-plt.plot(range(0, 1500, 20), te_DBN_sigmoid[0:1500:20], color='k', marker='x')
+error_DBN = np.load('./result/error_DBN.npy')
+error_SSDBN = np.load('./result/error_SSDBN.npy')
+'''
+label = ['DBN (Training, Sigmoid)', 'DBN (Testing, Sigmoid)', 'SSDBN (Training, Sigmoid)', 'SSDBN (Testing, Sigmoid)']
+plt.plot(range(0, 1000, 10), tr_DBN_sigmoid[0:1000:10], color='r')
+plt.plot(range(0, 1000, 10), te_DBN_sigmoid[0:1000:10], color='r', marker='x')
+plt.plot(range(0, 1000, 10), tr_SSDBN_sigmoid[0:1000:10], color='k')
+plt.plot(range(0, 1000, 10), te_SSDBN_sigmoid[0:1000:10], color='k', marker='x')
 plt.legend(label)
 leg = plt.gca().get_legend()
 ltext = leg.get_texts()
-plt.setp(ltext, fontsize=30)
-plt.xlabel('Epoch', fontsize=30)
-plt.ylabel('Accuracy Rate', fontsize=30)
+plt.setp(ltext, fontsize=20)
+plt.xlabel('Epoch', fontsize=20)
+plt.ylabel('Accuracy Rate', fontsize=20)
 plt.show()
-#'''
+'''
+label = ['DBN (RBM0)', 'DBN (RBM1)', 'DBN (RBM2)', 'SSDBN (RBM0)', 'SSDBN (RBM1)', 'SSDBN (RBM2)']
+plt.plot(range(0, 100, 5), error_DBN[0:100:5], color='r')
+plt.plot(range(0, 100, 5), error_DBN[100:200:5], color='r', marker='x')
+plt.plot(range(0, 100, 5), error_DBN[200:300:5], color='r', marker='|')
+plt.plot(range(0, 100, 5), error_SSDBN[0:100:5], color='k')
+plt.plot(range(0, 100, 5), error_SSDBN[100:200:5], color='k', marker='x')
+plt.plot(range(0, 100, 5), error_SSDBN[200:300:5], color='k', marker='|')
+plt.legend(label)
+leg = plt.gca().get_legend()
+ltext = leg.get_texts()
+plt.setp(ltext, fontsize=20)
+plt.xlabel('Epoch', fontsize=20)
+plt.ylabel('Error', fontsize=20)
+plt.show()

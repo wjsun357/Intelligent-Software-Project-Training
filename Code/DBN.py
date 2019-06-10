@@ -79,6 +79,7 @@ class RBM(object):
         err = tf.reduce_sum(tf.square(v0 - v1))
 
         # 循环
+        error_array = []
         with tf.Session() as sess:
             sess.run(tf.global_variables_initializer())
             for epoch in range(self._epoches):
@@ -95,9 +96,11 @@ class RBM(object):
                     prv_vb = cur_vb
                 error = sess.run(err, feed_dict={v0: X, _w: cur_w, _vb: cur_vb, _hb: cur_hb})
                 print('Epoch: %d' % epoch, 'reconstruction error: %f' % error)
+                error_array.append(error)
             self.w = prv_w
             self.hb = prv_hb
             self.vb = prv_vb
+        return error_array
 
     def rbm_outpt(self, X):
         input_X = tf.constant(X)
