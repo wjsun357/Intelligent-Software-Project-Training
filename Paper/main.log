@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.10.15)  10 JUN 2019 17:04
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.10.15)  10 JUN 2019 20:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,11 +6,7 @@ entering extended mode
 (./main.tex
 LaTeX2e <2018-04-01> patch level 2
 Babel <3.18> and hyphenation patterns for 6 language(s) loaded.
-(./modified.cls
-
-LaTeX Warning: You have requested document class `modified',
-               but the document class provides `bioinfo'.
-
+(./bioinfo.cls
 Document Class: bioinfo 2003/02/08 0.1
 (c:/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2018/04/06 v1.3b Input encoding file
@@ -379,29 +375,29 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for LY1/ptm/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-Package crop Info: using `pdftex' graphics driver on input line 26.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for LY1/ptm/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+Package crop Info: using `pdftex' graphics driver on input line 25.
 \AtBeginShipoutBox=\box40
-Package hyperref Info: Link coloring ON on input line 26.
+Package hyperref Info: Link coloring ON on input line 25.
 
 (c:/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -411,101 +407,91 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count126
 )
-LaTeX Info: Redefining \ref on input line 26.
-LaTeX Info: Redefining \pageref on input line 26.
-LaTeX Info: Redefining \nameref on input line 26.
+LaTeX Info: Redefining \ref on input line 25.
+LaTeX Info: Redefining \pageref on input line 25.
+LaTeX Info: Redefining \nameref on input line 25.
 
 (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
-LaTeX Font Info:    Try loading font information for LY1+phv on input line 48.
+LaTeX Font Info:    Try loading font information for LY1+phv on input line 47.
  (c:/texlive/2018/texmf-dist/tex/latex/ly1/ly1phv.fd
 File: ly1phv.fd 2001/02/01 scalable font definitions for LY1/phv using Berry na
 mes.
 )
-Invalid UTF-8 byte or sequence at line 48 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 48 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 48 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 48 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 48 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 48 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 48 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 48 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 47 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 47 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 47 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 47 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 47 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 47 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 47 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 47 replaced by U+FFFD.
 File: icon.eps Graphic file (type eps)
 <icon.eps>
-LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <10> not available
-(Font)              Font shape `LY1/phv/b/n' tried instead on input line 48.
+LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <8> not available
+(Font)              Font shape `LY1/phv/b/n' tried instead on input line 47.
 LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <18> not available
-(Font)              Font shape `LY1/phv/b/n' tried instead on input line 48.
+(Font)              Font shape `LY1/phv/b/n' tried instead on input line 47.
 LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <12> not available
-(Font)              Font shape `LY1/phv/b/n' tried instead on input line 48.
-LaTeX Font Info:    Try loading font information for U+msa on input line 48.
+(Font)              Font shape `LY1/phv/b/n' tried instead on input line 47.
+LaTeX Font Info:    Try loading font information for U+msa on input line 47.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 48.
+LaTeX Font Info:    Try loading font information for U+msb on input line 47.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <9> not available
-(Font)              Font shape `LY1/phv/b/n' tried instead on input line 48.
+(Font)              Font shape `LY1/phv/b/n' tried instead on input line 47.
 LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <7> not available
-(Font)              Font shape `LY1/phv/b/n' tried instead on input line 48.
-
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 48.
-
-
-LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <7.5> not available
-(Font)              size <7> substituted on input line 48.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 48.
+(Font)              Font shape `LY1/phv/b/n' tried instead on input line 47.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 48.
+(Font)              size <6> substituted on input line 47.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <6.5> not available
-(Font)              size <6> substituted on input line 48.
+(Font)              size <6> substituted on input line 47.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 48.
+(Font)              size <6> substituted on input line 47.
 
-LaTeX Font Info:    Calculating math sizes for size <8.5> on input line 48.
+LaTeX Font Info:    Calculating math sizes for size <8.5> on input line 47.
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <8.5> not available
-(Font)              size <8> substituted on input line 48.
+(Font)              size <8> substituted on input line 47.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4.25> not available
-(Font)              size <5> substituted on input line 48.
+(Font)              size <5> substituted on input line 47.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <8.5> not available
-(Font)              size <8> substituted on input line 48.
+(Font)              size <8> substituted on input line 47.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.25> not available
-(Font)              size <5> substituted on input line 48.
+(Font)              size <5> substituted on input line 47.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <8.5> not available
-(Font)              size <8> substituted on input line 48.
+(Font)              size <8> substituted on input line 47.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.25> not available
-(Font)              size <5> substituted on input line 48.
+(Font)              size <5> substituted on input line 47.
 
+LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <10> not available
+(Font)              Font shape `LY1/phv/b/n' tried instead on input line 47.
 
-Underfull \hbox (badness 10000) detected at line 48
+Underfull \hbox (badness 10000) detected at line 47
 []
  []
 
@@ -513,23 +499,10 @@ Underfull \hbox (badness 10000) detected at line 48
 File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
 
 )
-Underfull \hbox (badness 1122) in paragraph at lines 52--53
-[]\LY1/ptm/m/n/10 Since the accelerometer data is affected by noise,
- []
-
-
-Underfull \hbox (badness 1062) in paragraph at lines 52--53
-\LY1/ptm/m/n/10 we need to perform noise reduction. Wavelet packet
- []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \hbox (1.40001pt too wide) has occurred while \output is active
+Overfull \hbox (1.12001pt too wide) has occurred while \output is active
  []
  []
 
@@ -540,102 +513,65 @@ Overfull \hbox (1.40001pt too wide) has occurred while \output is active
 ]
 File: wpd.eps Graphic file (type eps)
 <wpd.eps>
-LaTeX Font Info:    Try loading font information for LY1+phb on input line 69.
-LaTeX Font Info:    No file LY1phb.fd. on input line 69.
+LaTeX Font Info:    Try loading font information for LY1+phb on input line 68.
+LaTeX Font Info:    No file LY1phb.fd. on input line 68.
 
 
 LaTeX Font Warning: Font shape `LY1/phb/m/n' undefined
-(Font)              using `LY1/ptm/m/n' instead on input line 69.
+(Font)              using `LY1/ptm/m/n' instead on input line 68.
 
 LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <6.5> not available
-(Font)              Font shape `LY1/phv/b/n' tried instead on input line 69.
+(Font)              Font shape `LY1/phv/b/n' tried instead on input line 68.
 
 LaTeX Font Warning: Font shape `LY1/phb/bx/n' undefined
-(Font)              using `LY1/phb/m/n' instead on input line 79.
+(Font)              using `LY1/phb/m/n' instead on input line 78.
 
 File: dbn.eps Graphic file (type eps)
 <dbn.eps>
-
-Underfull \hbox (badness 1057) in paragraph at lines 135--136
-\LY1/ptm/m/n/10 machine (BM), which greatly reduces the amount of
- []
-
 File: rbm.eps Graphic file (type eps)
 <rbm.eps>
 
-LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 148.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <8> not available
-(Font)              Font shape `LY1/phv/b/n' tried instead on input line 149.
 LaTeX Font Info:    Font shape `LY1/phv/m/it' in size <8> not available
-(Font)              Font shape `LY1/phv/m/sl' tried instead on input line 149.
+(Font)              Font shape `LY1/phv/m/sl' tried instead on input line 144.
 
 Overfull \hbox (252.0pt too wide) has occurred while \output is active
 [][] 
  []
 
 [2]
-
-LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <7.5> not available
-(Font)              size <7> substituted on input line 152.
-
-
-LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 152.
-
-
-Underfull \hbox (badness 1558) in paragraph at lines 163--164
-[]\LY1/ptm/m/n/10 By formula derivation, we can get the following
- []
-
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 174.
-LaTeX Font Info:    Font shape `LY1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `LY1/ptm/b/n' tried instead on input line 174.
+put line 173.
+LaTeX Font Info:    Font shape `LY1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `LY1/ptm/b/n' tried instead on input line 173.
 File: surface.eps Graphic file (type eps)
 <surface.eps>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 
 Overfull \hbox (252.0pt too wide) has occurred while \output is active
 [][] 
  []
 
 [3]
-Overfull \hbox (2.3937pt too wide) detected at line 227
-[][][]
- []
-
-
-Underfull \hbox (badness 6961) in paragraph at lines 262--263
-\LY1/ptm/m/n/10 In the experiments in this paper, we used the
- []
-
-
-Underfull \hbox (badness 2662) in paragraph at lines 262--263
-\LY1/ptm/m/n/10 University [[]]. []Since the content only covers the
- []
-
-
-Underfull \hbox (badness 2080) in paragraph at lines 262--263
-\LY1/ptm/m/n/10 the classification accuracy rate when the parameters
+Underfull \hbox (badness 1221) in paragraph at lines 261--262
+\LY1/ptm/m/n/8 In the experiments in this paper, we used the drive end bearing
  []
 
 File: pre.eps Graphic file (type eps)
 <pre.eps>
 File: feature.eps Graphic file (type eps)
 <feature.eps>
+File: dbnVSbp.eps Graphic file (type eps)
+<dbnVSbp.eps>
 
 Overfull \hbox (252.0pt too wide) has occurred while \output is active
 [][] 
  []
 
 [4]
-Underfull \hbox (badness 1371) in paragraph at lines 287--288
-\LY1/ptm/m/n/10 First we compare the differences between DBN and
- []
-
-File: dbnVSbp.eps Graphic file (type eps)
-<dbnVSbp.eps>
 File: SigmoidVSIsigmoid.eps Graphic file (type eps)
 <SigmoidVSIsigmoid.eps>
 File: SSDBN.eps Graphic file (type eps)
@@ -647,90 +583,30 @@ Overfull \hbox (252.0pt too wide) has occurred while \output is active
 [][] 
  []
 
-[5]
-Underfull \hbox (badness 3271) in paragraph at lines 341--342
-\LY1/ptm/m/n/10 supervised learning into the DBN, which improves
- []
-
-(./main.bbl
-Underfull \hbox (badness 5578) in paragraph at lines 10--14
-\LY1/ptm/m/n/10 and Hui Peng.  Zero drift compensation of
- []
-
-
-Underfull \hbox (badness 1546) in paragraph at lines 21--24
-[]\LY1/ptm/m/n/10 Vladimir N Vapnik.  An overview of statistical
- []
-
+[5] (./main.bbl
 Missing character: There is no — in font ptmr8y!
 
-Underfull \hbox (badness 2221) in paragraph at lines 26--30
-[]\LY1/ptm/m/n/10 M. A. Kramer and J. A. Leonard.  Diagnosis
- []
-
-
-Underfull \hbox (badness 2142) in paragraph at lines 26--30
-\LY1/ptm/m/n/10 criticism.  \LY1/ptm/m/it/10 Computers & Chemical Engineering\L
-Y1/ptm/m/n/10 ,
- []
-
-
-Underfull \hbox (badness 1147) in paragraph at lines 39--43
-[]\LY1/ptm/m/n/10 Feng Jia, Yaguo Lei, Jing Lin, Xin Zhou, and
- []
-
-
-Underfull \hbox (badness 2005) in paragraph at lines 45--50
-[]\LY1/ptm/m/n/10 Qin Yi, Wang Xin, and Zou Jingqiang.  The
- []
-
-
-Underfull \hbox (badness 1360) in paragraph at lines 52--57
-\LY1/ptm/m/n/10 and signal compression using the wavelet packet
- []
-
-
-Underfull \hbox (badness 1742) in paragraph at lines 59--63
-\LY1/ptm/m/n/10 term memory recurrent network.  \LY1/ptm/m/it/10 Computers in
- []
-
-
-Underfull \hbox (badness 1067) in paragraph at lines 70--74
-[]\LY1/ptm/m/n/10 Geoffrey E Hinton, Terrence J Sejnowski, et al.
- []
-
-
-Underfull \hbox (badness 2529) in paragraph at lines 70--74
-\LY1/ptm/m/n/10 Learning and relearning in boltzmann machines.
- []
-
-
-Underfull \hbox (badness 4832) in paragraph at lines 81--84
-[]\LY1/ptm/m/n/10 G. E. Hinton.  Training products of experts
- []
-
-
-Underfull \hbox (badness 4013) in paragraph at lines 81--84
-\LY1/ptm/m/n/10 by minimizing contrastive divergence.  \LY1/ptm/m/it/10 Neural
+Underfull \hbox (badness 10000) in paragraph at lines 91--96
+[]\LY1/ptm/m/n/8 Electrical Engineering Laboratory of Case Western
  []
 
 )
 - LAST -
-Extra skip:36.91002pt
-Left:645.0pt/2.17pt
-Right:608.20999pt/2.04999pt
-Output:645.105pt
+Extra skip:41.192pt
+Left:383.0pt/0.0pt
+Right:340.168pt/1.64pt
+Output:383.084pt
 
 Overfull \hbox (252.0pt too wide) has occurred while \output is active
 [][] 
  []
 
 [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 355.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 355.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 354.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 354.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 355.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 355.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 354.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 354.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 1924589EB1D253FCAD424525A8906DC8.
 
@@ -743,12 +619,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 10820 strings out of 494895
- 146378 string characters out of 6176371
- 244647 words of memory out of 5000000
- 14562 multiletter control sequences out of 15000+600000
- 55454 words of font info for 100 fonts, out of 8000000 for 9000
+ 10822 strings out of 494895
+ 146329 string characters out of 6176371
+ 240291 words of memory out of 5000000
+ 14559 multiletter control sequences out of 15000+600000
+ 55321 words of font info for 103 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 64i,12n,57p,1311b,568s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 61i,12n,54p,1311b,564s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on main.pdf (6 pages).

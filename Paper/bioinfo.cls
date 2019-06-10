@@ -56,10 +56,10 @@
 \reversemarginpar
 
 \renewcommand\normalsize{%
-   \@setfontsize\normalsize{10}{13}%
-   \abovedisplayskip 13\p@ \@plus2\p@ \@minus5\p@
+   \@setfontsize\normalsize{8}{11}%
+   \abovedisplayskip 11\p@ \@plus2\p@ \@minus5\p@
    \abovedisplayshortskip \z@ \@plus3\p@
-   \belowdisplayshortskip 8\p@ \@plus3\p@ \@minus3\p@
+   \belowdisplayshortskip 6\p@ \@plus3\p@ \@minus3\p@
    \belowdisplayskip \abovedisplayskip
    \let\@listi\@listI}
 \normalsize
@@ -259,12 +259,12 @@
   {%
   \def\@oddfoot{{
         \hbox to \textwidth{\helvetica
-        \fontsize{9}{11}\fontshape{n}\selectfont Modified by Wujie Sun%
+        \fontsize{7}{9}\fontshape{n}\selectfont %
           \hfill\small\helveticabold\thepage}%
         }}%
   \def\@evenfoot{{
         \hbox to \textwidth{\helvetica\thepage\hfill
-          \fontsize{9}{11}\fontshape{n}\selectfont Modified by Wujie Sun}%
+          \fontsize{7}{9}\fontshape{n}\selectfont }%
         }}%
   \let\@evenhead\relax
   \let\@oddhead\relax}
@@ -482,8 +482,8 @@
   \vspace*{\aboveskipchk}%
   \vspace{\dropfromtop}%
   \hbox to \textwidth{\raisebox{5pt}[0pt]{%
-  \parbox[b]{415pt}{\raggedleft{\helveticacnitalic\fontsize{8}{12}\selectfont {XXXXXXXX}}\\[1pt]
-  {\helveticacn doi.xx.xxxx/XXXXXXXX/xxxxxx}\\[1pt]
+  \parbox[b]{415pt}{\raggedleft{\helveticacnitalic\fontsize{8}{12}\selectfont {XXXXXXXXXXXXXXXXX}}\\[1pt]
+  {\helveticacn doi.XX.XXXX/xxxxxxxxx/xxxxxx}\\[1pt]
   {\ifx\@access\@empty
   \else
   {\helveticacn \@access}\fi}
