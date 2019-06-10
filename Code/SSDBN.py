@@ -100,7 +100,7 @@ class SSRBM(object):
         Sigma = np.zeros([X.shape[1], X.shape[1]])
         for i in range(X.shape[1]):
             Sigma[i, i] = sigma[i]
-        batch2 = np.transpose(np.matmul(Sigma, np.transpose(U[0:self._batchsize, 0:X.shape[1]])))
+        batch2 = np.transpose(np.matmul(np.sqrt(Sigma), np.transpose(U[0:self._batchsize, 0:X.shape[1]])))
 
         # 循环
         with tf.Session() as sess:
@@ -121,7 +121,7 @@ class SSRBM(object):
                     prv_vb = cur_vb
                     prv_ub = cur_ub
                     prv_p = cur_p
-                X_ = np.transpose(np.matmul(Sigma, np.transpose(U[0:X.shape[0], 0:X.shape[1]])))
+                X_ = np.transpose(np.matmul(np.sqrt(Sigma), np.transpose(U[0:X.shape[0], 0:X.shape[1]])))
                 error = sess.run(err, feed_dict={v0: X, u0: X_, _w: cur_w, _vb: cur_vb, _hb: cur_hb, _ub: cur_ub, _p: cur_p})
                 print('Epoch: %d' % epoch, 'reconstruction error: %f' % error)
             self.w = prv_w
@@ -188,8 +188,8 @@ class NN(object):
             _w[i] = tf.Variable(self.w_list[i])
             _b[i] = tf.Variable(self.b_list[i])
         for i in range(1, len(self._sizes) + 2):
-            _a[i] = tf.nn.sigmoid(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
-            #_a[i] = isigmoid.my_sigmoid_tf(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
+            #_a[i] = tf.nn.sigmoid(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
+            _a[i] = isigmoid.my_sigmoid_tf(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
 
         # _a[-1] = tf.nn.softmax(_a[-1])
         # cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=_a[-1], labels=y))
@@ -279,7 +279,7 @@ if __name__ == '__main__':
         Sigma = np.zeros([inpX.shape[1], inpX.shape[1]])
         for i in range(inpX.shape[1]):
             Sigma[i, i] = sigma[i]
-        X_ = np.transpose(np.matmul(Sigma, np.transpose(U[0:inpX.shape[0], 0:inpX.shape[1]])))
+        X_ = np.transpose(np.matmul(np.sqrt(Sigma), np.transpose(U[0:inpX.shape[0], 0:inpX.shape[1]])))
         # Return the output layer
         inpX = rbm.rbm_outpt(inpX, X_)
 

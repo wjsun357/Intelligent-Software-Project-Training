@@ -6,8 +6,8 @@ from scipy.io import loadmat
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 import seaborn as sns
-#from DBN import NN, RBM
-from SSDBN import NN, SSRBM
+from DBN import NN, RBM
+#from SSDBN import NN, SSRBM
 '''
 print("Reading data...")
 data_A_normal = loadmat("../Data/My Data/Normal_0")
@@ -239,8 +239,8 @@ data_D_minmax = np.load('./data/data_D_minmax.npy')
 eval_D = np.load('./data/eval_D.npy')
 
 epoches = 10
-tra = np.zeros((epoches, 1000))
-tea = np.zeros((epoches, 1000))
+tra = np.zeros((epoches, 1500))
+tea = np.zeros((epoches, 1500))
 sum_tr = 0
 sum_te = 0
 for epoch in range(epoches):
@@ -249,7 +249,7 @@ for epoch in range(epoches):
     inpX = X_A_train
     rbm_list = []
     input_size = inpX.shape[1]
-
+    '''
     for i, size in enumerate(RBM_hidden_sizes):
         print('SSRBM: ', i, ' ', input_size, '->', size)
         rbm_list.append(SSRBM(input_size, size, 100, 0.3, 10, 0.5))
@@ -270,7 +270,7 @@ for epoch in range(epoches):
         Sigma = np.zeros([inpX.shape[1], inpX.shape[1]])
         for i in range(inpX.shape[1]):
             Sigma[i, i] = sigma[i]
-        X_ = np.transpose(np.matmul(Sigma, np.transpose(U[0:inpX.shape[0], 0:inpX.shape[1]])))
+        X_ = np.transpose(np.matmul(np.sqrt(Sigma), np.transpose(U[0:inpX.shape[0], 0:inpX.shape[1]])))
         inpX = rbm.rbm_outpt(inpX, X_)
 
     nNet = NN(RBM_hidden_sizes, X_A_train, y_A_train, 1, 1000, 10)
@@ -278,11 +278,11 @@ for epoch in range(epoches):
     tr, te, result_tr, result_te = nNet.train(X_A_test, y_A_test)
     tra[epoch] = result_tr
     tea[epoch] = result_te
-
     '''
+    #'''
     for i, size in enumerate(RBM_hidden_sizes):
         print('RBM: ', i, ' ', input_size, '->', size)
-        rbm_list.append(RBM(input_size, size, 100, 0, 10))
+        rbm_list.append(RBM(input_size, size, 100, 0.3, 10))
         input_size = size
 
     for rbm in rbm_list:
@@ -290,15 +290,15 @@ for epoch in range(epoches):
         rbm.train(inpX)
         inpX = rbm.rbm_outpt(inpX)
 
-    nNet = NN(RBM_hidden_sizes, X_A_train, y_A_train, 1, 1000, 10)
+    nNet = NN(RBM_hidden_sizes, X_A_train, y_A_train, 1, 1500, 10)
     nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
     tr, te, result_tr, result_te = nNet.train(X_A_test, y_A_test)
     tra[epoch] = result_tr
     tea[epoch] = result_te
-    '''
+    #'''
 ave_tra = []
 ave_tea = []
-for i in range(1000):
+for i in range(1500):
     Sum_tra = 0
     Sum_tea = 0
     for j in range(epoches):
@@ -306,11 +306,11 @@ for i in range(1000):
         Sum_tea = Sum_tea + tea[j][i]
     ave_tra.append(Sum_tra / epoches)
     ave_tea.append(Sum_tea / epoches)
-np.save('./result/tr_SSDBN_sigmoid.npy', ave_tra)
-np.save('./result/te_SSDBN_sigmoid.npy', ave_tea)
+np.save('./result/tr_DBN_sigmoid.npy', ave_tra)
+np.save('./result/te_DBN_sigmoid.npy', ave_tea)
 label = ['Training Dataset', 'Testing Dataset']
-plt.plot(range(1000), ave_tra)
-plt.plot(range(1000), ave_tea)
+plt.plot(range(1500), ave_tra)
+plt.plot(range(1500), ave_tea)
 plt.legend(label)
 plt.xlabel('Epoch')
 plt.ylabel('Accuracy Rate')

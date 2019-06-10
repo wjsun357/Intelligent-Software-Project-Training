@@ -1,9 +1,9 @@
 clear all
 clc
 %读取数据
-name = '../Data/12k Drive End Bearing Fault Data/B028_0.mat';
-data = load(name,'X048_DE_time');
-data = data.X048_DE_time;
+name = '../Data/12k Drive End Bearing Fault Data/B007_0.mat';
+data = load(name,'X118_DE_time');
+data = data.X118_DE_time;
 %小波包分解
 N = 5;
 num = 50*2048;
