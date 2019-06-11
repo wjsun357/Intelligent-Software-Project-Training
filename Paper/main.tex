@@ -271,7 +271,7 @@ First we use MATLAB to denoise the data, and the waveform comparison before and 
 	\label{fig:pre}
 \end{figure}
 
-Then we use the sliding window to segment the noise reduction data and calculate its features according to Table \ref{tab:sf}. During the experiment, we found that noise reduction has the potential to remove useful signals, so when calculating features, we separately calculate the features of the original data and the noise-reduced data, and combine them together. The feature distribution can be seen in Fig. \ref{fig:feature}. It can be seen that different fault types have distinct feature distributions, so we should extract and use features which can distinguish different fault types easily and classify them.
+Then we use the sliding window to segment the noise-reduced data and calculate its features according to Table \ref{tab:sf}. During the experiment, we found that noise reduction has the potential to remove useful signals, so when calculating features, we separately calculate the features of the original data and the noise-reduced data, and combine them together. The feature distribution can be seen in Fig. \ref{fig:feature}. It can be seen that different fault types have distinct feature distributions, so we should extract and use features which can distinguish different fault types easily and classify them.
 
 \begin{figure}[htbp]
 	\centering
@@ -280,7 +280,7 @@ Then we use the sliding window to segment the noise reduction data and calculate
 	\label{fig:feature}
 \end{figure}
 
-After the feature extraction, we can start the training of DBN. In this experiment, three RBMs are used, and the corresponding number of units per layer from bottom to top is 36, 18, 13, and 10. And we should add a classifier which has 10 units at the end of the DBN and compare the result with the label to determine the correctness. MomentumOptimizer is used in the back propagation. For each specific method, we run 10 times and average them for comparison. In the next three comparisons, the black curves always represents the method with theoretically better performance.
+After the feature extraction, we can start the training of DBN. In this experiment, three RBMs are used, and the corresponding number of units per layer from bottom to top is 36, 18, 13, and 10. And we should add a classifier which has 10 units at the end of the DBN and compare the result with the label to determine the correctness. MomentumOptimizer is used in the back propagation. For each specific method, we run 50 times and average them for comparison. In the next three comparisons, the black curves always represents the method with theoretically better performance.
 
 \subsection{Back Propagation and DBN}
 First we compare the differences between DBN and traditional back propagation neural network. As we can see from Fig. \ref{fig:dbnVSbp}, there was no significant improvement in the accuracy rate of the back propagation neural network in the first 200 epoches. The accuracy rate is about the accuracy rate at random selection, i.e. 10\%. 
@@ -295,7 +295,7 @@ When using DBN for the training, the initial accuracy rate can reach 20\%. And i
 \end{figure}
 
 \subsection{Sigmoid and Isigmoid}
-Isigmoid proposed by Yi Qin \cite{YiThe} is capable to relax the vanishing gradient problem and converges faster then Sigmoid. As shown in Fig. \ref{fig:SigmoidVSIsigmoid}, since we did not use Isigmoid in RBM (pre-training), their initial accuracy rates are similar. However, when using Isigmoid in the back propagation, the DBN can converge faster, and the final accuracy rate is higher than when using Sigmoid.
+Isigmoid proposed by Yi Qin \cite{YiThe} is capable to relax the vanishing gradient problem and converges faster then Sigmoid. As shown in Fig. \ref{fig:SigmoidVSIsigmoid}, since we did not use Isigmoid in RBM (pre-training), their initial accuracy rates are similar. However, when using Isigmoid in the back propagation, the DBN can converge faster.
 
 \begin{figure}[htbp]
 	\centering
@@ -339,7 +339,7 @@ When using Sigmoid as the activation function, the problem of vanishing gradient
 
 SSDBN optimizes the DBN structure and introduces supervised learning into the DBN, which improves the classification accuracy. By combining SSDBN and Isigmoid, a higher classification accuracy rate can be achieved.
 
-\textcolor{red}{Unfortunately, in this training, I have not come up with a better optimization method to improve the initial classification accuracy rate, speed up the convergence or improve the final classification accuracy rate. In addition, due to the lack of data and poor computer performance, I am unable to successfully train large data sets such as MNIST to further demonstrate the optimization effects of Isigmoid and SSDBN. At the same time, taking the average of 10 experimental results may still cannot fully explain the performance difference of each method. Also, the parameter adjustment for each method may still cannot make the method achieve its optimal performance.}
+\textcolor{red}{Unfortunately, in this training, I have not come up with a better optimization method to improve the initial classification accuracy rate, speed up the convergence or improve the final classification accuracy rate. In addition, due to the lack of data and poor computer performance, I am unable to successfully train large data sets such as MNIST to further demonstrate the optimization effects of Isigmoid and SSDBN. At the same time, the parameter adjustment for each method may still cannot make the method achieve its optimal performance.}
 
 
 \section*{Acknowledgement}

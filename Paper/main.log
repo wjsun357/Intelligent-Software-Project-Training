@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.10.15)  10 JUN 2019 20:45
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.10.15)  11 JUN 2019 15:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -592,10 +592,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--96
 
 )
 - LAST -
-Extra skip:41.192pt
-Left:383.0pt/0.0pt
-Right:340.168pt/1.64pt
-Output:383.084pt
+Extra skip:19.624pt
+Left:361.0pt/0.0pt
+Right:339.73601pt/1.64pt
+Output:361.868pt
 
 Overfull \hbox (252.0pt too wide) has occurred while \output is active
 [][] 
@@ -621,10 +621,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  10822 strings out of 494895
  146329 string characters out of 6176371
- 240291 words of memory out of 5000000
+ 239291 words of memory out of 5000000
  14559 multiletter control sequences out of 15000+600000
  55321 words of font info for 103 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 61i,12n,54p,1311b,564s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,12n,53p,1311b,564s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on main.pdf (6 pages).

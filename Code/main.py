@@ -405,7 +405,8 @@ erra = np.zeros((epoches, 300))
 sum_tr = 0
 sum_te = 0
 for epoch in range(epoches):
-    X_train, X_test, y_train, y_test = train_test_split(data_D_minmax, eval_D, test_size=0.4, random_state=0)
+    print("Current epoch ", epoch)
+    X_train, X_test, y_train, y_test = train_test_split(data_D_minmax, eval_D, test_size=0.4)
     RBM_hidden_sizes = [18, 13, 10]
     inpX = X_train
     rbm_list = []
@@ -413,7 +414,7 @@ for epoch in range(epoches):
     '''
     for i, size in enumerate(RBM_hidden_sizes):
         print('SSRBM: ', i, ' ', input_size, '->', size)
-        rbm_list.append(SSRBM(input_size, size, 100, 0.3, 30, 0.5))
+        rbm_list.append(SSRBM(input_size, size, 100, 0.3, 30, 1))
         input_size = size
 
     S = np.zeros([X_train.shape[0], X_train.shape[0]])
@@ -444,6 +445,7 @@ for epoch in range(epoches):
     tea[epoch] = result_te
 
     '''
+
     #'''
     for i, size in enumerate(RBM_hidden_sizes):
         print('RBM: ', i, ' ', input_size, '->', size)
@@ -458,12 +460,13 @@ for epoch in range(epoches):
             erra[epoch, 100*count+k] = err[k]
         inpX = rbm.rbm_outpt(inpX)
         count += 1
-        
+    
     nNet = NN(RBM_hidden_sizes, X_train, y_train, 1, 1000, 30)
     nNet.load_from_rbms(RBM_hidden_sizes, rbm_list)
     tr, te, result_tr, result_te = nNet.train(X_test, y_test)
     tra[epoch] = result_tr
     tea[epoch] = result_te
+    
     #'''
 '''
 ave_erra = []
@@ -477,6 +480,7 @@ plt.plot(range(300), ave_erra)
 plt.xlabel('Epoch')
 plt.ylabel('Error')
 plt.show()
+'''
 #'''
 ave_tra = []
 ave_tea = []
@@ -488,8 +492,8 @@ for i in range(1000):
         Sum_tea = Sum_tea + tea[j][i]
     ave_tra.append(Sum_tra / epoches)
     ave_tea.append(Sum_tea / epoches)
-np.save('./result/tr_SSDBN_sigmoid.npy', ave_tra)
-np.save('./result/te_SSDBN_sigmoid.npy', ave_tea)
+np.save('./result/tr_DBN_isigmoid_6_0.2.npy', ave_tra)
+np.save('./result/te_DBN_isigmoid_6_0.2.npy', ave_tea)
 label = ['Training Dataset', 'Testing Dataset']
 plt.plot(range(1000), ave_tra)
 plt.plot(range(1000), ave_tea)

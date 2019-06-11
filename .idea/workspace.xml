@@ -1,46 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/Code/draw.py" line="20" />
+    <bookmark url="file://$PROJECT_DIR$/Code/draw.py" line="42" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82cf8a35-c0e0-4bb2-bf33-1f915ba9ac0d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/DBN.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/DBN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/SSDBN.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/SSDBN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/data/data_A_minmax.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/data/data_A_minmax.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/data/data_B_minmax.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/data/data_B_minmax.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/data/data_C_minmax.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/data/data_C_minmax.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/data/data_D_minmax.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/data/data_D_minmax.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/draw.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/draw.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/isigmoid.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/isigmoid.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/result/error_DBN.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/error_DBN.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/result/error_SSDBN.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/error_SSDBN.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/result/te_DBN_isigmoid.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/te_DBN_isigmoid.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/result/te_DBN_sigmoid.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/te_DBN_sigmoid.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/result/te_SSDBN_isigmoid.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/te_SSDBN_isigmoid.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/result/te_SSDBN_isigmoid.npy" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/result/te_SSDBN_sigmoid.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/te_SSDBN_sigmoid.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/result/te_normal_isigmoid.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/te_normal_isigmoid.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/result/te_normal_isigmoid.npy" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/result/te_normal_sigmoid.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/te_normal_sigmoid.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/result/te_original_sigmoid.npy" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/result/tr_DBN_isigmoid.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/tr_DBN_isigmoid.npy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/result/tr_DBN_sigmoid.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/tr_DBN_sigmoid.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/result/tr_SSDBN_isigmoid.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/tr_SSDBN_isigmoid.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/result/tr_SSDBN_isigmoid.npy" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/result/tr_SSDBN_sigmoid.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/tr_SSDBN_sigmoid.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/result/tr_normal_isigmoid.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/tr_normal_isigmoid.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/result/tr_normal_isigmoid.npy" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/result/tr_normal_sigmoid.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/tr_normal_sigmoid.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/result/tr_original_sigmoid.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paper/RBM012-eps-converted-to.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/RBM012-eps-converted-to.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Paper/RBM012.eps" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/RBM012.eps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Paper/SSDBN-eps-converted-to.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/SSDBN-eps-converted-to.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Paper/SSDBN.eps" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/SSDBN.eps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Paper/SigmoidVSIsigmoid-eps-converted-to.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/SigmoidVSIsigmoid-eps-converted-to.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Paper/SigmoidVSIsigmoid.eps" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/SigmoidVSIsigmoid.eps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Paper/dbnVSbp-eps-converted-to.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/dbnVSbp-eps-converted-to.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Paper/dbnVSbp.eps" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/dbnVSbp.eps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paper/feature-eps-converted-to.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/feature-eps-converted-to.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paper/feature.eps" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/feature.eps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paper/main.aux" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/main.aux" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Paper/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/main.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Paper/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/main.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Paper/main.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/main.synctex.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Paper/main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/main.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/6.23-DBN-孙武杰-汇总报告.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Report/6.23-DBN-孙武杰-汇总报告.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/汇总报告.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/Report/汇总报告.pptx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,39 +60,39 @@
           <entry key="project.open.time.6" value="3" />
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="2" />
-          <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="22" />
+          <entry key="project.open.time.9" value="3" />
+          <entry key="project.opened" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="30" />
+          <entry key="py" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="30" />
+          <entry key="Python" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="5303" />
+          <entry key="py" value="5871" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="5303" />
+          <entry key="Python" value="5871" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Code/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8244">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="-326">
+              <caret line="472" column="20" lean-forward="true" selection-start-line="472" selection-start-column="20" selection-end-line="472" selection-end-column="20" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -104,31 +101,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Code/draw.py">
+        <entry file="file://$PROJECT_DIR$/Code/isigmoid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="666">
-              <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+            <state relative-caret-position="108">
+              <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
               <folding>
-                <element signature="e#0#31#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Code/SSDBN.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Code/draw.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1728">
-              <caret line="96" column="47" selection-start-line="96" selection-start-column="47" selection-end-line="96" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Code/DBN.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1458">
-              <caret line="81" column="24" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
+            <state relative-caret-position="70">
+              <caret line="40" column="162" selection-start-line="40" selection-start-column="162" selection-end-line="40" selection-end-column="162" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -149,14 +140,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/FeatureExtraction.py" />
-        <option value="$PROJECT_DIR$/Code/isigmoid.py" />
         <option value="$PROJECT_DIR$/Code/result/draw.py" />
         <option value="$PROJECT_DIR$/Code/new_main.py" />
         <option value="$PROJECT_DIR$/Code/original.py" />
         <option value="$PROJECT_DIR$/Code/SSDBN.py" />
         <option value="$PROJECT_DIR$/Code/DBN.py" />
-        <option value="$PROJECT_DIR$/Code/draw.py" />
         <option value="$PROJECT_DIR$/Code/main.py" />
+        <option value="$PROJECT_DIR$/Code/isigmoid.py" />
+        <option value="$PROJECT_DIR$/Code/draw.py" />
       </list>
     </option>
   </component>
@@ -173,6 +164,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -195,7 +187,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -362,14 +353,14 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32890365" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.35215947" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49960285" visible="true" weight="0.35215947" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32890365" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50039715" side_tool="true" weight="0.35215947" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -390,13 +381,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Code/isigmoid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="25" column="6" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Code/new_main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1046">
@@ -411,10 +395,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Code/SSDBN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1623">
+          <caret line="96" column="47" selection-start-line="96" selection-start-column="47" selection-end-line="96" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code/DBN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2196">
+          <caret line="109" column="9" selection-start-line="109" selection-start-column="9" selection-end-line="109" selection-end-column="9" />
+          <folding>
+            <marker date="1560249116742" expanded="true" signature="1188:1197" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code/isigmoid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Code/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8244">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="-326">
+          <caret line="472" column="20" lean-forward="true" selection-start-line="472" selection-start-column="20" selection-end-line="472" selection-end-column="20" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -423,25 +434,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Code/draw.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+        <state relative-caret-position="70">
+          <caret line="40" column="162" selection-start-line="40" selection-start-column="162" selection-end-line="40" selection-end-column="162" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code/SSDBN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1728">
-          <caret line="96" column="47" selection-start-line="96" selection-start-column="47" selection-end-line="96" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code/DBN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1458">
-          <caret line="81" column="24" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
         </state>
       </provider>
     </entry>

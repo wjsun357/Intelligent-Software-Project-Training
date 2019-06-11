@@ -31,12 +31,12 @@ class RBM(object):
     def prob_h_given_v(self, visible, w, hb):
         # Sigmoid
         return tf.nn.sigmoid(tf.matmul(visible, w) + hb)
-        # return isigmoid.my_sigmoid_tf(tf.matmul(visible, w) + hb)  # matmul，矩阵乘法
+        #return isigmoid.my_sigmoid_tf(tf.matmul(visible, w) + hb)  # matmul，矩阵乘法
 
     # 可视层条件概率
     def prob_v_given_h(self, hidden, w, vb):
         return tf.nn.sigmoid(tf.matmul(hidden, tf.transpose(w)) + vb)
-        # return isigmoid.my_sigmoid_tf(tf.matmul(hidden, tf.transpose(w)) + vb)
+        #return isigmoid.my_sigmoid_tf(tf.matmul(hidden, tf.transpose(w)) + vb)
 
     # 样本概率
     def sample_prob(self, probs):
@@ -107,7 +107,7 @@ class RBM(object):
         _w = tf.constant(self.w)
         _hb = tf.constant(self.hb)
         out = tf.nn.sigmoid(tf.matmul(input_X, _w) + _hb)
-        # out = isigmoid.my_sigmoid_tf(tf.matmul(input_X, _w) + _hb)
+        #out = isigmoid.my_sigmoid_tf(tf.matmul(input_X, _w) + _hb)
         with tf.Session() as sess:
             sess.run(tf.global_variables_initializer())
             return sess.run(out)
@@ -158,8 +158,8 @@ class NN(object):
             _w[i] = tf.Variable(self.w_list[i])
             _b[i] = tf.Variable(self.b_list[i])
         for i in range(1, len(self._sizes) + 2):
-            _a[i] = tf.nn.sigmoid(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
-            #_a[i] = isigmoid.my_sigmoid_tf(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
+            #_a[i] = tf.nn.sigmoid(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
+            _a[i] = isigmoid.my_sigmoid_tf(tf.matmul(_a[i - 1], _w[i - 1]) + _b[i - 1])
 
         # _a[-1] = tf.nn.softmax(_a[-1])
         # cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=_a[-1], labels=y))
