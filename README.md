@@ -13,6 +13,6 @@ DBN中RBM的初始化函数`__init__(self, input_size, output_size, epoches, lea
 NN使用`load_from_rbms(self, dbn_sizes, rbm_list)`获取预训练参数。`train(self, test_X, test_Y)`中，test_X为输入，test_Y为标签。<br>
 SSDBN的SSRBM的初始化函数`__init__(self, input_size, output_size, epoches, learning_rate, batchsize, proportion)`相较RBM多了一个proportion，用以调整比例。`train(self, X, S)`中的S为u的输入数据。<br>
 <br><br>
-RBM的设置参数为epoches=100，learning_rate=0.3，batchsize=30，SSRBM的参数为proportion=1，Isigmoid的参数为a=5，alpha=0.2。<br>
+RBM的设置参数为epoches=100，learning_rate=0.3，batchsize=30，SSRBM的参数为proportion=1，Isigmoid的参数为a=5，alpha=0.2。NN的参数为epoches=1000，learning_rate=1，batchsize=30，前2/3动量为0.9，后1/3动量为0.5。<br>
 <br><br>
 直接运行[main.py](https://github.com/wjsunscut/Intelligent-Software-Project-Training/blob/master/Code/main.py)即可（可根据需要调整代码以分别运行DBN和SSDBN）。
