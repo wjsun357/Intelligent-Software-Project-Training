@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.10.15)  12 JUN 2019 09:17
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.10.15)  12 JUN 2019 13:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -578,6 +578,8 @@ File: SSDBN.eps Graphic file (type eps)
 <SSDBN.eps>
 File: RBM012.eps Graphic file (type eps)
 <RBM012.eps>
+File: SSDBNIsigmoid.eps Graphic file (type eps)
+<SSDBNIsigmoid.eps>
 
 Overfull \hbox (252.0pt too wide) has occurred while \output is active
 [][] 
@@ -592,23 +594,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--96
 
 )
 - LAST -
-Extra skip:19.624pt
-Left:361.0pt/0.0pt
-Right:339.73601pt/1.64pt
-Output:361.868pt
+Extra skip:25.0pt
+Left:486.0pt/1.64pt
+Right:461.0pt/1.64pt
+Output:486.0pt
 
 Overfull \hbox (252.0pt too wide) has occurred while \output is active
 [][] 
  []
 
 [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 354.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 354.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 365.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 365.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 354.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 354.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 365.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 365.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 1924589EB1D253FCAD424525A8906DC8.
+(rerunfilecheck)             Checksum: 805ABDEA3B63647FE11890DEE797F5E9.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -619,12 +621,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 10822 strings out of 494895
- 146329 string characters out of 6176371
- 239290 words of memory out of 5000000
- 14559 multiletter control sequences out of 15000+600000
+ 10826 strings out of 494895
+ 146412 string characters out of 6176371
+ 246193 words of memory out of 5000000
+ 14562 multiletter control sequences out of 15000+600000
  55321 words of font info for 103 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 60i,12n,53p,1311b,564s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,12n,51p,1311b,564s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on main.pdf (6 pages).

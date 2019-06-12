@@ -282,7 +282,7 @@ Then we use the sliding window to segment the noise-reduced data and calculate i
 
 After the feature extraction, we can start the training of DBN. In this experiment, three RBMs are used, and the corresponding number of units per layer from bottom to top is 36, 18, 13, and 10. And we should add a classifier which has 10 units at the end of the DBN and compare the result with the label to determine the correctness. MomentumOptimizer is used in the back propagation. For each specific method, we run 50 times and average them for comparison. In the next three comparisons, the black curves always represents the method with theoretically better performance.
 
-\subsection{Back Propagation and DBN}
+\subsection{DBN}
 First we compare the differences between DBN and traditional back propagation neural network. As we can see from Fig. \ref{fig:dbnVSbp}, there was no significant improvement in the accuracy rate of the back propagation neural network in the first 200 epoches. The accuracy rate is about the accuracy rate at random selection, i.e. 10\%. 
 
 When using DBN for the training, the initial accuracy rate can reach 20\%. And it converges faster, and the final accuracy rate is higher than the traditional back propagation neural network.
@@ -294,7 +294,7 @@ When using DBN for the training, the initial accuracy rate can reach 20\%. And i
 	\label{fig:dbnVSbp}
 \end{figure}
 
-\subsection{Sigmoid and Isigmoid}
+\subsection{Isigmoid}
 Isigmoid proposed by Yi Qin \cite{YiThe} is capable to relax the vanishing gradient problem and converges faster then Sigmoid. As shown in Fig. \ref{fig:SigmoidVSIsigmoid}, since we did not use Isigmoid in RBM (pre-training), their initial accuracy rates are similar. However, when using Isigmoid in the back propagation, the DBN can converge faster and has higher accuracy rate.
 
 \begin{figure}[htbp]
@@ -304,8 +304,8 @@ Isigmoid proposed by Yi Qin \cite{YiThe} is capable to relax the vanishing gradi
 	\label{fig:SigmoidVSIsigmoid}
 \end{figure}
 
-\subsection{DBN and SSDBN}
-\textcolor{red}{Finally, we compare DBN with SSDBN. Since SSDBN has studied the sample labels at RBM, I thought that the initial classification accuracy rate should be higher than DBN, but the result is not the case. And DBN seems to converge faseter than SSDBN. However, the final classification accuracy rate of SSDBN is higher than DBN.}
+\subsection{SSDBN}
+\textcolor{red}{Next we compare DBN with SSDBN. Since SSDBN has studied the sample labels at RBM, I thought that the initial classification accuracy rate should be higher than DBN, but the result is not the case. And DBN seems to converge faseter than SSDBN. However, the final classification accuracy rate of SSDBN is higher than DBN.}
 
 \begin{figure}[htbp]
 	\centering
@@ -329,6 +329,17 @@ The result is shown as Fig. \ref{fig:RBM012}. As we can see, in the first two RB
 	\caption{Comparison of reconstruction error between DBN and SSDBN.}
 	\label{fig:RBM012}
 \end{figure}
+
+Fig. \ref{fig:SSDBNIsigmoid} shows that by combining SSDBN with Isigmoid, we can further improve the classification accuracy.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=\columnwidth]{SSDBNIsigmoid.eps}
+	\caption{Comparison of classification accuracy between SSDBN using Sigmoid and SSDBN using Isigmoid in 1000 epoches.}
+	\label{fig:SSDBNIsigmoid}
+\end{figure}
+
+In the traditional back propagation neural network, the accuracy rate of the training dataset is 97.12\%, and the accuracy rate of the testing dataset is 95.83\%. In the SSDBN using Isigmoid, the accuracy rate of the training dataset is 98.87\%, and the accuracy rate of the testing dataset is 97.33\%.
 
 \section{Conclusions}
 This paper is a summary of the project training. In this paper, two optimization methods of DBN are mainly involved, which are optimized from two aspects: activation function and structure. The paper also includes some noise reduction and feature extraction methods.

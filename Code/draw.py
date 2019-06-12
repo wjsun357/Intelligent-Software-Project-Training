@@ -39,7 +39,8 @@ tr_DBN_isigmoid_6_02 = np.load('./result/tr_DBN_isigmoid_6_0.2.npy')
 te_DBN_isigmoid_6_02 = np.load('./result/te_DBN_isigmoid_6_0.2.npy')
 tr_SSDBN_isigmoid_1_5_02 = np.load('./result/tr_SSDBN_isigmoid_1_5_0.2.npy')
 te_SSDBN_isigmoid_1_5_02 = np.load('./result/te_SSDBN_isigmoid_1_5_0.2.npy')
-#'''
+print(max(tr_SSDBN_isigmoid_1_5_02), max(te_SSDBN_isigmoid_1_5_02), max(tr_normal_sigmoid), max(te_normal_sigmoid))
+'''
 label = ['SSDBN (Training, Sigmoid)', 'SSDBN (Testing, Sigmoid)', 'SSDBN (Training, Isigmoid)', 'SSDBN (Testing, Isigmoid)']
 plt.plot(range(0, 1000, 10), tr_SSDBN_sigmoid_1[0:1000:10], color='r')
 plt.plot(range(0, 1000, 10), te_SSDBN_sigmoid_1[0:1000:10], color='r', marker='x')
@@ -52,7 +53,7 @@ plt.setp(ltext, fontsize=20)
 plt.xlabel('Epoch', fontsize=20)
 plt.ylabel('Accuracy Rate', fontsize=20)
 plt.show()
-#'''
+'''
 '''
 label = ['DBN (RBM0)', 'DBN (RBM1)', 'DBN (RBM2)', 'SSDBN (RBM0)', 'SSDBN (RBM1)', 'SSDBN (RBM2)']
 plt.plot(range(0, 100, 1), error_DBN[0:100:1], color='r')
