@@ -6,8 +6,8 @@ from scipy.io import loadmat
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 import seaborn as sns
-from DBN import NN, RBM
-#from SSDBN import NN, SSRBM
+#from DBN import NN, RBM
+from SSDBN import NN, SSRBM
 '''
 print("Reading data...")
 data_A_normal_reduced = loadmat("../Data/My Data/Normal_0")
@@ -398,7 +398,7 @@ eval_C = np.load('./data/eval_C.npy')
 data_D_minmax = np.load('./data/data_D_minmax.npy')
 eval_D = np.load('./data/eval_D.npy')
 
-epoches = 10
+epoches = 50
 tra = np.zeros((epoches, 1000))
 tea = np.zeros((epoches, 1000))
 erra = np.zeros((epoches, 300))
@@ -411,7 +411,7 @@ for epoch in range(epoches):
     inpX = X_train
     rbm_list = []
     input_size = inpX.shape[1]
-    '''
+    #'''
     for i, size in enumerate(RBM_hidden_sizes):
         print('SSRBM: ', i, ' ', input_size, '->', size)
         rbm_list.append(SSRBM(input_size, size, 100, 0.3, 30, 1))
@@ -444,9 +444,9 @@ for epoch in range(epoches):
     tra[epoch] = result_tr
     tea[epoch] = result_te
 
-    '''
-
     #'''
+
+    '''
     for i, size in enumerate(RBM_hidden_sizes):
         print('RBM: ', i, ' ', input_size, '->', size)
         rbm_list.append(RBM(input_size, size, 100, 0.3, 30))
@@ -467,7 +467,7 @@ for epoch in range(epoches):
     tra[epoch] = result_tr
     tea[epoch] = result_te
     
-    #'''
+    '''
 '''
 ave_erra = []
 for i in range(300):
@@ -492,8 +492,8 @@ for i in range(1000):
         Sum_tea = Sum_tea + tea[j][i]
     ave_tra.append(Sum_tra / epoches)
     ave_tea.append(Sum_tea / epoches)
-np.save('./result/tr_DBN_isigmoid_6_0.2.npy', ave_tra)
-np.save('./result/te_DBN_isigmoid_6_0.2.npy', ave_tea)
+np.save('./result/tr_SSDBN_isigmoid_1_5_0.2.npy', ave_tra)
+np.save('./result/te_SSDBN_isigmoid_1_5_0.2.npy', ave_tea)
 label = ['Training Dataset', 'Testing Dataset']
 plt.plot(range(1000), ave_tra)
 plt.plot(range(1000), ave_tea)

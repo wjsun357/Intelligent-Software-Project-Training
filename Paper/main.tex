@@ -295,7 +295,7 @@ When using DBN for the training, the initial accuracy rate can reach 20\%. And i
 \end{figure}
 
 \subsection{Sigmoid and Isigmoid}
-Isigmoid proposed by Yi Qin \cite{YiThe} is capable to relax the vanishing gradient problem and converges faster then Sigmoid. As shown in Fig. \ref{fig:SigmoidVSIsigmoid}, since we did not use Isigmoid in RBM (pre-training), their initial accuracy rates are similar. However, when using Isigmoid in the back propagation, the DBN can converge faster.
+Isigmoid proposed by Yi Qin \cite{YiThe} is capable to relax the vanishing gradient problem and converges faster then Sigmoid. As shown in Fig. \ref{fig:SigmoidVSIsigmoid}, since we did not use Isigmoid in RBM (pre-training), their initial accuracy rates are similar. However, when using Isigmoid in the back propagation, the DBN can converge faster and has higher accuracy rate.
 
 \begin{figure}[htbp]
 	\centering
@@ -305,7 +305,7 @@ Isigmoid proposed by Yi Qin \cite{YiThe} is capable to relax the vanishing gradi
 \end{figure}
 
 \subsection{DBN and SSDBN}
-\textcolor{red}{Finally, we compare DBN with SSDBN. Since SSDBN has studied the sample labels at RBM, I thought that the initial classification accuracy rate should be higher than DBN, but the result is not the case. And DBN seems to converge faseter than SSDBN. However, the final classification accuracy rate of SSDBN is slightly higher than DBN.}
+\textcolor{red}{Finally, we compare DBN with SSDBN. Since SSDBN has studied the sample labels at RBM, I thought that the initial classification accuracy rate should be higher than DBN, but the result is not the case. And DBN seems to converge faseter than SSDBN. However, the final classification accuracy rate of SSDBN is higher than DBN.}
 
 \begin{figure}[htbp]
 	\centering

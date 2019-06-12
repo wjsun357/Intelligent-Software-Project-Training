@@ -4,7 +4,7 @@ import math
 from tensorflow.python.framework import ops
 
 
-def my_sigmoid_def(x, a=6, alpha=0.2):
+def my_sigmoid_def(x, a=5, alpha=0.2):
     # '''
     if x >= a:
         return alpha*(x-a)+1/(1+math.exp(-a))
@@ -16,7 +16,7 @@ def my_sigmoid_def(x, a=6, alpha=0.2):
     # return 1/(1+math.exp(-x))
 
 
-def my_sigmoid_grad_def(x, a=6, alpha=0.2):
+def my_sigmoid_grad_def(x, a=5, alpha=0.2):
     # ‘''
     if abs(x) >= a:
         return alpha
