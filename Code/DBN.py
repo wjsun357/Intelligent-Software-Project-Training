@@ -43,7 +43,7 @@ class RBM(object):
         # 要么是0，要么是1
         return tf.nn.relu(tf.sign(probs - tf.cast(tf.random_uniform(tf.shape(probs)), np.float64)))
 
-    def train(self, X):  # X为总特征数
+    def train(self, X):  # X为输入数据
         # 创建placeholder
         _w = tf.placeholder(tf.float64, [self._input_size, self._output_size])
         _hb = tf.placeholder(tf.float64, [self._output_size])

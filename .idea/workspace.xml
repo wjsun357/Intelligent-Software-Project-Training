@@ -5,32 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82cf8a35-c0e0-4bb2-bf33-1f915ba9ac0d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code/DBN.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/DBN.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/SSDBN.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/SSDBN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/draw.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/draw.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/isigmoid.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/isigmoid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/result/error_SSDBN.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/error_SSDBN.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/result/te_DBN_isigmoid.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/result/te_DBN_isigmoid_5_0.2.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/te_DBN_isigmoid_5_0.2.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/result/te_SSDBN_Sigmoid_1.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/te_SSDBN_Sigmoid_1.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/result/te_SSDBN_sigmoid.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/result/tr_DBN_isigmoid.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/result/tr_DBN_isigmoid_5_0.2.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/tr_DBN_isigmoid_5_0.2.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/result/tr_SSDBN_Sigmoid_1.npy" beforeDir="false" afterPath="$PROJECT_DIR$/Code/result/tr_SSDBN_Sigmoid_1.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Code/result/tr_SSDBN_sigmoid.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paper/RBM012-eps-converted-to.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/RBM012-eps-converted-to.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paper/RBM012.eps" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/RBM012.eps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paper/SSDBN-eps-converted-to.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/SSDBN-eps-converted-to.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paper/SSDBN.eps" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/SSDBN.eps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paper/SigmoidVSIsigmoid-eps-converted-to.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/SigmoidVSIsigmoid-eps-converted-to.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paper/SigmoidVSIsigmoid.eps" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/SigmoidVSIsigmoid.eps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paper/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/main.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paper/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/main.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paper/main.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/main.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Paper/main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/Paper/main.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Report/6.23-DBN-孙武杰-汇总报告.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Report/6.23-DBN-孙武杰-汇总报告.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Report/汇总报告.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/Report/汇总报告.pptx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,22 +35,22 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="39" />
+          <entry key="py" value="42" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="39" />
+          <entry key="Python" value="42" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="6077" />
+          <entry key="py" value="6101" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="6077" />
+          <entry key="Python" value="6101" />
         </counts>
       </usages-collector>
     </session>
@@ -84,8 +60,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Code/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="498" column="30" selection-start-line="495" selection-start-column="36" selection-end-line="495" selection-end-column="43" />
+            <state relative-caret-position="-322">
+              <caret line="437" column="11" selection-start-line="437" selection-start-column="11" selection-end-line="437" selection-end-column="11" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -96,10 +72,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Code/draw.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
+            <state relative-caret-position="668">
               <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Code/SSDBN.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="214">
+              <caret line="51" column="32" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Code/DBN.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="149" column="8" selection-start-line="149" selection-start-column="8" selection-end-line="149" selection-end-column="35" />
+              <folding>
+                <marker date="1560304071017" expanded="true" signature="1188:1197" ph="..." />
               </folding>
             </state>
           </provider>
@@ -124,15 +121,15 @@
         <option value="$PROJECT_DIR$/Code/result/draw.py" />
         <option value="$PROJECT_DIR$/Code/new_main.py" />
         <option value="$PROJECT_DIR$/Code/original.py" />
-        <option value="$PROJECT_DIR$/Code/DBN.py" />
         <option value="$PROJECT_DIR$/Code/isigmoid.py" />
-        <option value="$PROJECT_DIR$/Code/SSDBN.py" />
         <option value="$PROJECT_DIR$/Code/main.py" />
         <option value="$PROJECT_DIR$/Code/draw.py" />
+        <option value="$PROJECT_DIR$/Code/DBN.py" />
+        <option value="$PROJECT_DIR$/Code/SSDBN.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="630" />
     <option name="width" value="654" />
     <option name="height" value="729" />
@@ -327,15 +324,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="735" extended-state="7" />
+    <frame x="-7" y="-7" width="1295" height="735" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18347895" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18347895" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32890365" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49960285" visible="true" weight="0.35215947" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960285" visible="true" weight="0.35215947" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -377,20 +374,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Code/draw.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="668">
+          <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Code/DBN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-684">
-          <caret line="109" column="9" selection-start-line="109" selection-start-column="9" selection-end-line="109" selection-end-column="9" />
+        <state relative-caret-position="414">
+          <caret line="149" column="8" selection-start-line="149" selection-start-column="8" selection-end-line="149" selection-end-column="35" />
           <folding>
-            <marker date="1560249116742" expanded="true" signature="1188:1197" ph="..." />
+            <marker date="1560304071017" expanded="true" signature="1188:1197" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Code/SSDBN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="194" column="12" selection-start-line="194" selection-start-column="12" selection-end-line="194" selection-end-column="12" />
+        <state relative-caret-position="214">
+          <caret line="51" column="32" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -404,20 +411,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Code/draw.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Code/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="498" column="30" selection-start-line="495" selection-start-column="36" selection-end-line="495" selection-end-column="43" />
+        <state relative-caret-position="-322">
+          <caret line="437" column="11" selection-start-line="437" selection-start-column="11" selection-end-line="437" selection-end-column="11" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>

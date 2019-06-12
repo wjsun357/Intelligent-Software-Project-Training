@@ -49,7 +49,7 @@ class SSRBM(object):
     def prob_u_given_h(self, hidden, p, ub):
         return tf.nn.sigmoid(self._proportion * (tf.matmul(hidden, tf.transpose(p)) + ub))
 
-    def train(self, X, S):  # X为总特征数
+    def train(self, X, S):  # X为v的输入数据，S为u的输入数据
         # 创建placeholder
         _w = tf.placeholder(tf.float64, [self._input_size, self._output_size])
         _hb = tf.placeholder(tf.float64, [self._output_size])
