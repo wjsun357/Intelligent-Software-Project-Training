@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.10.15)  17 JUN 2019 14:25
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.10.15)  20 JUN 2019 17:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -502,6 +502,12 @@ File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
+Underfull \hbox (badness 1048) in paragraph at lines 57--58
+\LY1/ptm/m/n/8 choose to extract features from the time domain [[]] as the inpu
+t
+ []
+
+
 Overfull \hbox (1.12001pt too wide) has occurred while \output is active
  []
  []
@@ -513,18 +519,18 @@ Overfull \hbox (1.12001pt too wide) has occurred while \output is active
 ]
 File: wpd.eps Graphic file (type eps)
 <wpd.eps>
-LaTeX Font Info:    Try loading font information for LY1+phb on input line 68.
-LaTeX Font Info:    No file LY1phb.fd. on input line 68.
+LaTeX Font Info:    Try loading font information for LY1+phb on input line 67.
+LaTeX Font Info:    No file LY1phb.fd. on input line 67.
 
 
 LaTeX Font Warning: Font shape `LY1/phb/m/n' undefined
-(Font)              using `LY1/ptm/m/n' instead on input line 68.
+(Font)              using `LY1/ptm/m/n' instead on input line 67.
 
 LaTeX Font Info:    Font shape `LY1/phv/bx/n' in size <6.5> not available
-(Font)              Font shape `LY1/phv/b/n' tried instead on input line 68.
+(Font)              Font shape `LY1/phv/b/n' tried instead on input line 67.
 
 LaTeX Font Warning: Font shape `LY1/phb/bx/n' undefined
-(Font)              using `LY1/phb/m/n' instead on input line 78.
+(Font)              using `LY1/phb/m/n' instead on input line 77.
 
 File: dbn.eps Graphic file (type eps)
 <dbn.eps>
@@ -534,7 +540,7 @@ File: rbm.eps Graphic file (type eps)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `LY1/phv/m/it' in size <8> not available
-(Font)              Font shape `LY1/phv/m/sl' tried instead on input line 144.
+(Font)              Font shape `LY1/phv/m/sl' tried instead on input line 149.
 
 Overfull \hbox (252.0pt too wide) has occurred while \output is active
 [][] 
@@ -542,36 +548,29 @@ Overfull \hbox (252.0pt too wide) has occurred while \output is active
 
 [2]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 173.
+put line 172.
 LaTeX Font Info:    Font shape `LY1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `LY1/ptm/b/n' tried instead on input line 173.
+(Font)              Font shape `LY1/ptm/b/n' tried instead on input line 172.
 File: surface.eps Graphic file (type eps)
 <surface.eps>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 
 Overfull \hbox (252.0pt too wide) has occurred while \output is active
 [][] 
  []
 
 [3]
-Underfull \hbox (badness 1221) in paragraph at lines 261--262
-\LY1/ptm/m/n/8 In the experiments in this paper, we used the drive end bearing
- []
-
 File: pre.eps Graphic file (type eps)
 <pre.eps>
 File: feature.eps Graphic file (type eps)
 <feature.eps>
-File: dbnVSbp.eps Graphic file (type eps)
-<dbnVSbp.eps>
 
 Overfull \hbox (252.0pt too wide) has occurred while \output is active
 [][] 
  []
 
 [4]
+File: dbnVSbp.eps Graphic file (type eps)
+<dbnVSbp.eps>
 File: SigmoidVSIsigmoid.eps Graphic file (type eps)
 <SigmoidVSIsigmoid.eps>
 File: SSDBN.eps Graphic file (type eps)
@@ -594,21 +593,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--96
 
 )
 - LAST -
-Extra skip:25.0pt
-Left:486.0pt/1.64pt
-Right:461.0pt/1.64pt
-Output:486.0pt
+Extra skip:4.0pt
+Left:498.0pt/1.64pt
+Right:494.0pt/1.64pt
+Output:498.5pt
 
 Overfull \hbox (252.0pt too wide) has occurred while \output is active
 [][] 
  []
 
 [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 365.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 365.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 364.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 364.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 365.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 365.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 364.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 364.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 805ABDEA3B63647FE11890DEE797F5E9.
 
@@ -623,10 +622,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  10826 strings out of 494895
  146412 string characters out of 6176371
- 246213 words of memory out of 5000000
+ 246556 words of memory out of 5000000
  14562 multiletter control sequences out of 15000+600000
  55321 words of font info for 103 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 58i,12n,51p,1311b,564s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 57i,12n,50p,1027b,564s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on main.pdf (6 pages).
