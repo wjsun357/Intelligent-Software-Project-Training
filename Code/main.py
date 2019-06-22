@@ -8,7 +8,7 @@ from sklearn.preprocessing import MinMaxScaler
 import seaborn as sns
 #from DBN import NN, RBM
 from SSDBN import NN, SSRBM
-'''
+#'''
 print("Reading data...")
 data_A_normal_reduced = loadmat("../Data/My Data/Normal_0")
 data_B_normal_reduced = loadmat("../Data/My Data/Normal_1")
@@ -366,6 +366,8 @@ for k in range(n_feature):
     plt.subplot(n_feature/2, 2, k+1)
     plt.xticks([])
     plt.yticks([])
+    plt.xlim((-2, 50))
+    plt.ylim((0, 1))
     for i in range(10):
         sns.distplot(t_D[k, (150*i):(150*(i+1))], rug=True, hist=False)
 plt.show()
@@ -387,7 +389,7 @@ np.save('./data/data_C_minmax.npy', data_C_minmax)
 np.save('./data/eval_C.npy', eval_C)
 np.save('./data/data_D_minmax.npy', data_D_minmax)
 np.save('./data/eval_D.npy', eval_D)
-'''
+#'''
 
 data_A_minmax = np.load('./data/data_A_minmax.npy')
 eval_A = np.load('./data/eval_A.npy')

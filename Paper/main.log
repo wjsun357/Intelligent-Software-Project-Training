@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.10.15)  20 JUN 2019 17:10
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.10.15)  22 JUN 2019 20:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -622,7 +622,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  10826 strings out of 494895
  146412 string characters out of 6176371
- 246556 words of memory out of 5000000
+ 247556 words of memory out of 5000000
  14562 multiletter control sequences out of 15000+600000
  55321 words of font info for 103 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
