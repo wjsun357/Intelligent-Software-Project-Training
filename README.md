@@ -15,4 +15,5 @@ SSDBN的SSRBM的初始化函数`__init__(self, input_size, output_size, epoches,
 <br><br>
 RBM的设置参数为epoches=100，learning_rate=0.3，batchsize=30，SSRBM的参数为proportion=1，Isigmoid的参数为a=5，alpha=0.2。NN的参数为epoches=1000，learning_rate=1，batchsize=30，前2/3动量为0.9，后1/3动量为0.5。<br>
 <br><br>
+主要的源代码在[Code.zip](https://github.com/wjsunscut/Intelligent-Software-Project-Training/blob/master/Code/Code.zip)中。<br>
 直接运行[main.py](https://github.com/wjsunscut/Intelligent-Software-Project-Training/blob/master/Code/main.py)即可（可根据需要调整代码以分别运行DBN和SSDBN）。
